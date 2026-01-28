@@ -716,8 +716,12 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     box-shadow: var(--shadow-glow);
 }
 
-.screenshot-frame:hover {
-    transform: rotateY(0deg) scale(1.02);
+.screenshot-item:first-child .screenshot-frame:hover {
+    transform: rotateY(0deg) scale(1.02) !important;
+}
+
+.screenshot-item:last-child .screenshot-frame:hover {
+    transform: rotateY(0deg) scale(1.02) !important;
 }
 
 /* ============================================
@@ -732,7 +736,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-xl);
-    align-items: start;
+    align-items: stretch;
 }
 
 .pricing-card {
@@ -745,6 +749,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     transition: all var(--transition-base);
     opacity: 0;
     transform: translateY(20px);
+    display: flex;
+    flex-direction: column;
 }
 
 .pricing-card.animate-in {
@@ -812,8 +818,12 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .pricing-features {
-    margin-bottom: var(--space-xl);
+    margin-bottom: 0;
     text-align: left;
+}
+
+.pricing-features li.blank-row {
+    visibility: hidden;
 }
 
 .pricing-features li {
@@ -840,7 +850,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .pricing-card:nth-child(2) .price-amount {
-    color: var(--accent-secondary); /* teal for weekly */
+    color: var(--accent-primary); /* indigo for weekly */
 }
 
 .pricing-card:nth-child(3) .price-amount {
