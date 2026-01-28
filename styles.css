@@ -1109,6 +1109,16 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 @media (max-width: 480px) {
+    /* Compact navbar on mobile */
+    .nav-logo .logo-icon {
+        display: none;
+    }
+
+    .nav-actions .btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+
     .hero-ctas {
         flex-direction: column;
     }
