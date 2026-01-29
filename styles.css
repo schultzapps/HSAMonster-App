@@ -955,8 +955,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: var(--space-3xl);
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: var(--space-2xl);
     margin-bottom: var(--space-2xl);
 }
 
