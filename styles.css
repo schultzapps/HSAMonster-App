@@ -974,6 +974,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     font-size: 0.9375rem;
 }
 
+.footer-made-in {
+    margin-top: var(--space-md);
+}
+
 .footer-links h4 {
     font-size: 0.875rem;
     font-weight: 600;
