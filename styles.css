@@ -453,11 +453,11 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .phone-frame {
     position: relative;
-    width: 280px;
-    height: 580px;
+    width: 274px;
+    height: 574px;
     background: linear-gradient(145deg, #2A2A3C, #1A1A28);
     border-radius: 40px;
-    padding: 12px;
+    padding: 9px;
     box-shadow: var(--shadow-lg), 0 0 60px var(--accent-glow);
     transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
     transition: transform var(--transition-slow);
@@ -696,7 +696,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     width: 200px;
     height: 420px;
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    border: 0.5px solid var(--border-color);
     border-radius: var(--radius-2xl);
     overflow: hidden;
     display: flex;
