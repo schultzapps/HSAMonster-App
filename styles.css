@@ -982,6 +982,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .cta-section {
     padding: var(--space-4xl) 0;
+    background: var(--bg-secondary);
 }
 
 .cta-box {
@@ -1024,7 +1025,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .footer {
     padding: var(--space-3xl) 0 var(--space-xl);
-    background: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
 }
 
