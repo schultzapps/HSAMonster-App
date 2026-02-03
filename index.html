@@ -532,6 +532,8 @@
         // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                // Skip contact link - it has its own handler
+                if (this.id === 'contact-link') return;
                 e.preventDefault();
                 const href = this.getAttribute('href');
                 if (href === '#') {
