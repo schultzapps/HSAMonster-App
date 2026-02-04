@@ -753,7 +753,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .numbers-section {
     padding: var(--space-4xl) 0;
-    background: var(--bg-secondary);
 }
 
 .numbers-grid {
@@ -806,6 +805,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .screenshots-section {
     padding: var(--space-4xl) 0;
+    background: var(--bg-secondary);
 }
 
 .screenshots-gallery {
@@ -859,7 +859,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .pricing-section {
     padding: var(--space-4xl) 0;
-    background: var(--bg-secondary);
 }
 
 .pricing-grid {
@@ -992,6 +991,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .faq-section {
     padding: var(--space-4xl) 0;
+    background: var(--bg-secondary);
 }
 
 .faq-grid {
@@ -1035,7 +1035,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .cta-section {
     padding: var(--space-4xl) 0;
-    background: var(--bg-secondary);
 }
 
 .cta-box {
@@ -1078,6 +1077,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .footer {
     padding: var(--space-3xl) 0 var(--space-xl);
+    background: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
 }
 
