@@ -749,6 +749,59 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 /* ============================================
+   Numbers Section
+   ============================================ */
+.numbers-section {
+    padding: var(--space-4xl) 0;
+    background: var(--bg-secondary);
+}
+
+.numbers-grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+}
+
+.number-card {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    text-align: center;
+    padding: var(--space-xl);
+    background: var(--bg-card);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-color);
+}
+
+.number-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: var(--space-sm);
+}
+
+.number-divider {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.number-plus,
+.number-percent {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.number-label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+/* ============================================
    Screenshots Section
    ============================================ */
 .screenshots-section {
@@ -1172,6 +1225,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         grid-template-columns: 1fr;
     }
 
+    .number-value {
+        font-size: 1.75rem;
+    }
+
     .screenshots-gallery {
         flex-direction: column;
     }
@@ -1237,5 +1294,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     .phone-frame {
         width: 240px;
         height: 500px;
+    }
+
+    .number-value {
+        font-size: 2rem;
     }
 }
