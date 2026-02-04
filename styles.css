@@ -1185,6 +1185,12 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         grid-template-columns: 1fr;
         gap: var(--space-xl);
     }
+
+    .cta-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media (max-width: 480px) {
