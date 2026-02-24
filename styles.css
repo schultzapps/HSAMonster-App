@@ -431,70 +431,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 .hero-ctas {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-md);
-}
-
-/* Waitlist Form */
-.hero-waitlist {
-    margin-top: var(--space-xl);
-}
-
-.waitlist-label {
-    font-size: 1.125rem;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-md);
-}
-
-.waitlist-form {
-    display: flex;
-    gap: 0;
-    max-width: 480px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color-strong);
-    border-radius: var(--radius-xl);
-    padding: 6px;
-    transition: all var(--transition-fast);
-}
-
-.waitlist-form:focus-within {
-    border-color: var(--accent-primary);
-    box-shadow: 0 0 0 3px var(--accent-glow);
-}
-
-.waitlist-input {
-    flex: 1;
-    padding: var(--space-md) var(--space-lg);
-    font-family: var(--font-display);
-    font-size: 1rem;
-    color: var(--text-primary);
-    background: transparent;
-    border: none;
-    outline: none;
-    min-width: 0;
-}
-
-.waitlist-input::placeholder {
-    color: var(--text-muted);
-}
-
-.waitlist-form .btn {
-    flex-shrink: 0;
-    padding: var(--space-md) var(--space-xl);
-    border-radius: var(--radius-lg);
-}
-
-.waitlist-success {
-    display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-md) var(--space-lg);
-    background: rgba(65, 206, 189, 0.1);
-    border: 1px solid var(--accent-secondary);
-    border-radius: var(--radius-xl);
-    color: var(--accent-secondary);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    max-width: 480px;
+    gap: var(--space-md);
 }
 
 .hero-mockup {
@@ -1072,6 +1010,90 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     margin-right: auto;
 }
 
+.appstore-badge {
+    display: inline-block;
+}
+
+.appstore-badge img {
+    height: 44px;
+    width: auto;
+}
+
+/* ============================================
+   Newsletter Section
+   ============================================ */
+.newsletter-section {
+    padding: var(--space-3xl) 0;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+}
+
+.newsletter-content {
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.newsletter-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: var(--space-xl);
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color-strong);
+    border-radius: var(--radius-xl);
+    padding: 6px;
+    transition: all var(--transition-fast);
+}
+
+.newsletter-form:focus-within {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.newsletter-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: var(--space-sm) var(--space-md);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--text-primary);
+    min-width: 0;
+}
+
+.newsletter-input::placeholder {
+    color: var(--text-muted);
+}
+
+.newsletter-form .btn {
+    flex-shrink: 0;
+}
+
+.newsletter-success {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    color: var(--accent-primary);
+    font-weight: 500;
+    margin-top: var(--space-md);
+}
+
+.newsletter-success svg {
+    flex-shrink: 0;
+}
+
 /* ============================================
    Footer
    ============================================ */
@@ -1263,26 +1285,24 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
     .hero-ctas {
         flex-direction: column;
+        align-items: center;
     }
 
     .hero-ctas .btn {
         width: 100%;
     }
 
-    .waitlist-form {
+    .newsletter-form {
         flex-direction: column;
-        width: 100%;
-        max-width: none;
-        padding: var(--space-sm);
         gap: var(--space-sm);
+        padding: var(--space-sm);
     }
 
-    .waitlist-input {
-        width: 100%;
-        padding: var(--space-md);
+    .newsletter-input {
+        text-align: center;
     }
 
-    .waitlist-form .btn {
+    .newsletter-form .btn {
         width: 100%;
     }
 
