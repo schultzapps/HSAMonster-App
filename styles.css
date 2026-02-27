@@ -1162,6 +1162,103 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 /* ============================================
+   Release Notes Page
+   ============================================ */
+.release-notes {
+    padding-top: 120px;
+    padding-bottom: var(--space-4xl);
+    min-height: 100vh;
+}
+
+.release-notes-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+.release-notes-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+}
+
+.release-notes-header h1 {
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.release-entry {
+    padding: var(--space-xl) 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.release-entry:last-child {
+    border-bottom: none;
+}
+
+.release-meta {
+    margin-bottom: var(--space-lg);
+}
+
+.release-version {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-xs);
+}
+
+.release-date {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.release-changes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding-left: 0;
+}
+
+.release-changes li {
+    position: relative;
+    padding-left: 1.25em;
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+}
+
+.release-changes li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 6px;
+    height: 6px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+}
+
+.release-changes li > ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-left: var(--space-md);
+    margin-top: var(--space-xs);
+}
+
+.release-changes li > ul li {
+    font-size: 0.875rem;
+}
+
+.release-changes li > ul li::before {
+    width: 4px;
+    height: 4px;
+    background: var(--text-muted);
+}
+
+.nav-links a.active {
+    color: var(--accent-primary);
+}
+
+/* ============================================
    Responsive Design
    ============================================ */
 @media (max-width: 1024px) {
