@@ -2,14 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hsamonster.com/</loc>
+    <lastmod>2026-05-01</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://hsamonster.com/release-notes.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://hsamonster.com/Privacy_Policy.html</loc>
+    <lastmod>2026-05-01</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://hsamonster.com/Terms_of_Service.html</loc>
+    <lastmod>2026-05-01</lastmod>
     <priority>0.3</priority>
   </url>
 </urlset>
