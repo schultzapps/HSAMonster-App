@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What's New? - HSA Monster</title>
-    <meta name="description" content="See what's new in HSA Monster. Release notes, feature updates, and improvements for the HSA receipt tracking app.">
+    <title>Press Kit - HSA Monster</title>
+    <meta name="description" content="HSA Monster press kit — app description, key features, and brand assets for press, bloggers, and reviewers.">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://hsamonster.com/release-notes.html">
+    <link rel="canonical" href="https://hsamonster.com/press-kit.html">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="What's New? - HSA Monster">
-    <meta property="og:description" content="See what's new in HSA Monster. Release notes, feature updates, and improvements.">
+    <meta property="og:title" content="Press Kit - HSA Monster">
+    <meta property="og:description" content="App description, key features, and brand assets for press and reviewers.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hsamonster.com/release-notes.html">
+    <meta property="og:url" content="https://hsamonster.com/press-kit.html">
     <meta property="og:image" content="https://hsamonster.com/images/social-preview.png">
 
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Press Kit - HSA Monster">
+    <meta name="twitter:description" content="App description, key features, and brand assets for press and reviewers.">
+    <meta name="twitter:image" content="https://hsamonster.com/images/social-preview.png">
+
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/appicon.png?v=2">
-    <link rel="apple-touch-icon" href="images/appicon.png?v=2">
+    <link rel="icon" type="image/png" href="images/appicon.png">
+    <link rel="apple-touch-icon" href="images/appicon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +33,41 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Page-local minimalist styles -->
+    <style>
+        .press-container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+        .press-section {
+            padding: var(--space-xl) 0;
+        }
+        .press-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-md);
+        }
+        .press-section p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+        .feature-bullets {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            padding-left: 1.25rem;
+            margin: 0;
+        }
+        .feature-bullets li {
+            margin-bottom: var(--space-xs);
+        }
+        .press-cta {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--space-lg);
+        }
+    </style>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NM2GJWXE40"></script>
@@ -47,11 +88,10 @@
             </a>
             <div class="nav-links">
                 <a href="index.html#features">Features</a>
-                <a href="index.html#how-it-works">How It Works</a>
                 <a href="index.html#pricing">Pricing</a>
                 <a href="index.html#faq">FAQ</a>
-                <a href="release-notes.html" class="active">What's New?</a>
-                <a href="press-kit.html">Press Kit</a>
+                <a href="release-notes.html">What's New?</a>
+                <a href="press-kit.html" class="active">Press Kit</a>
             </div>
             <div class="nav-actions">
                 <button class="theme-toggle" aria-label="Toggle theme">
@@ -68,64 +108,42 @@
         </div>
     </nav>
 
-    <!-- Release Notes Content -->
+    <!-- Press Kit Content -->
     <main class="release-notes">
-        <div class="release-notes-container">
+        <div class="press-container">
             <div class="release-notes-header">
-                <span class="section-label">Changelog</span>
-                <h1>What's New?</h1>
-                <p class="section-description">Updates, improvements, and new features in HSA Monster.</p>
+                <span class="section-label">Press Kit</span>
+                <h1>HSA Monster <span class="gradient-text">Press Kit</span></h1>
+                <div class="press-cta">
+                    <a href="https://drive.google.com/uc?export=download&id=10pFc2XzKRXqcKvUmHgW-p0zTv_AdisTg" class="btn btn-primary btn-large" target="_blank" rel="noopener" onclick="gtag('event', 'press_kit_download');">
+                        Download Press Kit
+                    </a>
+                </div>
             </div>
 
-            <article class="release-entry">
-                <div class="release-meta">
-                    <h2 class="release-version">Version 1.0.3</h2>
-                    <time class="release-date">May 7, 2026</time>
-                </div>
-                <ul class="release-changes">
-                    <li>Streamlined account reconciliation user interface</li>
-                    <li>Added a more helpful 'Contact Us' link in settings</li>
-                    <li>Other bug fixes and optimizations</li>
-                </ul>
-            </article>
+            <section class="press-section">
+                <h2>About</h2>
+                <p>HSA Monster is an iOS, iPadOS, and macOS app that helps families turn their Health Savings Account into a powerful retirement tool. Snap receipts with on-device AI, track every tax-free dollar you can reimburse later, and sync privately across Apple devices via iCloud.</p>
+            </section>
 
-            <article class="release-entry">
-                <div class="release-meta">
-                    <h2 class="release-version">Version 1.0.2</h2>
-                    <time class="release-date">April 20, 2026</time>
-                </div>
-                <ul class="release-changes">
-                    <li>Redesigned onboarding video pages with a blur panel behind the title text for better legibility</li>
-                    <li>Fixed provider autocomplete suggestions staying visible after tapping a suggestion</li>
-                    <li>Fixed Terms of Service and other links in Settings not refreshing after remote updates</li>
-                    <li>General polish and stability improvements</li>
+            <section class="press-section">
+                <h2>Key Features</h2>
+                <ul class="feature-bullets">
+                    <li>Capture receipts in seconds with on-device AI — no typing, no data entry.</li>
+                    <li>Always know your tax-free reimbursable balance.</li>
+                    <li>Built for families — both spouses can add receipts and sync via iCloud.</li>
+                    <li>Export annual statements and full receipt archives in one tap.</li>
+                    <li>Universal Apple app for iPhone, iPad, and Mac.</li>
+                    <li>Private by design: all AI runs on-device; data lives in your personal iCloud.</li>
+                    <li>No accounts, no logins, no ads.</li>
+                    <li>Family Plan covers up to 6 family members via Apple Family Sharing.</li>
                 </ul>
-            </article>
+            </section>
 
-            <article class="release-entry">
-                <div class="release-meta">
-                    <h2 class="release-version">Version 1.0.1</h2>
-                    <time class="release-date">February 25, 2026</time>
-                </div>
-                <ul class="release-changes">
-                    <li>New 'Siri Shortcuts' screen in Settings shows all the voice commands you can use with HSA Monster</li>
-                    <li>Refreshed transaction detail, receipt cards, and Why HSA? resource cards</li>
-                    <li>Fixed Siri shortcuts triggering the wrong action</li>
-                    <li>Fixed 'Rate the App' button in Settings</li>
-                    <li>General polish and stability improvements</li>
-                </ul>
-            </article>
-
-            <article class="release-entry">
-                <div class="release-meta">
-                    <h2 class="release-version">Version 1.0</h2>
-                    <time class="release-date">February 23, 2026</time>
-                </div>
-                <ul class="release-changes">
-                    <li>Initial release of HSA Monster</li>
-                </ul>
-            </article>
-
+            <section class="press-section">
+                <h2>Contact</h2>
+                <p>Press inquiries and review code requests: <a href="#" id="press-contact-link">email us</a>.</p>
+            </section>
         </div>
     </main>
 
@@ -142,7 +160,7 @@
                         Snap receipts in seconds. Tax-free reimbursements for retirement.
                     </p>
                     <p class="footer-tagline footer-made-in">
-                        Made with &#10084;&#65039; in Atlanta, GA
+                        Made with ❤️ in Atlanta, GA
                     </p>
                 </div>
                 <div class="footer-links">
@@ -166,6 +184,7 @@
                     <h4>Support</h4>
                     <ul>
                         <li><a href="#" id="contact-link">Contact Us</a></li>
+                        <li><a href="press-kit.html">Press Kit</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -206,23 +225,21 @@
             mobileMenuBtn.classList.toggle('active');
         });
 
-        // Navbar scroll effect
-        const navbar = document.querySelector('.navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
         // Email obfuscation
-        document.getElementById('contact-link').addEventListener('click', function(e) {
-            e.preventDefault();
+        function openMail(subject) {
             const user = 'schultzapps';
             const domain = 'gmail.com';
-            const subject = 'HSA Monster Feedback';
             window.location.href = 'mail' + 'to:' + user + '@' + domain + '?subject=' + encodeURIComponent(subject);
+        }
+
+        document.getElementById('contact-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            openMail('HSA Monster Feedback');
+        });
+
+        document.getElementById('press-contact-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            openMail('HSA Monster Press');
         });
     </script>
 </body>
