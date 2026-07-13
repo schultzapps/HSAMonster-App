@@ -148,7 +148,8 @@
                     <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                     <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
-                <a href="https://apps.apple.com/app/id6757624949" class="btn btn-primary" data-download-location="nav">Download</a>
+                <!-- App Store links carry Apple campaign params (pt = provider token, ct = campaign token per button) so App Store Connect > Analytics > Acquisition > Campaigns reports installs per button. -->
+                <a href="https://apps.apple.com/app/id6757624949?pt=127982700&amp;ct=lp_nav&amp;mt=8" class="btn btn-primary" data-download-location="nav">Download</a>
             </div>
             <button class="mobile-menu-btn" aria-label="Toggle menu">
                 <span></span>
@@ -164,21 +165,23 @@
         <div class="hero-container">
             <div class="hero-content">
                 <span class="hero-badge">
-                    <svg class="badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z" stroke="currentColor" stroke-width="1.5"/><path d="M7 14L9.29289 11.7071C9.68342 11.3166 10.3166 11.3166 10.7071 11.7071L12.2929 13.2929C12.6834 13.6834 13.3166 13.6834 13.7071 13.2929L17 10M17 10V12.5M17 10H14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    Save $100,000+ tax-free for retirement
+                    <svg class="badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>
+                    Made for iPhone, iPad &amp; Mac
                 </span>
                 <h1 class="hero-title">
-                    Retire Richer
-                    <span class="gradient-text">With Your HSA</span>
+                    Track Every HSA Expense
+                    <span class="gradient-text">Reimburse <span class="nowrap">Tax-Free</span></span>
                 </h1>
                 <p class="hero-description">
-                     HSA Monster for iOS and Mac is designed to help you turn your HSA into the ultimate retirement account. Pay medical bills out of pocket, snap a receipt, and track every tax-free dollar you can claim later.
+                    Snap a receipt and on-device AI logs the expense in seconds. Pay medical bills out of pocket, let your HSA investments grow, and always know exactly how much you can withdraw tax-free—now or decades from now.
                 </p>
                 <div class="hero-ctas">
-                    <a href="https://apps.apple.com/app/id6757624949" class="appstore-badge" data-download-location="hero">
-                        <img src="images/appstore-badge.png" alt="Download on the App Store" height="32">
+                    <a href="https://apps.apple.com/app/id6757624949?pt=127982700&amp;ct=lp_hero&amp;mt=8" class="btn btn-primary btn-hero" data-download-location="hero">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>
+                        Download Free on the App Store
                     </a>
                 </div>
+                <p class="hero-cta-note">Your first 10 expenses are free &middot; No account or signup required</p>
             </div>
             <div class="hero-mockup">
                 <div class="mockup-glow"></div>
@@ -556,7 +559,7 @@
                 <p class="cta-description">
                     Start tracking your HSA expenses today. See how much you can withdraw tax-free for retirement.
                 </p>
-                <a href="https://apps.apple.com/app/id6757624949" class="appstore-badge" data-download-location="cta_section">
+                <a href="https://apps.apple.com/app/id6757624949?pt=127982700&amp;ct=lp_cta_section&amp;mt=8" class="appstore-badge" data-download-location="cta_section">
                     <img src="images/appstore-badge.png" alt="Download on the App Store" height="32">
                 </a>
             </div>
@@ -608,7 +611,7 @@
                         <li><a href="#features">Features</a></li>
                         <li><a href="#pricing">Pricing</a></li>
                         <li><a href="#faq">FAQ</a></li>
-                        <li><a href="https://apps.apple.com/app/id6757624949" data-download-location="footer">Download</a></li>
+                        <li><a href="https://apps.apple.com/app/id6757624949?pt=127982700&amp;ct=lp_footer&amp;mt=8" data-download-location="footer">Download</a></li>
                         <li><a href="release-notes.html">What's New?</a></li>
                     </ul>
                 </div>
