@@ -1011,6 +1011,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     color: var(--text-muted);
 }
 
+/* Promotional pricing (see the PROMO blocks in index.html's pricing section).
+   Both rules below are used only while a promo is running; they're harmless to
+   keep in place between promos. */
+
 /* Struck-through list price, shown beside a promotional amount */
 .price-was {
     font-size: 1.375rem;

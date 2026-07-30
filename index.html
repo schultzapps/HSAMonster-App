@@ -413,6 +413,9 @@
             <div class="section-header">
                 <span class="section-label">Pricing</span>
                 <h2 class="section-title">Pricing That Fits <span class="gradient-text">Your Needs</span></h2>
+                <!-- PROMO (first-year $24.99) — 1 of 2. When the promo ends, restore:
+                     Log 10 expenses free with no signup. Subscribe or cancel anytime.
+                     See the second PROMO block on the Family Plan card below. -->
                 <p class="section-description">
                     Log 10 expenses free with no signup. Subscribe or cancel anytime — and right now the
                     annual Family Plan is <strong>$24.99 for your first year</strong>.
@@ -448,6 +451,23 @@
                     </ul>
                 </div>
                 <div class="pricing-card featured">
+                    <!-- PROMO (first-year $24.99) — 2 of 2. To end the promo, revert this
+                         header to its non-promo form:
+
+                           <div class="pricing-badge">Best Value</div>
+                           <div class="pricing-header">
+                               <h3 class="pricing-tier">Family Plan</h3>
+                               <div class="pricing-price">
+                                   <span class="price-amount">$49.99</span>
+                                   <span class="price-period">/year</span>
+                               </div>
+                           </div>
+
+                         i.e. badge back to "Best Value", drop the .price-was and
+                         .price-note lines, and restore the $49.99 //year pair. The
+                         .price-was / .price-note rules live in styles.css and are only
+                         used here — leave them for the next promo. Also revert the
+                         PROMO 1 of 2 block in the section header above. -->
                     <div class="pricing-badge">Limited Time Offer</div>
                     <div class="pricing-header">
                         <h3 class="pricing-tier">Family Plan</h3>
