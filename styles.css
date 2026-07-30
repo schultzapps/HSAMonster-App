@@ -1580,6 +1580,11 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         font-size: 1rem;
     }
 
+    /* Shorten to just "Download" so the label doesn't wrap in the pill */
+    .btn-hero .btn-label-full {
+        display: none;
+    }
+
     .newsletter-form {
         flex-direction: column;
         gap: var(--space-sm);
