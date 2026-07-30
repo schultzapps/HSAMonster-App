@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSA Growth Calculator: Project Your Tax-Free Balance | HSA Monster</title>
+    <meta name="description" content="Free HSA growth calculator. See how much your Health Savings Account could be worth, how much income tax you'll save, and how far an HSA beats a taxable brokerage account. Updated for 2026 limits.">
+    <meta name="keywords" content="HSA calculator, HSA growth calculator, HSA investment calculator, HSA tax savings calculator, health savings account calculator, HSA future value, HSA vs brokerage, HSA compound growth, 2026 HSA contribution limits, triple tax advantage calculator">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hsamonster.com/hsa-growth-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="HSA Growth Calculator — Project Your Tax-Free Balance">
+    <meta property="og:description" content="See what your HSA could be worth, how much income tax you'll save, and how far ahead you finish versus a taxable brokerage account. Free, no signup.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hsamonster.com/hsa-growth-calculator.html">
+    <meta property="og:image" content="https://hsamonster.com/images/social-preview.png">
+    <meta property="og:site_name" content="HSA Monster">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HSA Growth Calculator — Project Your Tax-Free Balance">
+    <meta name="twitter:description" content="See what your HSA could be worth, how much income tax you'll save, and how far ahead you finish versus a taxable brokerage account.">
+    <meta name="twitter:image" content="https://hsamonster.com/images/social-preview.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/appicon.png">
+    <link rel="apple-touch-icon" href="images/appicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/calculator.css">
+
+    <!-- Structured Data: the calculator itself -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "HSA Growth Calculator",
+      "url": "https://hsamonster.com/hsa-growth-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "browserRequirements": "Requires JavaScript",
+      "operatingSystem": "Any",
+      "description": "Free calculator that projects Health Savings Account growth in today's dollars, the income tax saved on contributions, and the advantage over an equivalent taxable brokerage account.",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HSA Monster",
+        "url": "https://hsamonster.com/"
+      }
+    }
+    </script>
+
+    <!-- Structured Data: breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hsamonster.com/" },
+        { "@type": "ListItem", "position": 2, "name": "HSA Growth Calculator", "item": "https://hsamonster.com/hsa-growth-calculator.html" }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data: FAQ (mirrors the visible FAQ below) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much can I contribute to an HSA in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For 2026 the IRS limit is $4,400 for self-only HDHP coverage and $8,750 for family coverage. If you're 55 or older the IRS also allows a $1,000 catch-up contribution on top of that, which this calculator does not include."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the projected balances in today's dollars?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The calculator converts your nominal return into a real return using the Fisher equation — real = (1 + nominal) ÷ (1 + inflation) − 1 — so a projected balance 25 years out is expressed in today's purchasing power rather than an inflated future number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the HSA beat the taxable brokerage account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three reasons compound together. HSA contributions are made with pre-tax dollars, so more money goes in to begin with. Growth is never taxed, while a taxable account loses a slice of its gains to dividend and capital-gains tax every year. And qualified withdrawals come out tax-free. The comparison line models the taxable account with after-tax contributions and reduces its annual gains by 10% to reflect that ongoing tax drag."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the payroll (pre-tax) contribution toggle do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Contributions made through your employer's payroll deduction avoid Social Security and Medicare tax as well as income tax — 7.65% of FICA on top of your federal and state marginal rates. If you contribute directly to your HSA instead of through payroll, turn the toggle off and the calculator drops FICA from your combined rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to spend my HSA money each year?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Unlike an FSA, HSA balances roll over indefinitely and the account is yours even if you change jobs or health plans. That's what makes long-term investing possible — and why many people pay medical costs out of pocket, save the receipts, and reimburse themselves years later."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this calculator financial advice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It's an illustration built from the assumptions you enter. Real returns vary, tax law changes, and your situation is specific to you. Nothing here is tax, legal, or investment advice — talk to a qualified professional before acting on a projection."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NM2GJWXE40"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-NM2GJWXE40');
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/appicon.png" alt="HSA Monster" class="logo-icon">
+                <span class="logo-text">HSA Monster</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle active" aria-expanded="false" aria-haspopup="true">
+                        Tools
+                        <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="hsa-growth-calculator.html">Growth Calculator<span class="item-desc">What your HSA could be worth</span></a>
+                        <a href="hsa-reimbursement-calculator.html">Reimburse Later Calculator<span class="item-desc">The cost of cashing out early</span></a>
+                    </div>
+                </div>
+                <a href="index.html#faq">FAQ</a>
+                <a href="advisors.html">For Advisors</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="https://apps.apple.com/app/id6757624949?pt=127982700&amp;ct=tools_growth_nav&amp;mt=8" class="btn btn-primary" data-download-location="tools_growth_nav">Download</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="tool-page">
+        <div class="tool-container">
+
+            <!-- Breadcrumbs -->
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep" aria-hidden="true">/</span>
+                <span aria-current="page">Growth Calculator</span>
+            </nav>
+
+            <!-- Hero -->
+            <header class="tool-hero">
+                <span class="section-label">Free HSA Tool</span>
+                <h1>Growth Calculator</h1>
+                <p class="lead">
+                    An HSA is the only account in the US tax code that is tax-free going in, tax-free
+                    while it grows, and tax-free coming out. This calculator shows what that's worth:
+                    <strong>your projected balance in today's dollars</strong>, the income tax you avoid
+                    on every contribution, and how far ahead you finish versus putting the same money in
+                    a taxable brokerage account.
+                </p>
+                <ul class="tool-chips">
+                    <li class="tool-chip">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Updated for <span data-config="year">2026</span> IRS limits</span>
+                    </li>
+                </ul>
+            </header>
+
+            <!-- Calculator -->
+            <section class="calc" data-calculator="growth" aria-label="HSA growth calculator">
+
+                <!-- Results -->
+                <div class="calc-results">
+                    <div class="result-card">
+                        <div class="result-head">
+                            <div class="result-value" id="result-value">$0</div>
+                            <div class="result-caption" id="result-caption">Tax-Free Balance</div>
+                        </div>
+                        <div class="chart-wrap" role="group" aria-label="Projected HSA balance over time compared with a taxable brokerage account. Drag or use the arrow keys to read a single year.">
+                            <svg class="chart-svg" id="calc-chart" preserveAspectRatio="none" aria-hidden="true"></svg>
+                        </div>
+                        <div class="chart-axis">
+                            <span>Today</span>
+                            <span id="axis-end">Year 25</span>
+                        </div>
+                        <div class="chart-legend">
+                            <span class="legend-item"><span class="legend-swatch"></span>HSA</span>
+                            <span class="legend-item"><span class="legend-swatch dashed"></span>Taxable brokerage</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-grid">
+                        <div class="stat-card">
+                            <div class="stat-title">Total Tax Saved</div>
+                            <div class="stat-value" id="stat-a-value">$0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-title">vs Taxable Brokerage</div>
+                            <div class="stat-value accent" id="stat-b-value">$0</div>
+                        </div>
+                    </div>
+
+                    <p class="calc-disclaimer" id="calc-disclaimer">
+                        For illustrative purposes only. Not tax, legal, or investment advice.
+                    </p>
+                </div>
+
+                <!-- Inputs -->
+                <div class="calc-inputs-col">
+                    <div class="inputs-card">
+                        <h2>Your inputs</h2>
+                        <p class="inputs-sub">Everything stays in your browser.</p>
+
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="starting-balance">Starting HSA balance</label>
+                                <span class="currency-input">
+                                    <span class="prefix">$</span>
+                                    <input type="text" id="starting-balance" inputmode="numeric" autocomplete="off" value="0">
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="field-row">
+                                <span class="field-label" id="coverage-label">Coverage</span>
+                                <div class="segmented" role="group" aria-labelledby="coverage-label">
+                                    <button type="button" data-coverage="individual" aria-pressed="false">Individual</button>
+                                    <button type="button" data-coverage="family" aria-pressed="true">Family</button>
+                                </div>
+                            </div>
+                            <p class="field-hint">
+                                <span data-config="year">2026</span> limits: <span data-config="individualLimit">$4,400</span> individual,
+                                <span data-config="familyLimit">$8,750</span> family.
+                            </p>
+                        </div>
+
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="contribution">
+                                    Annual contribution
+                                    <span class="max-badge" id="contribution-max"><span data-config="year">2026</span> Max</span>
+                                </label>
+                                <span class="field-value" id="contribution-value">$8,750</span>
+                            </div>
+                            <input class="slider" type="range" id="contribution" min="0" max="8750" step="50" value="8750" aria-label="Annual contribution">
+                        </div>
+
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="years">Years invested</label>
+                                <span class="field-value" id="years-value">25 years</span>
+                            </div>
+                            <input class="slider" type="range" id="years" min="1" max="40" step="1" value="25">
+                        </div>
+
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="return">Annual return</label>
+                                <span class="field-value" id="return-value">7.0%</span>
+                            </div>
+                            <input class="slider" type="range" id="return" min="1" max="12" step="0.5" value="7">
+                        </div>
+
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="inflation">Inflation rate</label>
+                                <span class="field-value" id="inflation-value">2.5%</span>
+                            </div>
+                            <input class="slider" type="range" id="inflation" min="0" max="10" step="0.5" value="2.5">
+                            <p class="field-hint">Results are shown in today's dollars.</p>
+                        </div>
+
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="federal">Federal bracket</label>
+                                <span class="select-wrap"><select id="federal"></select></span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="state-tax">State tax</label>
+                                <span class="select-wrap"><select id="state-tax"></select></span>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="fica">Payroll (pre-tax) contribution</label>
+                                <span class="toggle">
+                                    <input type="checkbox" id="fica" checked>
+                                    <span class="track"></span>
+                                </span>
+                            </div>
+                            <p class="field-hint">Avoids <span id="fica-rate">7.65%</span> FICA tax.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inline CTA -->
+            <div class="inline-cta">
+                <p>
+                    <strong>The projection only pays off if you keep the receipts.</strong>
+                    HSA Monster scans them on-device and tracks exactly how much you can reimburse
+                    tax-free — today or thirty years from now. This calculator is built into the app
+                    too, already filled in with your real balance, so you can rerun it any time.
+                </p>
+                <a href="https://apps.apple.com/app/id6757624949?pt=127982700&amp;ct=tools_growth_inline&amp;mt=8" class="btn btn-primary" data-download-location="tools_growth_inline">Get the free app</a>
+            </div>
+
+            <!-- How it works -->
+            <section class="tool-section">
+                <h2>How this HSA calculator works</h2>
+                <p>
+                    Most HSA calculators quote a big future number without telling you what it assumes.
+                    This one uses the same math as the HSA Monster iOS app, and every assumption is a
+                    control you can move.
+                </p>
+                <div class="step-list">
+                    <div class="step-item">
+                        <span class="num" aria-hidden="true"></span>
+                        <div>
+                            <h3>Contributions go in first, then grow</h3>
+                            <p>
+                                Each year your contribution is added to the balance, and the whole balance
+                                compounds at your expected return. Year 0 on the chart is your starting
+                                balance before any contribution.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <span class="num" aria-hidden="true"></span>
+                        <div>
+                            <h3>Returns are adjusted for inflation</h3>
+                            <p>
+                                Your nominal return is converted to a real return with the Fisher equation:
+                                real = (1 + nominal) ÷ (1 + inflation) − 1. A 7% return with 2.5% inflation
+                                compounds at roughly 4.4%, so the balance you see is in today's purchasing power.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <span class="num" aria-hidden="true"></span>
+                        <div>
+                            <h3>Tax savings use your combined marginal rate</h3>
+                            <p>
+                                Federal bracket + state income tax + 7.65% FICA (when you contribute through
+                                payroll) gives your combined rate. Multiply by your contribution and that's the
+                                income tax you never pay — every year you contribute.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <span class="num" aria-hidden="true"></span>
+                        <div>
+                            <h3>The taxable comparison is handicapped honestly</h3>
+                            <p>
+                                The dashed line invests the same money in a regular brokerage account. It
+                                contributes after-tax dollars — your combined rate comes off the top — and its
+                                annual gains are reduced by 10% to model the tax owed on dividends and realized
+                                gains that an HSA avoids entirely.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2026 limits -->
+            <section class="tool-section">
+                <h2><span data-config="year">2026</span> HSA contribution limits</h2>
+                <p>
+                    To contribute to an HSA you must be covered by a qualifying high-deductible health plan
+                    (HDHP) and not enrolled in Medicare. The IRS adjusts the limits every year.
+                </p>
+                <div class="table-scroll">
+                    <table class="tool-table">
+                        <caption>Source: IRS annual inflation adjustments. Verify current figures at irs.gov before filing.</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Coverage type</th>
+                                <th scope="col">Annual limit</th>
+                                <th scope="col">Age 55+ catch-up</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Self-only (individual)</th>
+                                <td><span data-config="individualLimit">$4,400</span></td>
+                                <td>+$1,000</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Family</th>
+                                <td><span data-config="familyLimit">$8,750</span></td>
+                                <td>+$1,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>
+                    Employer contributions count toward these limits. This calculator does not include the
+                    $1,000 age 55+ catch-up.
+                </p>
+            </section>
+
+            <!-- HSA vs other accounts -->
+            <section class="tool-section">
+                <h2>Why an HSA beats a taxable brokerage account</h2>
+                <p>
+                    The gap the calculator shows isn't a return advantage — both accounts earn the same
+                    market return. It's a tax advantage, applied at three separate points.
+                </p>
+                <div class="table-scroll">
+                    <table class="tool-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">&nbsp;</th>
+                                <th scope="col">HSA</th>
+                                <th scope="col">Taxable brokerage</th>
+                                <th scope="col">Traditional 401(k)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Money going in</th>
+                                <td>Pre-tax (no FICA via payroll)</td>
+                                <td>After-tax</td>
+                                <td>Pre-tax (FICA still owed)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Growth</th>
+                                <td>Never taxed</td>
+                                <td>Dividends &amp; gains taxed</td>
+                                <td>Tax-deferred</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Money coming out</th>
+                                <td>Tax-free for qualified medical</td>
+                                <td>Capital gains tax</td>
+                                <td>Taxed as ordinary income</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Required distributions</th>
+                                <td>None</td>
+                                <td>None</td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>
+                    That's the triple tax advantage. It's also why the strategy only works if you can prove
+                    your withdrawals were for qualified medical expenses — which comes down to whether you
+                    still have the receipts.
+                </p>
+            </section>
+
+            <!-- Assumptions -->
+            <section class="tool-section">
+                <h2>Assumptions and limitations</h2>
+                <ul class="tool-list">
+                    <li><strong>Contributions are level.</strong> The same amount goes in every year; the calculator doesn't step it up with future IRS limit increases.</li>
+                    <li><strong>Returns are smooth.</strong> Real markets don't return the same percentage annually. A steady rate is a reasonable long-run illustration, not a forecast.</li>
+                    <li><strong>Contributions land at the start of the year.</strong> Each year's contribution is added before that year's growth is applied.</li>
+                    <li><strong>Your marginal rate stays put.</strong> Tax savings use today's combined rate for every year of the projection.</li>
+                    <li><strong>No fees or HSA cash minimums.</strong> Many custodians require a cash balance before you can invest, and charge account or fund fees. Both would reduce these numbers.</li>
+                    <li><strong>No state-specific HSA quirks.</strong> A few states tax HSA contributions or earnings. Set state tax to 0% if yours doesn't offer the deduction.</li>
+                </ul>
+                <p>
+                    This tool is an illustration, not advice. Nothing on this page is tax, legal, or
+                    investment advice — check with a qualified professional before acting on it.
+                </p>
+            </section>
+
+            <!-- FAQ -->
+            <section class="tool-section">
+                <h2>HSA growth calculator FAQ</h2>
+                <div class="tool-faq">
+                    <details open>
+                        <summary>How much can I contribute to an HSA in <span data-config="year">2026</span>?</summary>
+                        <p>
+                            For <span data-config="year">2026</span> the IRS limit is <span data-config="individualLimit">$4,400</span>
+                            for self-only HDHP coverage and <span data-config="familyLimit">$8,750</span> for family coverage.
+                            If you're 55 or older the IRS also allows a $1,000 catch-up contribution on top of that,
+                            which this calculator does not include.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Are the projected balances in today's dollars?</summary>
+                        <p>
+                            Yes. The calculator converts your nominal return into a real return using the Fisher
+                            equation — real = (1 + nominal) ÷ (1 + inflation) − 1 — so a projected balance 25 years
+                            out is expressed in today's purchasing power rather than an inflated future number.
+                            Set inflation to 0% if you'd rather see nominal dollars.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Why does the HSA beat the taxable brokerage account?</summary>
+                        <p>
+                            Three reasons compound together. HSA contributions are made with pre-tax dollars, so more
+                            money goes in to begin with. Growth is never taxed, while a taxable account loses a slice
+                            of its gains to dividend and capital-gains tax every year. And qualified withdrawals come
+                            out tax-free. The comparison line models the taxable account with after-tax contributions
+                            and reduces its annual gains by 10% to reflect that ongoing tax drag.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>What does the payroll (pre-tax) contribution toggle do?</summary>
+                        <p>
+                            Contributions made through your employer's payroll deduction avoid Social Security and
+                            Medicare tax as well as income tax — 7.65% of FICA on top of your federal and state
+                            marginal rates. If you contribute directly to your HSA instead of through payroll, turn
+                            the toggle off and the calculator drops FICA from your combined rate.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Do I have to spend my HSA money each year?</summary>
+                        <p>
+                            No. Unlike an FSA, HSA balances roll over indefinitely and the account is yours even if
+                            you change jobs or health plans. That's what makes long-term investing possible — and why
+                            many people pay medical costs out of pocket, save the receipts, and reimburse themselves
+                            years later. The <a href="hsa-reimbursement-calculator.html">reimburse later calculator</a>
+                            prices out exactly what that patience is worth.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Is this calculator financial advice?</summary>
+                        <p>
+                            No. It's an illustration built from the assumptions you enter. Real returns vary, tax law
+                            changes, and your situation is specific to you. Nothing here is tax, legal, or investment
+                            advice — talk to a qualified professional before acting on a projection.
+                        </p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Related tools -->
+            <section class="tool-section">
+                <h2>Keep going</h2>
+                <div class="related-grid">
+                    <a class="related-card" href="hsa-reimbursement-calculator.html">
+                        <span class="eyebrow">Next tool</span>
+                        <h3>Reimburse Later Calculator</h3>
+                        <p>You paid a medical bill out of pocket. See what reimbursing yourself today actually costs versus letting it compound tax-free.</p>
+                    </a>
+                    <a class="related-card" href="index.html">
+                        <span class="eyebrow">The app</span>
+                        <h3>HSA Monster for iPhone</h3>
+                        <p>Scan receipts on-device, track your reimbursable balance, and keep IRS-ready records for decades.</p>
+                    </a>
+                    <a class="related-card" href="advisors.html">
+                        <span class="eyebrow">For professionals</span>
+                        <h3>Advisors &amp; CPAs</h3>
+                        <p>Hand your clients a tool that makes the HSA strategy you recommend actually stick.</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Main CTA — shared with the home page -->
+            <section id="download" class="cta-section">
+                <div class="cta-box">
+                    <h2 class="cta-title">Put an End to Lost Receipts</h2>
+                    <p class="cta-description">
+                        Start tracking your HSA expenses today. See how much you can withdraw tax-free for retirement.
+                    </p>
+                    <a href="https://apps.apple.com/app/id6757624949?pt=127982700&amp;ct=tools_growth_cta&amp;mt=8" class="btn btn-primary btn-hero" data-download-location="tools_growth_cta">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>
+                        Download on the App Store
+                    </a>
+                    <p class="cta-note">Free to try. No account or signup required.</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="images/appicon.png" alt="HSA Monster" class="logo-icon">
+                        <span class="logo-text">HSA Monster</span>
+                    </a>
+                    <p class="footer-tagline">
+                        Snap receipts in seconds. Tax-free reimbursements for retirement.
+                    </p>
+                    <p class="footer-tagline footer-made-in">
+                        Made with ❤️ in Atlanta, GA
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="https://apps.apple.com/app/id6757624949?pt=127982700&amp;ct=tools_growth_footer&amp;mt=8" data-download-location="tools_growth_footer">Download</a></li>
+                        <li><a href="release-notes.html">What's New?</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Free Tools</h4>
+                    <ul>
+                        <li><a href="hsa-growth-calculator.html">Growth Calculator</a></li>
+                        <li><a href="hsa-reimbursement-calculator.html">Reimburse Later Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="https://hsamonster.com/Privacy_Policy.html">Privacy Policy</a></li>
+                        <li><a href="https://hsamonster.com/Terms_of_Service.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#" id="contact-link">Contact Us</a></li>
+                        <li><a href="advisors.html">For Advisors</a></li>
+                        <li><a href="press-kit.html">Press Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Our Other Apps</h4>
+                    <ul>
+                        <li><a href="https://wealthtrunk.app/">WealthTrunk</a></li>
+                        <li><a href="https://apps.apple.com/us/app/silly-millys-photo-match/id6785623797?pt=127982700&amp;ct=hsam_footer&amp;mt=8">Silly Milly's Photo Match</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HSA Monster. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/site-nav.js" defer></script>
+    <script src="assets/calculator.js" defer></script>
+    <script>
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        themeToggle.addEventListener('click', () => {
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Email obfuscation (Contact Us in footer)
+        document.getElementById('contact-link').addEventListener('click', function (e) {
+            e.preventDefault();
+            const user = 'schultzapps';
+            const domain = 'gmail.com';
+            window.location.href = 'mail' + 'to:' + user + '@' + domain + '?subject=' + encodeURIComponent('HSA Monster Feedback');
+        });
+    </script>
+    <!-- App Store download click tracking (GA4) -->
+    <script>
+        document.addEventListener('click', function (e) {
+            var link = e.target.closest('a[href*="apps.apple.com/app/id6757624949"]');
+            if (!link || typeof gtag !== 'function') return;
+            gtag('event', 'download_app_click', {
+                button_location: link.getAttribute('data-download-location') || 'unknown',
+                destination: 'appstore',
+                app: 'hsamonster'
+            });
+        });
+    </script>
+</body>
+</html>

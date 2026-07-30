@@ -80,7 +80,7 @@
           "name": "How does billing work for firms?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We invoice you directly — no App Store account or per-client checkout required. Licensing is priced in annual blocks based on how many clients you'd like to offer it to, with discounts that grow as your block size grows. Tell us roughly how many clients and we'll send a quote."
+            "text": "We invoice you directly so there is no per-client checkout required. Licensing is priced in annual blocks based on how many clients you'd like to offer it to, with discounts that grow as your block size grows. Tell us roughly how many clients and we'll send a quote."
           }
         },
         {
@@ -96,7 +96,7 @@
           "name": "Do my clients need to create an account?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. HSA Monster has no accounts and no logins. Clients redeem a code, install the app, and their data lives privately in their own iCloud. Nothing for you — or us — to administer per client."
+            "text": "No. HSA Monster doesn't require a login or password. Clients redeem a code, install the app, and their data lives privately in their own iCloud. There's nothing for you or us to administer per client."
           }
         },
         {
@@ -112,7 +112,7 @@
           "name": "Can I try it myself before recommending it?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Verified financial advisors, CPAs, and tax preparers get a free year for their own personal use — separate from client licensing — so you can evaluate the app before offering it to clients. Just let us know in the form below."
+            "text": "Yes. Verified financial advisors, CPAs, and tax preparers get a free year for their own personal use so you can evaluate the app before offering it to clients. Just let us know in the form below."
           }
         },
         {
@@ -366,7 +366,16 @@
             <div class="nav-links">
                 <a href="index.html#features">Features</a>
                 <a href="index.html#how-it-works">How It Works</a>
-                <a href="index.html#pricing">Pricing</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                        Tools
+                        <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="hsa-growth-calculator.html">Growth Calculator<span class="item-desc">What your HSA could be worth</span></a>
+                        <a href="hsa-reimbursement-calculator.html">Reimburse Later Calculator<span class="item-desc">The cost of cashing out early</span></a>
+                    </div>
+                </div>
                 <a href="index.html#faq">FAQ</a>
                 <a href="advisors.html" class="active">For Advisors</a>
             </div>
@@ -403,8 +412,7 @@
                 <h2>The problem you already see</h2>
                 <p class="section-sub">
                     You coach clients to pay medical costs out of pocket and let their HSA compound.
-                    It only works if they keep the receipts — and that's exactly what falls apart
-                    between the times you talk to them.
+                    It only works if they keep the receipts. How many of your clients actually do that?
                 </p>
                 <div class="advisor-grid">
                     <div class="advisor-card">
@@ -621,10 +629,16 @@
                     <h4>Product</h4>
                     <ul>
                         <li><a href="index.html#features">Features</a></li>
-                        <li><a href="index.html#pricing">Pricing</a></li>
                         <li><a href="index.html#faq">FAQ</a></li>
                         <li><a href="https://apps.apple.com/app/id6757624949?pt=127982700&amp;ct=advisors_footer&amp;mt=8" data-download-location="footer">Download</a></li>
                         <li><a href="release-notes.html">What's New?</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Free Tools</h4>
+                    <ul>
+                        <li><a href="hsa-growth-calculator.html">Growth Calculator</a></li>
+                        <li><a href="hsa-reimbursement-calculator.html">Reimburse Later Calculator</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -657,6 +671,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="assets/site-nav.js" defer></script>
     <script>
         // Theme Toggle
         const themeToggle = document.querySelector('.theme-toggle');

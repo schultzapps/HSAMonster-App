@@ -1,0 +1,1044 @@
+/* ============================================
+   HSA Monster — Tools / Calculator Styles
+   Shared by the Tools hub and each calculator page.
+   Builds on the site theme tokens in /styles.css.
+   Visual language mirrors the iOS app's calculator:
+   big headline value, edge-to-edge chart, stat pair,
+   frosted inputs card, footnote disclaimer.
+   ============================================ */
+
+/* ============================================
+   Page shell
+   ============================================ */
+.tool-page {
+    /* Clears the fixed navbar */
+    padding-top: calc(var(--space-4xl) + 1rem);
+    padding-bottom: var(--space-2xl);
+}
+
+.tool-container {
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+.tool-container--narrow {
+    max-width: 780px;
+}
+
+/* Breadcrumbs — also rendered as BreadcrumbList JSON-LD on each page */
+.breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-lg);
+}
+
+.breadcrumbs a {
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+}
+
+.breadcrumbs a:hover {
+    color: var(--accent-primary);
+}
+
+.breadcrumbs .sep {
+    opacity: 0.5;
+}
+
+.breadcrumbs [aria-current="page"] {
+    color: var(--text-muted);
+}
+
+/* ============================================
+   Tool hero
+   ============================================ */
+.tool-hero {
+    max-width: 760px;
+    margin-bottom: var(--space-xl);
+}
+
+.tool-hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    line-height: 1.1;
+    margin: var(--space-sm) 0 var(--space-md);
+}
+
+.tool-hero .lead {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.tool-hero .lead strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Trust/among-the-fold chips */
+.tool-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+}
+
+.tool-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    padding: 0.35rem 0.8rem;
+}
+
+.tool-chip svg {
+    color: var(--accent-secondary);
+    flex: 0 0 auto;
+}
+
+/* ============================================
+   Calculator layout
+   Results (chart + stats) beside the inputs on
+   desktop; stacked results-first on mobile so the
+   payoff is visible before the form.
+   ============================================ */
+.calc {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: start;
+    margin-bottom: var(--space-2xl);
+}
+
+.calc-results {
+    position: sticky;
+    top: calc(var(--space-4xl) + 0.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    min-width: 0;
+}
+
+.calc-inputs-col {
+    min-width: 0;
+}
+
+/* ============================================
+   Result card (headline + chart)
+   ============================================ */
+.result-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-lg) 0 var(--space-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.result-head {
+    padding: 0 var(--space-lg);
+}
+
+.result-value {
+    font-size: clamp(2.25rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.result-caption {
+    font-size: 1.0625rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+/* ============================================
+   Chart — inline SVG, edge-to-edge like the app
+   ============================================ */
+.chart-wrap {
+    position: relative;
+    margin-top: var(--space-md);
+    /* Scrubbing shouldn't turn into a page pan on touch */
+    touch-action: pan-y;
+    cursor: crosshair;
+}
+
+.chart-svg {
+    display: block;
+    width: 100%;
+    height: 190px;
+    overflow: visible;
+}
+
+.chart-line-hsa {
+    fill: none;
+    stroke: var(--accent-primary);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.chart-line-taxable {
+    fill: none;
+    stroke: var(--text-secondary);
+    stroke-opacity: 0.6;
+    stroke-width: 1.5;
+    stroke-dasharray: 4 4;
+    stroke-linecap: round;
+}
+
+.chart-area {
+    stroke: none;
+}
+
+.chart-rule {
+    stroke: var(--accent-primary);
+    stroke-opacity: 0.7;
+    stroke-width: 1;
+}
+
+.chart-dot {
+    fill: var(--accent-primary);
+    stroke: var(--bg-card);
+    stroke-width: 2;
+}
+
+.chart-hidden {
+    display: none;
+}
+
+/* Axis + legend row beneath the plot */
+.chart-axis {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    padding: var(--space-sm) var(--space-lg) 0;
+    font-variant-numeric: tabular-nums;
+}
+
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-lg);
+    font-size: 0.8125rem;
+    color: var(--text-secondary);
+    padding: var(--space-sm) var(--space-lg) 0;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.legend-swatch {
+    width: 16px;
+    height: 3px;
+    border-radius: var(--radius-full);
+    background: var(--accent-primary);
+    flex: 0 0 auto;
+}
+
+.legend-swatch.dashed {
+    background: repeating-linear-gradient(
+        to right,
+        var(--text-secondary) 0 4px,
+        transparent 4px 8px
+    );
+    opacity: 0.7;
+}
+
+/* ============================================
+   Stat pair — mirrors the app's summary grid
+   ============================================ */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--space-lg);
+}
+
+.stat-title {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-xs);
+}
+
+.stat-value {
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+}
+
+.stat-value.accent {
+    color: var(--accent-secondary);
+}
+
+/* ============================================
+   Inputs card — the app's "Your inputs" panel
+   ============================================ */
+.inputs-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.inputs-card h2 {
+    font-size: 1.05rem;
+    margin-bottom: var(--space-xs);
+}
+
+.inputs-card .inputs-sub {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-lg);
+}
+
+.field {
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.field:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+.field-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    min-height: 2rem;
+}
+
+.field-label {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.field-value {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.field-hint {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    margin-top: var(--space-xs);
+    line-height: 1.5;
+}
+
+/* "2026 Max" badge beside the contribution label */
+.max-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    background: var(--accent-glow);
+    border-radius: var(--radius-full);
+    padding: 0.1rem 0.5rem;
+    white-space: nowrap;
+    transition: opacity var(--transition-base);
+}
+
+.max-badge[hidden] {
+    display: none;
+}
+
+/* Currency input */
+.currency-input {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color-strong);
+    border-radius: var(--radius-md);
+    padding: 0.4rem 0.6rem;
+    transition: border-color var(--transition-fast);
+    max-width: 100%;
+}
+
+.currency-input:focus-within {
+    border-color: var(--accent-primary);
+}
+
+.currency-input .prefix {
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.9375rem;
+}
+
+.currency-input input {
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    background: none;
+    border: none;
+    outline: none;
+    width: 7ch;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    padding: 0;
+    /* Number-ish text field, so drop the spinner affordances */
+    -moz-appearance: textfield;
+}
+
+.currency-input input::-webkit-outer-spin-button,
+.currency-input input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Select (federal bracket, state tax) */
+.select-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.select-wrap select {
+    appearance: none;
+    -webkit-appearance: none;
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    padding: 0.3rem 1.5rem 0.3rem 0.5rem;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.select-wrap select:hover {
+    background: var(--bg-secondary);
+}
+
+.select-wrap select:focus-visible {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.select-wrap::after {
+    content: '';
+    position: absolute;
+    right: 0.5rem;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--accent-primary);
+    border-bottom: 2px solid var(--accent-primary);
+    transform: translateY(-2px) rotate(45deg);
+    pointer-events: none;
+}
+
+.select-wrap select option {
+    /* Native menus don't inherit page colors on every platform */
+    color: var(--text-primary);
+    background: var(--bg-card);
+}
+
+/* Segmented control — the app's coverage picker */
+.segmented {
+    display: inline-flex;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 3px;
+    gap: 2px;
+}
+
+.segmented button {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    border-radius: calc(var(--radius-md) - 2px);
+    padding: 0.35rem 0.85rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.segmented button[aria-pressed="true"] {
+    background: var(--accent-primary);
+    color: #fff;
+    box-shadow: var(--shadow-sm);
+}
+
+.segmented button:not([aria-pressed="true"]):hover {
+    color: var(--text-primary);
+}
+
+/* Range sliders */
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    margin-top: var(--space-md);
+    border-radius: var(--radius-full);
+    background: var(--border-color-strong);
+    outline: none;
+    cursor: grab;
+}
+
+.slider:active {
+    cursor: grabbing;
+}
+
+/* The filled portion is painted via a background gradient whose stop is set
+   from JS (--fill), since range inputs have no cross-browser progress part. */
+.slider {
+    background-image: linear-gradient(
+        to right,
+        var(--accent-primary) 0%,
+        var(--accent-primary) var(--fill, 50%),
+        transparent var(--fill, 50%)
+    );
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-full);
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-md);
+    cursor: grab;
+    transition: transform var(--transition-fast);
+}
+
+.slider::-webkit-slider-thumb:active {
+    transform: scale(1.12);
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: var(--radius-full);
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-md);
+    cursor: grab;
+}
+
+.slider:focus-visible {
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* Toggle switch — FICA / payroll contribution */
+.toggle {
+    position: relative;
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: 46px;
+    height: 28px;
+}
+
+.toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.toggle .track {
+    position: absolute;
+    inset: 0;
+    background: var(--border-color-strong);
+    border-radius: var(--radius-full);
+    transition: background var(--transition-base);
+}
+
+.toggle .track::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    border-radius: var(--radius-full);
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base);
+}
+
+.toggle input:checked + .track {
+    background: var(--accent-primary);
+}
+
+.toggle input:checked + .track::after {
+    transform: translateX(18px);
+}
+
+.toggle input:focus-visible + .track {
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* Assumptions footnote — the app's CalculatorDisclaimer */
+.calc-disclaimer {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-top: var(--space-lg);
+    text-align: center;
+}
+
+/* ============================================
+   Long-form content below the calculator
+   ============================================ */
+.tool-section {
+    padding: var(--space-2xl) 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.tool-section > h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: var(--space-md);
+}
+
+.tool-section > h3 {
+    font-size: 1.15rem;
+    margin: var(--space-xl) 0 var(--space-sm);
+}
+
+.tool-section p {
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: var(--space-md);
+    max-width: 70ch;
+}
+
+.tool-section p a,
+.tool-prose a {
+    color: var(--accent-primary);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.tool-list {
+    display: grid;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+    max-width: 70ch;
+}
+
+.tool-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.tool-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-full);
+    background: var(--accent-secondary);
+}
+
+.tool-list li strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Data table — 2026 limits, tax-treatment comparisons */
+.table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: var(--space-md);
+}
+
+.tool-table {
+    width: 100%;
+    min-width: 460px;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.tool-table caption {
+    caption-side: bottom;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    text-align: left;
+    padding-top: var(--space-sm);
+}
+
+.tool-table th,
+.tool-table td {
+    padding: 0.7rem var(--space-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tool-table thead th {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-weight: 600;
+    background: var(--bg-tertiary);
+}
+
+.tool-table tbody tr:last-child th,
+.tool-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tool-table tbody th {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.tool-table td {
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Numbered "how the math works" steps */
+.step-list {
+    counter-reset: step;
+    display: grid;
+    gap: var(--space-md);
+    max-width: 70ch;
+}
+
+.step-item {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+}
+
+.step-item .num {
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-full);
+    background: var(--gradient-primary);
+    color: #fff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    counter-increment: step;
+    font-size: 0.9rem;
+}
+
+.step-item .num::before {
+    content: counter(step);
+}
+
+.step-item h3 {
+    font-size: 1.05rem;
+    margin: 0 0 2px;
+}
+
+.step-item p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+/* FAQ — reuses the shared .faq-item look without the scroll observer */
+.tool-faq {
+    display: grid;
+    gap: var(--space-md);
+    max-width: 70ch;
+}
+
+.tool-faq details {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) var(--space-lg);
+    transition: border-color var(--transition-fast);
+}
+
+.tool-faq details[open] {
+    border-color: var(--border-color-strong);
+}
+
+/* Block, not flex: the question is running text that may contain inline spans
+   (e.g. the config-driven tax year), and a flex container would promote each
+   text run to its own item and space them apart by the container gap. The
+   chevron is positioned instead of being a flex sibling. */
+.tool-faq summary {
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    display: block;
+    position: relative;
+    padding-right: 1.75rem;
+}
+
+.tool-faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.tool-faq summary::after {
+    content: '';
+    position: absolute;
+    right: 2px;
+    top: 0.45em;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--accent-primary);
+    border-bottom: 2px solid var(--accent-primary);
+    transform: rotate(45deg);
+    transition: transform var(--transition-fast), top var(--transition-fast);
+}
+
+.tool-faq details[open] summary::after {
+    top: 0.6em;
+    transform: rotate(-135deg);
+}
+
+.tool-faq details p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: var(--space-md) 0 0;
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   Tools hub cards
+   ============================================ */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: var(--space-lg);
+}
+
+.tool-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.tool-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.tool-card .card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    background: var(--accent-glow);
+    color: var(--accent-primary);
+    margin-bottom: var(--space-md);
+}
+
+.tool-card h2,
+.tool-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-sm);
+}
+
+.tool-card p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    margin-bottom: var(--space-lg);
+    flex: 1 1 auto;
+}
+
+.tool-card .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    align-self: flex-start;
+}
+
+.tool-card:hover .card-link .arrow {
+    transform: translateX(3px);
+}
+
+.card-link .arrow {
+    transition: transform var(--transition-fast);
+}
+
+/* "Next tool" cross-links at the foot of each calculator */
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-md);
+}
+
+.related-card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.related-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+.related-card .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-secondary);
+}
+
+.related-card h3 {
+    font-size: 1.05rem;
+    margin: var(--space-xs) 0;
+}
+
+.related-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* The page-closing App Store CTA reuses .cta-section / .cta-box from
+   /styles.css so it stays identical to the home page's. Nothing tool-specific
+   is needed here beyond dropping the shared section's horizontal padding,
+   since .tool-container already provides it. */
+.tool-page .cta-section {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Inline mid-page nudge, placed right under the results */
+.inline-cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--space-lg);
+}
+
+.inline-cta p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 46ch;
+}
+
+.inline-cta strong {
+    color: var(--text-primary);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 940px) {
+    .calc {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-lg);
+    }
+
+    .calc-results {
+        position: static;
+    }
+}
+
+@media (max-width: 560px) {
+    .tool-page {
+        padding-top: calc(var(--space-3xl) + 1.5rem);
+    }
+
+    .stat-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .result-card {
+        border-radius: var(--radius-xl);
+    }
+
+    .field-row {
+        flex-wrap: wrap;
+    }
+
+    .inline-cta {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .inline-cta .btn {
+        width: 100%;
+    }
+}
+
+/* Respect reduced-motion: the chart reveal and hovers stop animating */
+@media (prefers-reduced-motion: reduce) {
+    .tool-card:hover,
+    .related-card:hover {
+        transform: none;
+    }
+}

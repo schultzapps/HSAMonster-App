@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSA Reimburse Later Calculator: What Cashing Out Costs | HSA Monster</title>
+    <meta name="description" content="Free HSA reimbursement calculator. You paid a medical bill out of pocket — see what reimbursing yourself today costs versus leaving it invested and reimbursing tax-free years from now.">
+    <meta name="keywords" content="HSA reimbursement calculator, HSA reimburse later, deferred HSA reimbursement, reimburse yourself from HSA years later, HSA receipt strategy, unreimbursed qualified medical expenses, HSA shoebox strategy, pay out of pocket HSA, HSA withdrawal calculator">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hsamonster.com/hsa-reimbursement-calculator.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="HSA Reimburse Later Calculator — What Cashing Out Costs">
+    <meta property="og:description" content="There's no IRS deadline to reimburse yourself. See what that patience is actually worth on the medical bills you've already paid out of pocket.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hsamonster.com/hsa-reimbursement-calculator.html">
+    <meta property="og:image" content="https://hsamonster.com/images/social-preview.png">
+    <meta property="og:site_name" content="HSA Monster">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HSA Reimburse Later Calculator — What Cashing Out Costs">
+    <meta name="twitter:description" content="There's no IRS deadline to reimburse yourself. See what that patience is actually worth on the medical bills you've already paid out of pocket.">
+    <meta name="twitter:image" content="https://hsamonster.com/images/social-preview.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/appicon.png">
+    <link rel="apple-touch-icon" href="images/appicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/calculator.css">
+
+    <!-- Structured Data: the calculator itself -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "HSA Reimburse Later Calculator",
+      "url": "https://hsamonster.com/hsa-reimbursement-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "browserRequirements": "Requires JavaScript",
+      "operatingSystem": "Any",
+      "description": "Free calculator that shows what unreimbursed qualified medical expenses are worth if you leave them invested in your HSA and reimburse yourself tax-free years later, instead of cashing out today.",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "HSA Monster",
+        "url": "https://hsamonster.com/"
+      }
+    }
+    </script>
+
+    <!-- Structured Data: breadcrumbs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hsamonster.com/" },
+        { "@type": "ListItem", "position": 2, "name": "HSA Reimburse Later Calculator", "item": "https://hsamonster.com/hsa-reimbursement-calculator.html" }
+      ]
+    }
+    </script>
+
+    <!-- Structured Data: FAQ (mirrors the visible FAQ below) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is there a deadline to reimburse yourself from an HSA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The IRS sets no time limit on reimbursing a qualified medical expense from your HSA, as long as the expense was incurred after your HSA was established, it was not paid or reimbursed from another source, and you did not take it as an itemized deduction. That's what makes deferring for decades possible — but it also means you have to keep the documentation for just as long."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What counts as an unreimbursed qualified medical expense?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Any expense the IRS treats as qualified — described in IRS Publication 502 — that you paid out of pocket and have not yet reimbursed from your HSA. Common examples include deductibles, copays, prescriptions, dental and vision care, and many medical devices. Insurance premiums generally do not qualify, with narrow exceptions such as COBRA and Medicare premiums."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What records do I need to keep to reimburse myself later?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Keep an itemized receipt or bill showing the date of service, the provider, the patient, a description of the service, and the amount you actually paid. Add the explanation of benefits when insurance was involved, and proof that you paid it yourself. The IRS does not review these when you withdraw — the burden is on you to produce them if you're ever audited."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the expense have to be after I opened my HSA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Only expenses incurred on or after your HSA establishment date are eligible for tax-free reimbursement. Anything from before that date can never be reimbursed from the account, which is a common reason people open an HSA as early as they're eligible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if I lose the receipt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The withdrawal still leaves the account, but you may be unable to substantiate it. A distribution that isn't matched to a qualified expense is taxed as income, plus a 20% penalty if you're under 65. Losing paperwork is the single most common way this strategy fails, which is why the receipts matter as much as the returns."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NM2GJWXE40"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-NM2GJWXE40');
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/appicon.png" alt="HSA Monster" class="logo-icon">
+                <span class="logo-text">HSA Monster</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#how-it-works">How It Works</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle active" aria-expanded="false" aria-haspopup="true">
+                        Tools
+                        <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="hsa-growth-calculator.html">Growth Calculator<span class="item-desc">What your HSA could be worth</span></a>
+                        <a href="hsa-reimbursement-calculator.html">Reimburse Later Calculator<span class="item-desc">The cost of cashing out early</span></a>
+                    </div>
+                </div>
+                <a href="index.html#faq">FAQ</a>
+                <a href="advisors.html">For Advisors</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <a href="https://apps.apple.com/app/id6757624949?pt=127982700&amp;ct=tools_defer_nav&amp;mt=8" class="btn btn-primary" data-download-location="tools_defer_nav">Download</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="tool-page">
+        <div class="tool-container">
+
+            <!-- Breadcrumbs -->
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <span class="sep" aria-hidden="true">/</span>
+                <span aria-current="page">Reimburse Later Calculator</span>
+            </nav>
+
+            <!-- Hero -->
+            <header class="tool-hero">
+                <span class="section-label">Free HSA Tool</span>
+                <h1>Reimburse Later Calculator</h1>
+                <p class="lead">
+                    You paid a medical bill out of pocket. You could pull that money out of your HSA today —
+                    or leave it invested and reimburse yourself tax-free years from now, because
+                    <strong>the IRS sets no deadline for reimbursing a qualified expense</strong>. This
+                    calculator prices out exactly what that patience is worth, and what cashing out early costs you.
+                </p>
+            </header>
+
+            <!-- Calculator -->
+            <section class="calc" data-calculator="defer" aria-label="HSA reimburse later calculator">
+
+                <!-- Results -->
+                <div class="calc-results">
+                    <div class="result-card">
+                        <div class="result-head">
+                            <div class="result-value" id="result-value">$0</div>
+                            <div class="result-caption" id="result-caption">Tax-Free Balance</div>
+                        </div>
+                        <div class="chart-wrap" role="group" aria-label="Value of unreimbursed expenses left invested over time. Drag or use the arrow keys to read a single year.">
+                            <svg class="chart-svg" id="calc-chart" preserveAspectRatio="none" aria-hidden="true"></svg>
+                        </div>
+                        <div class="chart-axis">
+                            <span>Today</span>
+                            <span id="axis-end">Year 25</span>
+                        </div>
+                        <div class="chart-legend">
+                            <span class="legend-item"><span class="legend-swatch"></span>Deferred value</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-grid">
+                        <div class="stat-card">
+                            <div class="stat-title">Reimbursable Now</div>
+                            <div class="stat-value" id="stat-a-value">$0</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-title">Growth Forfeited</div>
+                            <div class="stat-value accent" id="stat-b-value">$0</div>
+                        </div>
+                    </div>
+
+                    <p class="calc-disclaimer" id="calc-disclaimer">
+                        For illustrative purposes only. Not tax, legal, or investment advice.
+                    </p>
+                </div>
+
+                <!-- Inputs -->
+                <div class="calc-inputs-col">
+                    <div class="inputs-card">
+                        <h2>Your inputs</h2>
+                        <p class="inputs-sub">Everything stays in your browser.</p>
+
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="reimbursable">Unreimbursed expenses</label>
+                                <span class="currency-input">
+                                    <span class="prefix">$</span>
+                                    <input type="text" id="reimbursable" inputmode="numeric" autocomplete="off" value="5,000">
+                                </span>
+                            </div>
+                            <p class="field-hint">
+                                Qualified medical costs you've paid out of pocket and haven't reimbursed yet.
+                            </p>
+                        </div>
+
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="years">Years you wait</label>
+                                <span class="field-value" id="years-value">25 years</span>
+                            </div>
+                            <input class="slider" type="range" id="years" min="1" max="40" step="1" value="25">
+                        </div>
+
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="return">Annual return</label>
+                                <span class="field-value" id="return-value">7.0%</span>
+                            </div>
+                            <input class="slider" type="range" id="return" min="1" max="12" step="0.5" value="7">
+                        </div>
+
+                        <div class="field">
+                            <div class="field-row">
+                                <label class="field-label" for="inflation">Inflation rate</label>
+                                <span class="field-value" id="inflation-value">2.5%</span>
+                            </div>
+                            <input class="slider" type="range" id="inflation" min="0" max="10" step="0.5" value="2.5">
+                            <p class="field-hint">Results are shown in today's dollars.</p>
+                        </div>
+                    </div>
+
+                    <p class="calc-disclaimer">
+                        Planning contributions too? The
+                        <a href="hsa-growth-calculator.html">HSA growth calculator</a>
+                        projects your whole balance and the income tax you save.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Inline CTA -->
+            <div class="inline-cta">
+                <p>
+                    <strong>This whole strategy runs on paperwork.</strong>
+                    HSA Monster keeps every receipt organized and shows your reimbursable balance
+                    at a glance so the number above is one you can actually claim. This calculator
+                    is built into the app too, already filled in with that live balance.
+                </p>
+                <a href="https://apps.apple.com/app/id6757624949?pt=127982700&amp;ct=tools_defer_inline&amp;mt=8" class="btn btn-primary" data-download-location="tools_defer_inline">Get the free app</a>
+            </div>
+
+            <!-- Rules -->
+            <section class="tool-section">
+                <h2>The four rules that make this work</h2>
+                <p>
+                    Deferred reimbursement isn't a loophole — it follows directly from how HSA distributions are
+                    treated. But all four conditions have to hold:
+                </p>
+                <ul class="tool-list">
+                    <li><strong>The expense came after your HSA existed.</strong> Only costs incurred on or after your HSA establishment date can ever be reimbursed from it.</li>
+                    <li><strong>It's a qualified medical expense.</strong> As described in IRS Publication 502 — deductibles, copays, prescriptions, dental, vision, and more.</li>
+                    <li><strong>You weren't reimbursed another way.</strong> Not paid by insurance, not covered by an FSA or HRA, and not claimed as an itemized medical deduction on your return.</li>
+                    <li><strong>You can prove it.</strong> Nobody checks at withdrawal time. If you're audited, the documentation is entirely your responsibility.</li>
+                </ul>
+                <p>
+                    There's no dollar cap and no expiration date. The practical limit is how well you keep records
+                    over a period measured in decades.
+                </p>
+            </section>
+
+            <!-- Documentation -->
+            <section class="tool-section">
+                <h2>What to keep for every expense</h2>
+                <p>
+                    An HSA-qualified receipt is more specific than a credit card statement. Here's what a
+                    defensible record looks like:
+                </p>
+                <div class="table-scroll">
+                    <table class="tool-table">
+                        <caption>General guidance, not tax advice. See IRS Publications 502 and 969 for the authoritative rules.</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Keep this</th>
+                                <th scope="col">Why it matters</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Itemized receipt or bill</th>
+                                <td>Shows the date of service, provider, patient, and a description of what was treated</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Amount you actually paid</th>
+                                <td>Only your out-of-pocket portion is reimbursable, not the billed amount</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Explanation of benefits</th>
+                                <td>Proves what insurance covered — and therefore what it didn't</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Proof of payment</th>
+                                <td>Shows the cost came out of your pocket rather than from the HSA itself</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Your HSA establishment date</th>
+                                <td>Establishes the cutoff before which no expense is eligible</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>
+                    Thermal-paper receipts fade within a few years, and a strategy that depends on paper you
+                    filed in 2026 being legible in 2050 isn't much of a strategy. Digitize as you go.
+                </p>
+            </section>
+
+            <!-- FAQ -->
+            <section class="tool-section">
+                <h2>HSA reimbursement FAQ</h2>
+                <div class="tool-faq">
+                    <details open>
+                        <summary>Is there a deadline to reimburse yourself from an HSA?</summary>
+                        <p>
+                            No. The IRS sets no time limit on reimbursing a qualified medical expense from your HSA,
+                            as long as the expense was incurred after your HSA was established, it was not paid or
+                            reimbursed from another source, and you did not take it as an itemized deduction. That's
+                            what makes deferring for decades possible — but it also means you have to keep the
+                            documentation for just as long.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>What counts as an unreimbursed qualified medical expense?</summary>
+                        <p>
+                            Any expense the IRS treats as qualified — described in IRS Publication 502 — that you paid
+                            out of pocket and have not yet reimbursed from your HSA. Common examples include
+                            deductibles, copays, prescriptions, dental and vision care, and many medical devices.
+                            Insurance premiums generally do not qualify, with narrow exceptions such as COBRA and
+                            Medicare premiums.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>What records do I need to keep to reimburse myself later?</summary>
+                        <p>
+                            Keep an itemized receipt or bill showing the date of service, the provider, the patient, a
+                            description of the service, and the amount you actually paid. Add the explanation of
+                            benefits when insurance was involved, and proof that you paid it yourself. The IRS does
+                            not review these when you withdraw — the burden is on you to produce them if you're ever
+                            audited.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Does the expense have to be after I opened my HSA?</summary>
+                        <p>
+                            Yes. Only expenses incurred on or after your HSA establishment date are eligible for
+                            tax-free reimbursement. Anything from before that date can never be reimbursed from the
+                            account, which is a common reason people open an HSA as early as they're eligible.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>What happens if I lose the receipt?</summary>
+                        <p>
+                            The withdrawal still leaves the account, but you may be unable to substantiate it. A
+                            distribution that isn't matched to a qualified expense is taxed as income, plus a 20%
+                            penalty if you're under 65. Losing paperwork is the single most common way this strategy
+                            fails, which is why the receipts matter as much as the returns.
+                        </p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Related tools -->
+            <section class="tool-section">
+                <h2>Keep going</h2>
+                <div class="related-grid">
+                    <a class="related-card" href="hsa-growth-calculator.html">
+                        <span class="eyebrow">Next tool</span>
+                        <h3>Growth Calculator</h3>
+                        <p>Project your full HSA balance, the income tax you save each year, and the gap versus a taxable brokerage account.</p>
+                    </a>
+                    <a class="related-card" href="index.html">
+                        <span class="eyebrow">The app</span>
+                        <h3>HSA Monster for iPhone</h3>
+                        <p>Scan receipts on-device, track your reimbursable balance, and keep IRS-ready records for decades.</p>
+                    </a>
+                    <a class="related-card" href="advisors.html">
+                        <span class="eyebrow">For professionals</span>
+                        <h3>Advisors &amp; CPAs</h3>
+                        <p>Hand your clients a tool that makes the HSA strategy you recommend actually stick.</p>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Main CTA — shared with the home page -->
+            <section id="download" class="cta-section">
+                <div class="cta-box">
+                    <h2 class="cta-title">Put an End to Lost Receipts</h2>
+                    <p class="cta-description">
+                        Start tracking your HSA expenses today. See how much you can withdraw tax-free for retirement.
+                    </p>
+                    <a href="https://apps.apple.com/app/id6757624949?pt=127982700&amp;ct=tools_defer_cta&amp;mt=8" class="btn btn-primary btn-hero" data-download-location="tools_defer_cta">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>
+                        Download on the App Store
+                    </a>
+                    <p class="cta-note">Free to try. No account or signup required.</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="images/appicon.png" alt="HSA Monster" class="logo-icon">
+                        <span class="logo-text">HSA Monster</span>
+                    </a>
+                    <p class="footer-tagline">
+                        Snap receipts in seconds. Tax-free reimbursements for retirement.
+                    </p>
+                    <p class="footer-tagline footer-made-in">
+                        Made with ❤️ in Atlanta, GA
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                        <li><a href="https://apps.apple.com/app/id6757624949?pt=127982700&amp;ct=tools_defer_footer&amp;mt=8" data-download-location="tools_defer_footer">Download</a></li>
+                        <li><a href="release-notes.html">What's New?</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Free Tools</h4>
+                    <ul>
+                        <li><a href="hsa-growth-calculator.html">Growth Calculator</a></li>
+                        <li><a href="hsa-reimbursement-calculator.html">Reimburse Later Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="https://hsamonster.com/Privacy_Policy.html">Privacy Policy</a></li>
+                        <li><a href="https://hsamonster.com/Terms_of_Service.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#" id="contact-link">Contact Us</a></li>
+                        <li><a href="advisors.html">For Advisors</a></li>
+                        <li><a href="press-kit.html">Press Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Our Other Apps</h4>
+                    <ul>
+                        <li><a href="https://wealthtrunk.app/">WealthTrunk</a></li>
+                        <li><a href="https://apps.apple.com/us/app/silly-millys-photo-match/id6785623797?pt=127982700&amp;ct=hsam_footer&amp;mt=8">Silly Milly's Photo Match</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 HSA Monster. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/site-nav.js" defer></script>
+    <script src="assets/calculator.js" defer></script>
+    <script>
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        themeToggle.addEventListener('click', () => {
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Email obfuscation (Contact Us in footer)
+        document.getElementById('contact-link').addEventListener('click', function (e) {
+            e.preventDefault();
+            const user = 'schultzapps';
+            const domain = 'gmail.com';
+            window.location.href = 'mail' + 'to:' + user + '@' + domain + '?subject=' + encodeURIComponent('HSA Monster Feedback');
+        });
+    </script>
+    <!-- App Store download click tracking (GA4) -->
+    <script>
+        document.addEventListener('click', function (e) {
+            var link = e.target.closest('a[href*="apps.apple.com/app/id6757624949"]');
+            if (!link || typeof gtag !== 'function') return;
+            gtag('event', 'download_app_click', {
+                button_location: link.getAttribute('data-download-location') || 'unknown',
+                destination: 'appstore',
+                app: 'hsamonster'
+            });
+        });
+    </script>
+</body>
+</html>

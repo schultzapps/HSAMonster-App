@@ -286,6 +286,105 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     color: var(--accent-primary);
 }
 
+/* --- Nav dropdown (Tools) --- */
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.nav-dropdown-toggle:hover,
+.nav-dropdown.open .nav-dropdown-toggle,
+.nav-dropdown-toggle.active {
+    color: var(--accent-primary);
+}
+
+.nav-dropdown-toggle .chevron {
+    transition: transform var(--transition-fast);
+}
+
+.nav-dropdown.open .nav-dropdown-toggle .chevron {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    min-width: 260px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color-strong);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+    z-index: var(--z-dropdown);
+}
+
+/* A transparent bridge across the gap, so the pointer can travel from the
+   toggle to the menu without a mouseleave closing it mid-trip. */
+.nav-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -0.75rem;
+    height: 0.75rem;
+}
+
+.nav-dropdown.open .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-menu a {
+    display: block;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.35;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.nav-dropdown-menu a:hover {
+    background: var(--bg-card-hover);
+    color: var(--accent-primary);
+}
+
+.nav-dropdown-menu a .item-desc {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-top: 1px;
+}
+
+.nav-dropdown-menu a:hover .item-desc {
+    color: var(--text-secondary);
+}
+
 .nav-actions {
     display: flex;
     align-items: center;
@@ -912,6 +1011,20 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     color: var(--text-muted);
 }
 
+/* Struck-through list price, shown beside a promotional amount */
+.price-was {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* What happens after the promotional period ends */
+.price-note {
+    margin-top: var(--space-sm);
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+}
+
 .pricing-features {
     margin-bottom: 0;
     text-align: left;
@@ -1038,6 +1151,14 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     margin-right: auto;
 }
 
+/* Reassurance line under the CTA's download button */
+.cta-note {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-top: var(--space-md);
+    margin-bottom: 0;
+}
+
 .appstore-badge {
     display: inline-block;
 }
@@ -1133,8 +1254,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-    gap: var(--space-2xl);
+    /* Brand + five link columns (Product, Free Tools, Legal, Support, Other Apps) */
+    grid-template-columns: 1.6fr repeat(5, minmax(0, 1fr));
+    gap: var(--space-xl);
     margin-bottom: var(--space-2xl);
 }
 
@@ -1341,7 +1463,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     }
 
     .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
@@ -1361,6 +1483,35 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
     .nav-links.active {
         display: flex;
+    }
+
+    /* In the mobile panel the dropdown becomes an inline accordion rather than
+       a floating menu, so it can't overflow the sheet. */
+    .nav-links {
+        align-items: flex-start;
+    }
+
+    .nav-dropdown {
+        width: 100%;
+    }
+
+    .nav-dropdown-menu {
+        position: static;
+        transform: none;
+        min-width: 0;
+        box-shadow: none;
+        background: var(--bg-tertiary);
+        margin-top: var(--space-sm);
+        display: none;
+    }
+
+    .nav-dropdown-menu::before {
+        display: none;
+    }
+
+    .nav-dropdown.open .nav-dropdown-menu {
+        display: flex;
+        transform: none;
     }
 
     .mobile-menu-btn {
