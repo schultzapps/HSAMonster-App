@@ -1912,7 +1912,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     .navbar:has(.nav-links.active) .nav-container {
         width: calc(100% - var(--space-lg));
         column-gap: var(--space-sm);
-        padding: var(--space-sm);
+        /* Keeps the wider left inset the desktop bar uses: the logo is a bare
+           icon while the right side ends in a pill-shaped button whose own
+           curve reads as spacing, so equal padding makes the left look tight. */
+        padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-md);
     }
 
     .nav-actions {
