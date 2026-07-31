@@ -1464,8 +1464,11 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         grid-template-columns: repeat(2, 1fr);
     }
 
+    /* No two-column step layout: three cards would leave the third stranded on
+       its own row, so the grid stays 3-wide until it collapses to a stack. The
+       tighter gap buys back width for the columns at these sizes. */
     .steps-grid {
-        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
     }
 
     .pricing-grid {
@@ -1553,6 +1556,14 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
     .steps-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Stacked, the description would otherwise run edge to edge as one long
+       line; hold it to a comfortable measure so it wraps to two-plus lines. */
+    .step-description {
+        max-width: 44ch;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .number-value {
