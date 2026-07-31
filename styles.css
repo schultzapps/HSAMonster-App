@@ -227,15 +227,35 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     right: 0;
     z-index: var(--z-sticky);
     padding: var(--space-md) 0;
-    background: transparent;
-    transition: all var(--transition-base);
+    /* Both the background and the border are declared here in their
+       "invisible" form so the scrolled state only animates their colour.
+       Transitioning from `background: transparent` (which computes to
+       transparent *black*) or from `border: none` (whose colour falls back
+       to currentColor) makes the bar flash dark at the transition point. */
+    background: rgba(10, 10, 18, 0);
+    border-bottom: 1px solid transparent;
+    /* The blur is declared here at zero radius rather than being added by
+       .scrolled: iOS Safari often fails to establish the backdrop root when
+       backdrop-filter appears via a class toggle, leaving the bar unblurred.
+       Present from the start it is always composited, and the radius
+       animates up with the background so the unscrolled bar stays clear. */
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    transition: background-color var(--transition-base),
+                border-color var(--transition-base),
+                backdrop-filter var(--transition-base),
+                -webkit-backdrop-filter var(--transition-base);
 }
 
 .navbar.scrolled {
     background: rgba(10, 10, 18, 0.9);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom-color: var(--border-color);
+}
+
+[data-theme="light"] .navbar {
+    background: rgba(239, 246, 254, 0);
 }
 
 [data-theme="light"] .navbar.scrolled {
