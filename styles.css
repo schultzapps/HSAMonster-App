@@ -1491,7 +1491,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     }
 }
 
-@media (max-width: 768px) {
+/* The navbar collapses earlier than the rest of the layout: with six items
+   plus the theme toggle and Download button, the links wrap to a second row
+   at 880px — well before the 768px breakpoint the content grids use. */
+@media (max-width: 880px) {
     .nav-links {
         display: none;
         position: absolute;
@@ -1541,7 +1544,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     .mobile-menu-btn {
         display: flex;
     }
+}
 
+@media (max-width: 768px) {
     .features-grid {
         grid-template-columns: 1fr;
     }
