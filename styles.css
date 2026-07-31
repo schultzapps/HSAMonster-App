@@ -113,6 +113,11 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* iOS Safari inflates text inside narrow blocks in portrait but not
+       landscape, which made the nav menu's items render larger on a phone
+       held upright. Opt out so sizes stay as authored in both orientations. */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
@@ -1697,34 +1702,108 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
     /* With the links in the hamburger menu, the remaining controls group to
        the right beside it instead of being spread across the bar by the
-       container's space-between. */
+       container's space-between. No margin-right: the container's column-gap
+       already separates Download from the hamburger, and adding a margin on
+       top of it doubles the spacing. */
     .nav-actions {
         margin-left: auto;
-        margin-right: var(--space-md);
     }
 
-    /* The menu hangs off the bar as its own rounded panel, matching its
-       treatment, rather than the edge-to-edge sheet that suited the old
-       full-width bar. */
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: calc(100% + var(--space-sm));
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        /* Opaque: the panel overlays body copy, and a translucent one leaves
-           the headline legible straight through the link labels. */
+    /* The menu expands the bar itself rather than hanging a separate panel
+       beneath it: the container wraps onto a second row and the links flow
+       inside it, so the whole thing reads as one growing object. */
+    .nav-container {
+        flex-wrap: wrap;
+    }
+
+    /* Once expanded the container is tall, so it needs the panel treatment
+       even at the top of the page where the bar is otherwise invisible.
+
+       Opening at the top of the page adopts the collapsed bar's geometry
+       rather than the flat strip's: unscrolled the container is full-bleed
+       with no vertical padding, so without this the drawer would run to the
+       screen edges and sit flush against the Download button. Matching the
+       scrolled values keeps it identical whichever state it opens from. */
+    .navbar:has(.nav-links.active) .nav-container {
         background: var(--bg-secondary);
-        border: 1px solid var(--border-color-strong);
-        border-radius: var(--radius-xl);
+        border-color: var(--border-color-strong);
         box-shadow: var(--shadow-lg);
-        padding: var(--space-md);
+        border-radius: var(--radius-xl);
+        width: min(calc(100% - var(--space-2xl)), 580px);
+        padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-md);
+    }
+
+    /* The strip's own padding likewise, so the drawer sits the same distance
+       from the top of the screen in both states. */
+    .navbar:has(.nav-links.active) {
+        padding: var(--space-md) 0;
+    }
+
+    /* The drawer grows downward rather than appearing at full height.
+       `display: none` cannot be animated, so the row stays in the layout and
+       collapses to zero height instead. max-height is animated rather than
+       height because the content height isn't known — the value below is a
+       ceiling the real content never reaches, so the curve still reads as a
+       smooth open.
+
+       Expanding the Tools accordion can push the bar past the bottom of the
+       screen, where the overflow is unreachable — the page behind it scrolls
+       instead, which closes the menu. The same cap keeps it on-screen and
+       scrolling internally. `dvh` so iOS's collapsing URL bar doesn't leave
+       it taller than the viewport. */
+    .nav-links {
+        display: flex;
+        /* Forces its own row below the logo/controls line. `order` keeps it
+           after .nav-actions and the hamburger, which sit later in the DOM
+           only for the desktop layout. */
+        order: 1;
+        flex-basis: 100%;
+        flex-direction: column;
         gap: var(--space-md);
+        max-height: 0;
+        padding: 0;
+        margin-top: 0;
+        /* Collapsed the row must contribute nothing to the bar's height, so
+           the border is zero-width rather than transparent — a 1px rule plus
+           the container's row gap is enough to visibly stretch the bar. */
+        border-top: 0 solid var(--border-color);
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        transition: max-height 320ms cubic-bezier(0.32, 0.72, 0, 1),
+                    padding 320ms cubic-bezier(0.32, 0.72, 0, 1),
+                    margin-top 320ms cubic-bezier(0.32, 0.72, 0, 1),
+                    border-top-width 200ms ease,
+                    opacity 200ms ease,
+                    visibility 320ms;
     }
 
     .nav-links.active {
-        display: flex;
+        max-height: calc(100dvh - 11rem);
+        padding: var(--space-sm) 0 var(--space-xs);
+        margin-top: var(--space-sm);
+        border-top-width: 1px;
+        opacity: 1;
+        visibility: visible;
+        overflow-y: auto;
+    }
+
+    /* The container's gap is meant for spacing controls horizontally. Once it
+       can wrap, that same value also applies between the rows, so the
+       collapsed links row — zero-height but still a flex item — would stretch
+       the bar by a full gap. Declared after the rules that set the `gap`
+       shorthand so it isn't reset by them; the links row supplies its own top
+       margin when it opens instead. */
+    .nav-container,
+    .navbar.scrolled .nav-container,
+    .navbar:has(.nav-links.active) .nav-container {
+        flex-wrap: wrap;
+        /* Only separates the controls cluster from the hamburger, so it stays
+           tighter than the gap between the controls themselves. */
+        column-gap: var(--space-sm);
+        row-gap: 0;
     }
 
     /* In the mobile panel the dropdown becomes an inline accordion rather than
@@ -1737,14 +1816,36 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         width: 100%;
     }
 
+    /* Inside the drawer the submenu is a nested list, not a floating card:
+       the surrounding panel already provides the surface, so a second filled
+       box just adds visual weight. Indentation and a hairline rule carry the
+       nesting instead. */
     .nav-dropdown-menu {
         position: static;
         transform: none;
         min-width: 0;
         box-shadow: none;
-        background: var(--bg-tertiary);
-        margin-top: var(--space-sm);
+        background: none;
+        border: none;
+        border-left: 1px solid var(--border-color-strong);
+        border-radius: 0;
+        margin: var(--space-xs) 0 var(--space-xs) var(--space-xs);
+        padding: 0 0 0 var(--space-md);
+        gap: var(--space-xs);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
         display: none;
+    }
+
+    .nav-dropdown-menu a {
+        padding: var(--space-xs) 0;
+        border-radius: 0;
+    }
+
+    /* No filled hover chip either — the label and its description shift to
+       full-strength colour instead. */
+    .nav-dropdown-menu a:hover {
+        background: none;
     }
 
     .nav-dropdown-menu::before {
@@ -1807,15 +1908,15 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     /* The icon stays: below this width the wordmark is already collapsed, so
        hiding the icon too would leave the bar with no brand mark at all.
        The bar tightens instead, so the icon still fits on narrow phones. */
-    .navbar.scrolled .nav-container {
+    .navbar.scrolled .nav-container,
+    .navbar:has(.nav-links.active) .nav-container {
         width: calc(100% - var(--space-lg));
-        gap: var(--space-sm);
+        column-gap: var(--space-sm);
         padding: var(--space-sm);
     }
 
     .nav-actions {
         gap: var(--space-sm);
-        margin-right: var(--space-sm);
     }
 
     .nav-actions .btn {
