@@ -864,11 +864,23 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     color: var(--text-primary);
     line-height: 1.2;
     margin-bottom: var(--space-sm);
+    /* The only line break is the deliberate one after .number-divider; without
+       this the longer pairs would also wrap naturally and run to three lines. */
+    white-space: nowrap;
 }
 
+/* Break after the slash so every card reads as two lines. Left to itself the
+   shortest pair ($500K / $1M) still fits on one line while the longer two wrap,
+   which made the row look inconsistent — this makes the wrap deliberate rather
+   than a function of how many digits each figure happens to have. */
 .number-divider {
     color: var(--text-muted);
     font-weight: 400;
+}
+
+.number-divider::after {
+    content: "\A";
+    white-space: pre;
 }
 
 .number-plus,
