@@ -174,9 +174,13 @@
             margin: 0 auto var(--space-xl);
             line-height: 1.7;
         }
+        /* Fixed 3-up rather than auto-fit: auto-fit packs in as many columns as
+           will fit, which lands on two at mid widths and strands the third card
+           on its own row. Stays 3-wide until it collapses to a stack at 768px,
+           matching .steps-grid on the home page. */
         .advisor-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: var(--space-lg);
         }
         .advisor-card {
@@ -347,6 +351,22 @@
         .advisor-form-success p {
             color: var(--text-secondary);
             line-height: 1.7;
+        }
+        /* Tighter gap buys back width for the narrower columns before the stack. */
+        @media (max-width: 1024px) {
+            .advisor-grid {
+                gap: var(--space-md);
+            }
+        }
+        @media (max-width: 768px) {
+            .advisor-grid {
+                grid-template-columns: 1fr;
+            }
+            /* Stacked, a card's copy would otherwise run edge to edge; hold it
+               to a comfortable measure. */
+            .advisor-card p {
+                max-width: 52ch;
+            }
         }
         @media (max-width: 560px) {
             .form-row { grid-template-columns: 1fr; }
