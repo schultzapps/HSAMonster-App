@@ -195,9 +195,16 @@
             font-size: 0.95rem;
         }
         .advisor-card .card-icon {
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
             margin-bottom: var(--space-sm);
-            display: block;
+            background: #CE5F41; /* orange */
+            border-radius: var(--radius-lg);
+            color: white;
+            flex-shrink: 0;
         }
         /* How billing works — numbered steps */
         .billing-steps {
@@ -402,7 +409,7 @@
                 <span class="section-label">For Financial Professionals</span>
                 <h1>You teach the HSA strategy. <span class="gradient-text">We help them run it.</span></h1>
                 <p class="lead">
-                    You've shown your clients how to grow their HSA tax-free by paying the medical costs out of pocket. The advice is easy; the follow-through is where it breaks down. HSA Monster is a service for Apple devices that you can hand your clients so they can actually execute the strategy — receipts captured, organized, and ready when they reimburse later.
+                    You've shown your clients how to grow their HSA tax-free by paying the medical costs out of pocket. The advice is easy; the follow-through is where it breaks down. HSA Monster is a service for Apple devices that you can hand your clients so they can actually execute the strategy with receipts captured, organized, and ready when they reimburse later.
                 </p>
                 <a href="#advisor-contact" class="btn btn-primary btn-large">Request a demo</a>
             </section>
@@ -416,17 +423,17 @@
                 </p>
                 <div class="advisor-grid">
                     <div class="advisor-card">
-                        <span class="card-icon">🧾</span>
+                        <span class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.755 2h-9.51c-1.159 0-1.738 0-2.206.163a3.05 3.05 0 0 0-1.881 1.936C3 4.581 3 5.177 3 6.37v14.004c0 .858.985 1.314 1.608.744a.946.946 0 0 1 1.284 0l.483.442a1.657 1.657 0 0 0 2.25 0a1.657 1.657 0 0 1 2.25 0a1.657 1.657 0 0 0 2.25 0a1.657 1.657 0 0 1 2.25 0a1.657 1.657 0 0 0 2.25 0l.483-.442a.946.946 0 0 1 1.284 0c.623.57 1.608.114 1.608-.744V6.37c0-1.193 0-1.79-.158-2.27a3.05 3.05 0 0 0-1.881-1.937C18.493 2 17.914 2 16.755 2Z" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 11H17M7 11h.5M7 7.5h.5m-.5 7h.5m3-7H17m-6.5 7H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
                         <h3>Lost receipts, lost reimbursements</h3>
                         <p>Every misplaced receipt is a tax-free dollar your client can never pull back out.</p>
                     </div>
                     <div class="advisor-card">
-                        <span class="card-icon">📉</span>
+                        <span class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M8 9.5c0-.466 0-.699.076-.883a1 1 0 0 1 .541-.54C8.801 8 9.034 8 9.5 8s.699 0 .883.076a1 1 0 0 1 .54.541c.077.184.077.417.077.883v5c0 .466 0 .699-.076.883a1 1 0 0 1-.541.54C10.199 16 9.966 16 9.5 16s-.699 0-.883-.076a1 1 0 0 1-.54-.541C8 15.199 8 14.966 8 14.5zm5 0c0-.466 0-.699.076-.883a1 1 0 0 1 .541-.54C13.801 8 14.034 8 14.5 8s.699 0 .883.076a1 1 0 0 1 .54.541c.077.184.077.417.077.883v5c0 .466 0 .699-.076.883a1 1 0 0 1-.541.54c-.184.077-.417.077-.883.077s-.699 0-.883-.076a1 1 0 0 1-.54-.541C13 15.199 13 14.966 13 14.5z" stroke="currentColor" stroke-width="1.5"/></svg></span>
                         <h3>The strategy stalls</h3>
                         <p>Without an easy system, clients don't capture expenses, or even worse, default to spending the HSA instead of investing it.</p>
                     </div>
                     <div class="advisor-card">
-                        <span class="card-icon">❓</span>
+                        <span class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M10.125 8.875a1.875 1.875 0 1 1 2.828 1.615c-.475.281-.953.708-.953 1.26V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg></span>
                         <h3>They lose track</h3>
                         <p>Years of out-of-pocket spending pile up and clients can't see how much tax-free money is waiting to be reimbursed.</p>
                     </div>
@@ -441,17 +448,17 @@
                 </p>
                 <div class="advisor-grid">
                     <div class="advisor-card">
-                        <span class="card-icon">🎁</span>
+                        <span class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22 12H2M12 2v20m1-10a4 4 0 0 0 4 4m-6-4a4 4 0 0 1-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 10.035a3.25 3.25 0 0 1 2.46-3.15c1.603-.4 3.056 1.052 2.655 2.656a3.25 3.25 0 0 1-3.15 2.46H12zm0 0a3.25 3.25 0 0 0-2.46-3.15c-1.603-.4-3.056 1.052-2.655 2.656a3.25 3.25 0 0 0 3.15 2.46H12z" stroke="currentColor" stroke-width="1.5"/><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2s7.071 0 8.535 1.464C22 4.93 22 7.286 22 12s0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z" stroke="currentColor" stroke-width="1.5"/></svg></span>
                         <h3>A real client benefit</h3>
                         <p>Give HSA Monster to your HSA-maximizing clients as a benefit of working with you. It's a tangible tool that helps them act on your advice.</p>
                     </div>
                     <div class="advisor-card">
-                        <span class="card-icon">🔒</span>
+                        <span class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="16" r="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 10V8C6 4.68629 8.68629 2 12 2C15.3137 2 18 4.68629 18 8V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
                         <h3>Private by design</h3>
                         <p>Without accounts or third-party servers, it's simple to use. Just install and start capturing. Data lives in each client's own iCloud and there's nothing for your team or ours to manage.</p>
                     </div>
                     <div class="advisor-card">
-                        <span class="card-icon">💰</span>
+                        <span class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 6V18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 9.5C15 8.11929 13.6569 7 12 7C10.3431 7 9 8.11929 9 9.5C9 10.8807 10.3431 12 12 12C13.6569 12 15 13.1193 15 14.5C15 15.8807 13.6569 17 12 17C10.3431 17 9 15.8807 9 14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
                         <h3>Reimbursement-ready</h3>
                         <p>Clients always see their running tax-free reimbursable balance, and can export clean annual statements or their full receipt archive in a tap.</p>
                     </div>
@@ -510,11 +517,11 @@
                 <div class="faq-grid">
                     <div class="faq-item">
                         <h3 class="faq-question">Can I offer HSA Monster to my clients?</h3>
-                        <p class="faq-answer">Yes. We provide a batch of redemption codes for your practice, and you distribute them to your clients however you already reach them — your portal, email, or in a meeting. There's no minimum technical setup on your end.</p>
+                        <p class="faq-answer">Yes. We provide a batch of redemption codes for your practice, and you distribute them to your clients however you already reach them. There's no technical setup or management on your end.</p>
                     </div>
                     <div class="faq-item">
                         <h3 class="faq-question">How does billing work for firms?</h3>
-                        <p class="faq-answer">We invoice you directly — no App Store account or per-client checkout required. Licensing is priced in annual blocks based on how many clients you'd like to offer it to, with discounts that grow as your block size grows. Tell us roughly how many clients and we'll send a quote.</p>
+                        <p class="faq-answer">We invoice you directly so there's no per-client checkout required. Licensing is priced in annual blocks based on how many clients you'd like to offer it to, with discounts that grow as your block size grows. Tell us roughly how many clients and we'll send a quote.</p>
                     </div>
                     <div class="faq-item">
                         <h3 class="faq-question">How long does a license last, and how do renewals work?</h3>
@@ -522,7 +529,7 @@
                     </div>
                     <div class="faq-item">
                         <h3 class="faq-question">Do my clients need to create an account?</h3>
-                        <p class="faq-answer">No. HSA Monster has no accounts and no logins. Clients redeem a code, install the app, and their data lives privately in their own iCloud. Nothing for you — or us — to administer per client.</p>
+                        <p class="faq-answer">No. HSA Monster has no accounts and no logins. Clients redeem a code, install the app, and their data lives privately in their own iCloud. Nothing for you to administer per client.</p>
                     </div>
                     <div class="faq-item">
                         <h3 class="faq-question">Is my clients' financial data private?</h3>
@@ -530,7 +537,7 @@
                     </div>
                     <div class="faq-item">
                         <h3 class="faq-question">Can I try it myself before recommending it?</h3>
-                        <p class="faq-answer">Yes. Verified financial advisors, CPAs, and tax preparers get a free year for their own personal use — separate from client licensing — so you can evaluate the app before offering it to clients. Just let us know in the form below.</p>
+                        <p class="faq-answer">Yes. Verified financial advisors, CPAs, and tax preparers get a free year for their own personal use so you can evaluate the app before offering it to clients. Just let us know in the form below.</p>
                     </div>
                     <div class="faq-item">
                         <h3 class="faq-question">What's the minimum to set up a client block?</h3>
@@ -600,7 +607,7 @@
                         <p class="form-hint">We'll never share your information. No sales spam.</p>
                     </form>
                     <div class="advisor-form-success" id="advisor-form-success">
-                        <h3>Thanks — we got it. 🎉</h3>
+                        <h3>Thanks, we got it. 🎉</h3>
                         <p>We'll be in touch shortly, usually within a day or two. In the meantime, feel free to try the app yourself from the App Store.</p>
                     </div>
                 </div>
