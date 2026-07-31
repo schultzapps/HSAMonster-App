@@ -269,6 +269,139 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--space-lg);
+    /* Anchors the collapsed bar's dropdown panel to the bar itself rather
+       than to the full-width strip behind it. */
+    position: relative;
+}
+
+/* ---------------------------------------------------------------
+   Floating navbar
+
+   At the top of the page the bar spans the full width and is
+   invisible. Once scrolled it contracts to a centred, shrink-wrapped
+   rounded rectangle that carries the blur, border and shadow itself,
+   so the strip behind it stays transparent. Only the .nav-container
+   animates — width, padding and radius — which keeps the transition
+   on one element instead of cross-fading two states.
+
+   Applies at every width: narrow screens get the same treatment, just
+   with the hamburger standing in for the link row that doesn't fit.
+   --------------------------------------------------------------- */
+.navbar {
+    /* Padding shrinks with the bar so the strip hugs it as it lifts, but
+       keeps enough headroom that it reads as floating rather than stuck
+       to the top edge. */
+    padding: var(--space-xl) 0 var(--space-md);
+    transition: padding 400ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* The blur/background now live on the floating bar, not the strip. */
+.navbar.scrolled,
+[data-theme="light"] .navbar.scrolled {
+    background: transparent;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-bottom-color: transparent;
+}
+
+.navbar.scrolled {
+    padding: var(--space-md) 0;
+}
+
+.nav-container {
+    width: 100%;
+    border: 1px solid transparent;
+    /* Rounded rectangle rather than a full pill, to match the button radius
+       used across the rest of the site. */
+    border-radius: var(--radius-xl);
+    background: rgba(10, 10, 18, 0);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    /* Shape and glass share one 400ms curve so the bar reads as a single
+       gesture — drawing itself in — rather than a resize with a separate
+       fade layered on top. */
+    transition: width 400ms cubic-bezier(0.32, 0.72, 0, 1),
+                gap 400ms cubic-bezier(0.32, 0.72, 0, 1),
+                padding 400ms cubic-bezier(0.32, 0.72, 0, 1),
+                background-color 400ms cubic-bezier(0.32, 0.72, 0, 1),
+                border-color 400ms cubic-bezier(0.32, 0.72, 0, 1),
+                box-shadow 400ms cubic-bezier(0.32, 0.72, 0, 1),
+                backdrop-filter 400ms cubic-bezier(0.32, 0.72, 0, 1),
+                -webkit-backdrop-filter 400ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Collapsed state: the container stops filling the 1200px track and
+   shrinks to its contents, centred, with the glass treatment on.
+
+   The width is a concrete length rather than `fit-content` so the
+   contraction interpolates: CSS cannot animate to an intrinsic keyword, and
+   with `fit-content` the bar snaps to size in a single frame while the
+   glass fades in around it. `max-width: 100%` keeps it honest if the
+   content ever outgrows that. */
+.navbar.scrolled .nav-container {
+    /* 720px fits the link row on one line (measured ~702px) with slack. */
+    width: 720px;
+    max-width: 100%;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-sm) var(--space-sm) var(--space-md);
+    background: rgba(18, 18, 28, 0.88);
+    border-color: var(--border-color-strong);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+[data-theme="light"] .nav-container {
+    background: rgba(255, 255, 255, 0);
+}
+
+[data-theme="light"] .navbar.scrolled .nav-container {
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+}
+
+/* The wordmark shows only when the bar is at rest at the top AND there is
+   horizontal room for it. Scrolling collapses it to the icon so the bar can
+   get properly small; on narrow screens it stays collapsed either way,
+   because the icon, toggle, Download and hamburger already fill it. */
+.navbar .logo-text {
+    max-width: 14ch;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 1;
+    /* Same 400ms curve as the bar, so the wordmark slides away as part of
+       the same motion instead of finishing early. */
+    transition: max-width 400ms cubic-bezier(0.32, 0.72, 0, 1),
+                opacity 260ms cubic-bezier(0.32, 0.72, 0, 1),
+                margin-left 400ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.navbar.scrolled .logo-text {
+    max-width: 0;
+    opacity: 0;
+    margin-left: calc(var(--space-sm) * -1);
+}
+
+/* Below this the bar's controls leave no room for the wordmark. */
+@media (max-width: 480px) {
+    .navbar .logo-text {
+        max-width: 0;
+        opacity: 0;
+        margin-left: calc(var(--space-sm) * -1);
+    }
+}
+
+/* Users who ask for less motion get the state change without the
+   width/padding travel. */
+@media (prefers-reduced-motion: reduce) {
+    .navbar,
+    .nav-container,
+    .navbar .logo-text {
+        transition: background-color var(--transition-base),
+                    border-color var(--transition-base),
+                    opacity var(--transition-base);
+    }
 }
 
 .nav-logo {
@@ -299,11 +432,46 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     font-size: 0.9375rem;
     font-weight: 500;
     color: var(--text-secondary);
+    /* Multi-word labels ("How It Works", "For Advisors") would otherwise
+       wrap once the bar contracts to its collapsed width. */
+    white-space: nowrap;
     transition: color var(--transition-fast);
 }
 
 .nav-links a:hover {
     color: var(--accent-primary);
+}
+
+/* Each nav item gets its own rounded hover chip, so the bar reads as a
+   row of controls rather than plain text. The chip is painted on a
+   pseudo-element to avoid padding shifting the collapsed bar's width. */
+@media (min-width: 881px) {
+    .nav-links > a,
+    .nav-dropdown-toggle {
+        position: relative;
+        z-index: 0;
+    }
+
+    .nav-links > a::before,
+    .nav-dropdown-toggle::before {
+        content: '';
+        position: absolute;
+        inset: -0.5rem -0.7rem;
+        z-index: -1;
+        border-radius: var(--radius-md);
+        background: var(--bg-card-hover);
+        opacity: 0;
+        transform: scale(0.9);
+        transition: opacity var(--transition-fast),
+                    transform var(--transition-bounce);
+    }
+
+    .nav-links > a:hover::before,
+    .nav-dropdown-toggle:hover::before,
+    .nav-dropdown.open .nav-dropdown-toggle::before {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* --- Nav dropdown (Tools) --- */
@@ -344,7 +512,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     position: absolute;
     top: calc(100% + 0.75rem);
     left: 50%;
-    transform: translateX(-50%) translateY(-6px);
+    transform: translateX(-50%) translateY(-6px) scale(0.96);
     min-width: 260px;
     background: var(--bg-card);
     border: 1px solid var(--border-color-strong);
@@ -356,8 +524,13 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     gap: 2px;
     opacity: 0;
     visibility: hidden;
-    transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+    transform-origin: top center;
+    transition: opacity var(--transition-fast),
+                transform var(--transition-bounce),
+                visibility var(--transition-fast);
     z-index: var(--z-dropdown);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
 }
 
 /* A transparent bridge across the gap, so the pointer can travel from the
@@ -374,7 +547,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 .nav-dropdown.open .nav-dropdown-menu {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0) scale(1);
 }
 
 .nav-dropdown-menu a {
@@ -1510,16 +1683,43 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    plus the theme toggle and Download button, the links wrap to a second row
    at 880px — well before the 768px breakpoint the content grids use. */
 @media (max-width: 880px) {
+    /* On narrow screens the bar keeps a comfortable margin from the screen
+       edges instead of shrink-wrapping its few controls, so the menu that
+       hangs off it has room for the link labels.
+
+       The cap matters: dropping to hamburger mode removes the link row, so
+       the bar must never come out wider than the full-link bar it replaces.
+       Without it the bar visibly jumps wider as the window narrows past the
+       breakpoint. */
+    .navbar.scrolled .nav-container {
+        width: min(calc(100% - var(--space-2xl)), 580px);
+    }
+
+    /* With the links in the hamburger menu, the remaining controls group to
+       the right beside it instead of being spread across the bar by the
+       container's space-between. */
+    .nav-actions {
+        margin-left: auto;
+        margin-right: var(--space-md);
+    }
+
+    /* The menu hangs off the bar as its own rounded panel, matching its
+       treatment, rather than the edge-to-edge sheet that suited the old
+       full-width bar. */
     .nav-links {
         display: none;
         position: absolute;
-        top: 100%;
+        top: calc(100% + var(--space-sm));
         left: 0;
         right: 0;
         flex-direction: column;
+        /* Opaque: the panel overlays body copy, and a translucent one leaves
+           the headline legible straight through the link labels. */
         background: var(--bg-secondary);
-        border-bottom: 1px solid var(--border-color);
-        padding: var(--space-lg);
+        border: 1px solid var(--border-color-strong);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-lg);
+        padding: var(--space-md);
         gap: var(--space-md);
     }
 

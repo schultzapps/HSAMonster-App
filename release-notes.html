@@ -259,15 +259,8 @@
             mobileMenuBtn.classList.toggle('active');
         });
 
-        // Navbar scroll effect
-        const navbar = document.querySelector('.navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // This page ships `navbar scrolled` in its markup and stays that way;
+        // assets/site-nav.js leaves it alone.
 
         // Email obfuscation
         document.getElementById('contact-link').addEventListener('click', function(e) {
