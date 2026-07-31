@@ -1804,9 +1804,18 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 @media (max-width: 480px) {
-    /* Compact navbar on mobile */
-    .nav-logo .logo-icon {
-        display: none;
+    /* The icon stays: below this width the wordmark is already collapsed, so
+       hiding the icon too would leave the bar with no brand mark at all.
+       The bar tightens instead, so the icon still fits on narrow phones. */
+    .navbar.scrolled .nav-container {
+        width: calc(100% - var(--space-lg));
+        gap: var(--space-sm);
+        padding: var(--space-sm);
+    }
+
+    .nav-actions {
+        gap: var(--space-sm);
+        margin-right: var(--space-sm);
     }
 
     .nav-actions .btn {
