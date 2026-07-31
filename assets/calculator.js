@@ -785,9 +785,15 @@
             jumpBtn.addEventListener('click', function () {
                 var card = document.querySelector('.result-card');
                 if (!card) return;
-                card.scrollIntoView({
-                    behavior: reduceMotion ? 'auto' : 'smooth',
-                    block: 'start'
+                // scrollIntoView ignores the fixed navbar, which would cover the
+                // headline figure. Measure the bar and scroll manually so the
+                // card clears it, with a little breathing room.
+                var nav = document.querySelector('.navbar');
+                var offset = (nav ? nav.getBoundingClientRect().height : 0) + 12;
+                var top = card.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({
+                    top: Math.max(top, 0),
+                    behavior: reduceMotion ? 'auto' : 'smooth'
                 });
                 if (typeof gtag === 'function') {
                     gtag('event', 'calculator_calculate', { calculator: mode, app: 'hsamonster' });
