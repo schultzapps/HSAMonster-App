@@ -139,7 +139,7 @@
         return this.annualTaxSavings() * this.state.yearsInvested;
     };
 
-    /* Total dollars contributed over the projection window. */
+    /* Total dollars contributed over the projection window (excludes starting balance). */
     Model.prototype.totalContributed = function () {
         return this.annualContribution() * this.state.yearsInvested;
     };
@@ -157,7 +157,11 @@
 
     /* Core compound-growth loop. Contributions are added at the start of each
        year, then the whole balance grows at the given real return. The series
-       starts at year 0 (the starting balance, before any contribution/growth). */
+       starts at year 0 (the starting balance, before any contribution/growth).
+
+       The projection runs in real terms, so a flat contribution here already
+       represents one that keeps pace with inflation — which is how the IRS has
+       historically adjusted the limit. No separate escalation is needed. */
     Model.prototype.projection = function (startingBalance, annualContribution, annualReturn) {
         var balance = startingBalance;
         var points = [{ year: 0, value: balance }];
@@ -771,6 +775,24 @@
                 if (t < 1) requestAnimationFrame(sweep);
             };
             requestAnimationFrame(sweep);
+        }
+
+        /* Mobile "Calculate" button: scrolls the results into view. The
+           projection is already live, so there's nothing to compute — this
+           just delivers the payoff the button implies on a stacked layout. */
+        var jumpBtn = document.getElementById('calc-jump');
+        if (jumpBtn) {
+            jumpBtn.addEventListener('click', function () {
+                var card = document.querySelector('.result-card');
+                if (!card) return;
+                card.scrollIntoView({
+                    behavior: reduceMotion ? 'auto' : 'smooth',
+                    block: 'start'
+                });
+                if (typeof gtag === 'function') {
+                    gtag('event', 'calculator_calculate', { calculator: mode, app: 'hsamonster' });
+                }
+            });
         }
 
         /* Report calculator engagement so tool traffic can be tied to installs. */

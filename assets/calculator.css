@@ -1002,8 +1002,23 @@
         gap: var(--space-lg);
     }
 
+    /* Inputs come first once stacked: on a phone the controls are what you
+       reach for, and a chart you haven't fed any numbers to isn't worth the
+       first screen. Reordered visually rather than in the DOM so the results
+       still read first for screen readers and crawlers. */
+    .calc-inputs-col {
+        order: 1;
+    }
+
     .calc-results {
+        order: 2;
         position: static;
+    }
+
+    /* 20% shorter in the stacked layout — the chart is decorative next to the
+       headline figure, and the full height pushes the numbers off a phone. */
+    .chart-svg {
+        height: 152px;
     }
 }
 
@@ -1012,8 +1027,21 @@
         padding-top: calc(var(--space-3xl) + 1.5rem);
     }
 
-    .stat-grid {
-        grid-template-columns: minmax(0, 1fr);
+    /* The stat pair stays side-by-side at every width — the two figures are
+       meant to be read against each other, and stacking them breaks the
+       comparison. The cards tighten instead; titles wrap if they must. */
+    .stat-card {
+        padding: var(--space-md);
+    }
+
+    .stat-title {
+        font-size: 0.6875rem;
+        letter-spacing: 0.02em;
+    }
+
+    .stat-value {
+        font-size: clamp(1.0625rem, 4.6vw, 1.375rem);
+        letter-spacing: -0.02em;
     }
 
     .result-card {
@@ -1040,5 +1068,24 @@
     .tool-card:hover,
     .related-card:hover {
         transform: none;
+    }
+}
+
+/* ============================================
+   Mobile "Calculate" button
+   ============================================
+   The inputs sit above the chart once stacked, so this scrolls the results
+   into view. It computes nothing — the projection is already live on every
+   keystroke — it just delivers the payoff moment the button implies.
+   Hidden on desktop, where the chart is beside the inputs and already visible. */
+.calc-jump {
+    display: none;
+    width: 100%;
+    margin-top: var(--space-lg);
+}
+
+@media (max-width: 940px) {
+    .calc-jump {
+        display: inline-flex;
     }
 }
