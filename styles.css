@@ -682,7 +682,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 .section-header {
     text-align: center;
     max-width: 700px;
-    margin: 0 auto var(--space-3xl);
+    margin: 0 auto var(--space-2xl);
 }
 
 .section-label {
@@ -712,13 +712,13 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    Features Section
    ============================================ */
 .features-section {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-3xl) 0;
 }
 
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
+    gap: var(--space-lg);
 }
 
 .feature-card {
@@ -730,7 +730,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-xl);
-    padding: var(--space-xl);
+    padding: var(--space-lg);
     transition: all var(--transition-base);
     opacity: 0;
     transform: translateY(20px);
@@ -780,14 +780,14 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    How It Works Section
    ============================================ */
 .how-it-works-section {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-3xl) 0;
     background: var(--bg-secondary);
 }
 
 .steps-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
+    gap: var(--space-lg);
 }
 
 .step-card {
@@ -837,7 +837,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    Numbers Section
    ============================================ */
 .numbers-section {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-3xl) 0;
 }
 
 .numbers-grid {
@@ -889,7 +889,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    Screenshots Section
    ============================================ */
 .screenshots-section {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-3xl) 0;
     background: var(--bg-secondary);
 }
 
@@ -943,7 +943,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    Pricing Section
    ============================================ */
 .pricing-section {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-3xl) 0;
 }
 
 .pricing-grid {
@@ -1093,7 +1093,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    FAQ Section
    ============================================ */
 .faq-section {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-3xl) 0;
     background: var(--bg-secondary);
 }
 
@@ -1107,7 +1107,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-xl);
-    padding: var(--space-xl);
+    padding: var(--space-lg);
     transition: all var(--transition-base);
     opacity: 0;
     transform: translateY(20px);
@@ -1137,7 +1137,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    CTA Section
    ============================================ */
 .cta-section {
-    padding: var(--space-4xl) 0;
+    padding: var(--space-3xl) 0;
 }
 
 .cta-box {
