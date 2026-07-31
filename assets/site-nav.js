@@ -15,10 +15,8 @@
         var navbar = document.querySelector('.navbar');
         if (!navbar) return;
 
-        /* Interior pages (calculators, press kit, release notes) ship the
-           class in their markup because they have no hero for the bar to sit
-           over — it stays collapsed at every scroll position. Leave those
-           alone rather than clearing the class the moment they load. */
+        /* If a page ever ships the class in its markup (e.g. to start
+           collapsed), leave it alone rather than clearing it on load. */
         if (navbar.classList.contains('scrolled')) return;
 
         var sync = function () {

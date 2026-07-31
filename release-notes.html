@@ -39,7 +39,7 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar scrolled">
+    <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <img src="images/appicon.png" alt="HSA Monster" class="logo-icon">
@@ -258,9 +258,6 @@
             navLinks.classList.toggle('active');
             mobileMenuBtn.classList.toggle('active');
         });
-
-        // This page ships `navbar scrolled` in its markup and stays that way;
-        // assets/site-nav.js leaves it alone.
 
         // Email obfuscation
         document.getElementById('contact-link').addEventListener('click', function(e) {
