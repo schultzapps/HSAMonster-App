@@ -45,7 +45,7 @@
         annualContribution: null, // null => track the annual max
         federalBracket: 24,
         stateTaxRate: 5,
-        expectedReturn: 7,
+        expectedReturn: 10,
         yearsInvested: 25,
         inflationRate: 2.5,
         includeFICA: true,
