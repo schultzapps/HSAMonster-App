@@ -149,7 +149,7 @@ ul {
    ============================================ */
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1080px;
     margin: 0 auto;
     padding: 0 var(--space-lg);
 }
@@ -271,7 +271,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1080px;
     margin: 0 auto;
     padding: 0 var(--space-lg);
     /* Anchors the collapsed bar's dropdown panel to the bar itself rather
@@ -674,7 +674,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     grid-template-columns: 1fr 1fr;
     gap: var(--space-3xl);
     align-items: center;
-    max-width: 1200px;
+    max-width: 1080px;
     margin: 0 auto;
     padding: 0 var(--space-lg);
     position: relative;
