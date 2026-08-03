@@ -235,10 +235,6 @@
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M15 9C16.6569 9 18 7.65685 18 6C18 4.34315 16.6569 3 15 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="9" cy="17" rx="7" ry="4" stroke="currentColor" stroke-width="1.5"/><path d="M18 14C19.7542 14.3847 21 15.3589 21 16.5C21 17.5293 19.9863 18.4229 18.5 18.8704" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                     <span>Family Sharing</span>
                 </div>
-                <div class="trust-badge">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 13V12C22 8.22876 22 6.34315 20.8284 5.17157C19.6569 4 17.7712 4 14 4H10C6.22876 4 4.34315 4 3.17157 5.17157C2 6.34315 2 8.22876 2 12C2 15.7712 2 17.6569 3.17157 18.8284C4.34315 20 6.22876 20 10 20H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M10 16H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14 8H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M19 17L19 21M19 17L17 19M19 17L21 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 3L21 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                    <span>No Third Parties</span>
-                </div>
             </div>
         </div>
     </section>
@@ -372,16 +368,6 @@
                     </p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Numbers Section -->
-    <section class="numbers-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">The Numbers</span>
-                <h2 class="section-title">Why Your HSA Is <span class="gradient-text">Worth It</span></h2>
-            </div>
             <div class="numbers-grid">
                 <div class="number-card">
                     <div class="number-value">$4,400 <span class="number-divider">/</span> $8,750</div>
@@ -404,14 +390,6 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Pricing</span>
-                <h2 class="section-title">Pricing That Fits <span class="gradient-text">Your Needs</span></h2>
-                <!-- PROMO (first-year $24.99) — 1 of 2. When the promo ends, restore:
-                     Log 10 expenses free with no signup. Subscribe or cancel anytime.
-                     See the second PROMO block on the Family Plan card below. -->
-                <p class="section-description">
-                    Right now the annual Family Plan is
-                    <strong>$24.99 for your first year</strong>. Subscribe or cancel anytime.
-                </p>
             </div>
             <div class="pricing-grid">
                 <div class="pricing-card">
@@ -443,8 +421,8 @@
                     </ul>
                 </div>
                 <div class="pricing-card featured">
-                    <!-- PROMO (first-year $24.99) — 2 of 2. To end the promo, revert this
-                         header to its non-promo form:
+                    <!-- PROMO (first-year $24.99) — now the only promo block. To end
+                         the promo, revert this header to its non-promo form:
 
                            <div class="pricing-badge">Best Value</div>
                            <div class="pricing-header">
@@ -455,16 +433,20 @@
                                </div>
                            </div>
 
-                         i.e. badge back to "Best Value", drop the .price-was and
-                         .price-note lines, and restore the $49.99 //year pair. The
-                         .price-was / .price-note rules live in styles.css and are only
-                         used here — leave them for the next promo. Also revert the
-                         PROMO 1 of 2 block in the section header above. -->
-                    <div class="pricing-badge">Limited Time Offer</div>
+                         i.e. badge back to "Best Value", drop the .price-note line,
+                         and restore the $49.99 //year pair. The .price-was /
+                         .price-note rules live in styles.css; .price-was is not
+                         currently used (the struck-through list price was removed
+                         because it crowded the price row and "Then $49.99/year"
+                         below already states it) — leave both for the next promo.
+                         The former companion block in the section header is gone:
+                         that promo copy was removed along with the section title
+                         and description, leaving only the "Pricing" label and the
+                         .pricing-note under the grid. -->
+                    <div class="pricing-badge">Summer Sale!</div>
                     <div class="pricing-header">
                         <h3 class="pricing-tier">Family Plan</h3>
                         <div class="pricing-price">
-                            <span class="price-was"><s>$49.99</s></span>
                             <span class="price-amount">$24.99</span>
                             <span class="price-period">first year</span>
                         </div>
@@ -533,6 +515,7 @@
                     </ul>
                 </div>
             </div>
+            <p class="pricing-note">Subscribe or cancel anytime.</p>
         </div>
     </section>
 

@@ -738,6 +738,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     gap: var(--space-md);
 }
 
+/* Block in the two-column hero, where the narrower column always needs the
+   break. Stacked, the rule is relaxed to inline (see the 860px block) so the
+   headline can sit on one line and only break after "Every" when it must. */
 .hero-title .gradient-text {
     display: block;
 }
@@ -1049,15 +1052,14 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 /* ============================================
    Numbers Section
    ============================================ */
-.numbers-section {
-    padding: var(--space-3xl) 0;
-}
-
+/* Lives at the foot of the How It Works section, so it carries its own top
+   spacing to separate it from the step cards above. */
 .numbers-grid {
     display: flex;
     justify-content: center;
     gap: var(--space-lg);
     flex-wrap: wrap;
+    margin-top: var(--space-3xl);
 }
 
 .number-card {
@@ -1126,7 +1128,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--space-xl);
+    /* Gap shrinks with the viewport so it doesn't eat the width the three
+       phones need to stay side by side on narrow screens. */
+    gap: min(var(--space-xl), 4vw);
     perspective: 1000px;
 }
 
@@ -1136,9 +1140,11 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .screenshot-frame {
     /* Sized by the bezel art's aspect ratio so the frame never stretches;
-       the .phone-bezel/.phone-screen pair inside does the framing. */
+       the .phone-bezel/.phone-screen pair inside does the framing.
+       Width is fluid below roughly 800px so all three phones scale down
+       together rather than overflowing and being forced to stack. */
     position: relative;
-    width: 200px;
+    width: min(200px, 25vw);
     aspect-ratio: 496 / 1012;
     transition: all var(--transition-slow);
     transform: rotateY(15deg) scale(0.9);
@@ -1152,7 +1158,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .screenshot-item.featured .screenshot-frame {
-    width: 240px;
+    /* 30vw keeps the centre phone at the same 240:200 ratio to its
+       neighbours as the row scales down. */
+    width: min(240px, 30vw);
     transform: rotateY(0deg) scale(1);
     filter: drop-shadow(var(--shadow-lg)) drop-shadow(0 0 12px var(--accent-glow));
 }
@@ -1300,6 +1308,15 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .pricing-card .btn {
     width: 100%;
+}
+
+/* Sits under the pricing grid, replacing the note that used to run in the
+   section header above the cards. */
+.pricing-note {
+    margin-top: var(--space-xl);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9375rem;
 }
 
 /* Pricing card color variants */
@@ -1661,11 +1678,20 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 /* ============================================
    Responsive Design
    ============================================ */
+/* The hero holds its two-column split well past the point the rest of the page
+   collapses (1024 -> 860); the gap tightens first to buy that width back. */
 @media (max-width: 1024px) {
+    .hero-container {
+        gap: var(--space-xl);
+    }
+}
+
+@media (max-width: 860px) {
     .hero-container {
         /* minmax(0, 1fr) so wide children can't blow the column out past the viewport */
         grid-template-columns: minmax(0, 1fr);
         text-align: center;
+        gap: var(--space-3xl);
     }
 
     /* Headline + download CTA must stay above the phone mockup so the
@@ -1678,14 +1704,28 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         order: 1;
     }
 
+    /* Stacked there is room for the whole headline on one line, so drop the
+       forced break. "HSA Expense" stays nowrap, so if it doesn't fit the
+       break falls after "Every" rather than mid-phrase. */
+    .hero-title .gradient-text {
+        display: inline;
+    }
+
+    /* Centred and uncapped, this wrapped into badly lopsided pairs (a full
+       line plus an orphaned word or two). Holding a measure keeps the two
+       lines close to even. */
     .hero-description {
-        max-width: none;
+        max-width: 460px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .hero-ctas {
         justify-content: center;
     }
+}
 
+@media (max-width: 1024px) {
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1697,18 +1737,19 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         gap: var(--space-md);
     }
 
+    /* Three cards stay side by side well below this width; the padding and gap
+       tighten instead so the columns keep usable content width. */
     .pricing-grid {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-        margin: 0 auto;
+        gap: var(--space-md);
     }
 
-    .pricing-card.featured {
-        transform: none;
+    .pricing-card {
+        padding: var(--space-lg) var(--space-md);
     }
 
-    .pricing-card.featured.animate-in {
-        transform: none;
+    .pricing-header {
+        margin-bottom: var(--space-lg);
+        padding-bottom: var(--space-lg);
     }
 
     .faq-grid {
@@ -1898,19 +1939,24 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     }
 }
 
-@media (max-width: 768px) {
+/* The feature cards hold up fine in two columns well below the 768px stacking
+   point the rest of the page uses, so they get their own narrower breakpoint. */
+@media (max-width: 560px) {
     .features-grid {
         grid-template-columns: 1fr;
     }
+}
 
+@media (max-width: 768px) {
     .steps-grid {
         grid-template-columns: 1fr;
     }
 
     /* Stacked, the description would otherwise run edge to edge as one long
-       line; hold it to a comfortable measure so it wraps to two-plus lines. */
+       line; 328px matches the measure it settles at in the three-column
+       layout, so the copy wraps the same way at every width. */
     .step-description {
-        max-width: 44ch;
+        max-width: 328px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -1919,13 +1965,15 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         font-size: 1.75rem;
     }
 
-    .screenshots-gallery {
-        flex-direction: column;
+    /* Tighter padding and a lower floor keep the three cards on one row well
+       below the width the original 32px padding + 200px minimum allowed. */
+    .number-card {
+        padding: var(--space-lg) var(--space-md);
+        min-width: 150px;
     }
 
-    .screenshot-frame,
-    .screenshot-item:last-child .screenshot-frame {
-        transform: none;
+    .numbers-grid {
+        gap: var(--space-md);
     }
 
     .footer-grid {
@@ -1937,6 +1985,53 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+}
+
+/* Pricing columns get too narrow for the price + period to sit on one line
+   below this, so the three cards become a single centred column. */
+@media (max-width: 720px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+        gap: var(--space-xl);
+    }
+
+    .pricing-card {
+        padding: var(--space-xl);
+    }
+
+    /* Stacked, the featured card has no neighbours to stand out from, so the
+       scale-up is dropped. Only the featured rules are reset here — the base
+       card keeps its translateY(20px) reveal offset. */
+    .pricing-card.featured {
+        transform: translateY(20px);
+    }
+
+    .pricing-card.featured.animate-in {
+        transform: translateY(0);
+    }
+
+    .pricing-header {
+        margin-bottom: var(--space-xl);
+        padding-bottom: var(--space-xl);
+    }
+}
+
+/* Below this the three scaled phones get too small to read, so they stack and
+   return to full size. The tilt is dropped since it only reads as skew when
+   the phones are above one another rather than in a row. */
+@media (max-width: 440px) {
+    .screenshots-gallery {
+        flex-direction: column;
+    }
+
+    .screenshot-frame,
+    .screenshot-item.featured .screenshot-frame,
+    .screenshot-item:last-child .screenshot-frame {
+        width: 200px;
+        transform: none;
     }
 }
 
