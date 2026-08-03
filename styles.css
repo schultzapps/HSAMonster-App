@@ -777,14 +777,18 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     border-radius: 50%;
 }
 
+/* The bezel is a transparent-cutout PNG of a real iPhone laid over the
+   screenshot, so every phone on the page shares one set of proportions.
+   The frame art is 496x1012, with an orange rail, then a ~10px black
+   bezel, then the screen cutout at x 27-466 / y 26-984. .phone-screen is
+   inset slightly LESS than the cutout so the screenshot tucks ~4px under
+   the black band, thinning the visible bezel. Don't reduce these further:
+   past x 17 / y 15 the screenshot would cover the orange rail. */
 .phone-frame {
     position: relative;
     width: 274px;
-    height: 574px;
-    background: linear-gradient(145deg, #2A2A3C, #1A1A28);
-    border-radius: 40px;
-    padding: 9px;
-    box-shadow: var(--shadow-lg), 0 0 60px var(--accent-glow);
+    aspect-ratio: 496 / 1012;
+    filter: drop-shadow(0 0 60px var(--accent-glow));
     transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
     transition: transform var(--transition-slow);
 }
@@ -793,15 +797,37 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
 }
 
-.phone-screen {
+.phone-bezel {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
+    pointer-events: none;
+    /* Sits above the screenshot so the bezel and Dynamic Island read as
+       part of the device rather than being covered by the screenshot. */
+    z-index: 2;
+}
+
+.phone-screen {
+    position: absolute;
+    top: 2.2%;
+    bottom: 2.4%;
+    left: 4.6%;
+    right: 4.6%;
     background: var(--bg-secondary);
-    border-radius: 32px;
+    /* Follows the cutout's corner curve; the art's corner radius scales
+       with the frame, so a percentage radius keeps them aligned. */
+    border-radius: 8% / 3.9%;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.phone-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .placeholder-screen {
@@ -1096,17 +1122,16 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .screenshot-frame {
+    /* Sized by the bezel art's aspect ratio so the frame never stretches;
+       the .phone-bezel/.phone-screen pair inside does the framing. */
+    position: relative;
     width: 200px;
-    height: 420px;
-    background: var(--bg-card);
-    border: 0.5px solid var(--border-color);
-    border-radius: var(--radius-2xl);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    aspect-ratio: 496 / 1012;
     transition: all var(--transition-slow);
     transform: rotateY(15deg) scale(0.9);
+    /* drop-shadow rather than box-shadow: the phone's real silhouette is
+       the PNG's alpha, not the element's rectangle. */
+    filter: drop-shadow(var(--shadow-md));
 }
 
 .screenshot-item:last-child .screenshot-frame {
@@ -1115,10 +1140,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .screenshot-item.featured .screenshot-frame {
     width: 240px;
-    height: 500px;
     transform: rotateY(0deg) scale(1);
-    border-color: var(--accent-primary);
-    box-shadow: var(--shadow-glow);
+    filter: drop-shadow(var(--shadow-lg)) drop-shadow(0 0 12px var(--accent-glow));
 }
 
 .screenshot-item:first-child .screenshot-frame:hover {
@@ -1967,7 +1990,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
     .phone-frame {
         width: 240px;
-        height: 500px;
     }
 
     .number-value {
