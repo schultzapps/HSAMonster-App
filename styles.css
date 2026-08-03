@@ -218,7 +218,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .btn-large {
-    padding: var(--space-md) var(--space-xl);
+    /* Fixed height rather than vertical padding so every large button
+       lines up regardless of whether its label wraps to the icon's height. */
+    height: 44px;
+    padding: 0 var(--space-xl);
     font-size: 1rem;
 }
 
@@ -651,7 +654,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: var(--space-4xl) 0;
+    /* Extra top padding so the headline breathes below the fixed navbar
+       rather than sitting right under it; the bottom is tighter so the
+       trust band reads as attached to the hero. */
+    padding: calc(var(--space-4xl) + var(--space-xl)) 0 var(--space-3xl);
     overflow: hidden;
 }
 
@@ -742,7 +748,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .btn-hero {
-    padding: 1.125rem 2rem;
+    padding: 0.8125rem 2rem;
     font-size: 1.125rem;
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-md), var(--shadow-glow);
@@ -855,7 +861,10 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    Trust Section
    ============================================ */
 .trust-section {
-    padding: var(--space-2xl) 0;
+    /* A bordered divider band rather than a section in its own right, so it
+       stays tight: the hero above and the features section below already
+       contribute their own padding on either side of it. */
+    padding: var(--space-lg) 0;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
 }
