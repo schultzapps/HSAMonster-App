@@ -910,13 +910,30 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .step-card {
     text-align: center;
+    transition: all var(--transition-slow) ease-out;
     opacity: 0;
     transform: translateY(20px);
+}
+
+/* The three steps are read in order, so they arrive in order. */
+.step-card:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.step-card:nth-child(3) {
+    transition-delay: 0.2s;
 }
 
 .step-card.animate-in {
     opacity: 1;
     transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .step-card {
+        transition: none;
+        transform: none;
+    }
 }
 
 .step-number {
