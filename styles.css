@@ -1113,9 +1113,13 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 /* ============================================
    Screenshots Section
    ============================================ */
-.screenshots-section {
+/* The screenshots live in the family section: the phones are the proof of
+   the "best HSA tracking app for families" claim, so they share its
+   heading rather than repeating one of their own. No background here —
+   .how-it-works-section directly below is the tinted band, so tinting
+   this one too would merge the two into a single slab. */
+.family-section {
     padding: var(--space-3xl) 0;
-    background: var(--bg-secondary);
 }
 
 .screenshots-gallery {
