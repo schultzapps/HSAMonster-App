@@ -28,8 +28,8 @@
        in the law is the same one-line edit.
        ------------------------------------------------------------ */
     var YEARS = [
-        { year: 2026, individualLimit: 4400, familyLimit: 8750, catchUpAmount: 1000 },
-        { year: 2025, individualLimit: 4300, familyLimit: 8550, catchUpAmount: 1000 }
+        { year: 2026, individualLimit: 4400, familyLimit: 8750, catchUpAmount: 1000, published: '2025-05-01' },
+        { year: 2025, individualLimit: 4300, familyLimit: 8550, catchUpAmount: 1000, published: '2024-05-09' }
     ];
 
     /* Age-based catch-up eligibility, the same across every year above. */
@@ -367,6 +367,37 @@
             });
         }
 
+        /* Freshness signal for a page whose whole value is being current.
+
+           dateModified is derived from the newest entry in YEARS rather than
+           hardcoded, so it can only ever say "this page knows about the latest
+           published limits" — adding a year moves it automatically, and
+           forgetting to update a date by hand can't leave a stale claim in the
+           markup. The date is when the IRS published those figures, which is
+           the last moment the page's substance actually changed.
+
+           Emitted from JS because the value lives in the limits table; the
+           static head schema carries everything that doesn't move. */
+        function emitDateSchema() {
+            // Sorted rather than indexed off the ends of YEARS, so the dates
+            // stay correct however the table happens to be ordered.
+            var dated = YEARS.filter(function (entry) { return entry.published; })
+                .sort(function (a, b) { return a.year - b.year; });
+            if (!dated.length) return;
+
+            var node = document.createElement('script');
+            node.type = 'application/ld+json';
+            node.textContent = JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'WebPage',
+                'url': 'https://hsamonster.com/hsa-contribution-limits.html',
+                'name': dated[dated.length - 1].year + ' HSA Contribution Limits',
+                'datePublished': dated[0].published,
+                'dateModified': dated[dated.length - 1].published
+            });
+            document.head.appendChild(node);
+        }
+
         /* Builds one reference table per year in YEARS. Rendered rather than
            hand-written so adding a year to the table at the top of this file
            adds its section here too — and so the two can't drift apart.
@@ -504,8 +535,9 @@
            correct value with an animation from zero. That's what made a
            stored "self-only" choice come back showing the family limit. */
         // Built once — the tables list every year, so nothing in them changes
-        // as the inputs move. Only the row highlight does, and render() owns that.
+        // as the inputs move.
         renderLimitTables();
+        emitDateSchema();
 
         firstPaint = true;
         render();
