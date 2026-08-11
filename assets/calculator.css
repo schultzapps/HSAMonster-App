@@ -624,11 +624,19 @@
 }
 
 .tool-section p a,
-.tool-prose a {
+.tool-prose a,
+.tool-list li a {
     color: var(--accent-primary);
     font-weight: 500;
     text-decoration: underline;
     text-underline-offset: 2px;
+}
+
+/* A bolded link inside a list item — the source citations — would otherwise
+   take its color from the .tool-list li strong rule below and read as plain
+   bold text rather than something clickable. */
+.tool-list li strong a {
+    color: var(--accent-primary);
 }
 
 .tool-list {
@@ -1063,3 +1071,174 @@
         display: inline-flex;
     }
 }
+
+/* ============================================
+   Inputs-first layout
+   ============================================
+   The limits calculator leads with the form: its result is a lookup you drive
+   with four controls, not a projection you watch move, so the controls earn
+   the primary column. Ordered visually only — the results stay first in the
+   DOM, as they do on the projection pages, so screen readers and crawlers
+   still meet the answer before the inputs.
+
+   The wider column stays on the left, so the columns swap widths too.
+
+   Scoped to the two-column layout: below 940px the shared responsive rules
+   already stack the page inputs-first with the Calculate button, and these
+   declarations come later in the file, so leaving them unscoped would beat
+   the single-column grid and keep two cramped columns on a phone. */
+@media (min-width: 941px) {
+    .calc--inputs-first {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    }
+
+    .calc--inputs-first .calc-inputs-col {
+        order: 1;
+    }
+
+    .calc--inputs-first .calc-results {
+        order: 2;
+    }
+}
+
+/* ============================================
+   Contribution limit breakdown
+   ============================================
+   The limits calculator has no chart, so the result card carries a short
+   ledger instead: the statutory limit, the optional catch-up and employer
+   rows, then what's left for you. It reads as arithmetic, which is the whole
+   explanation the page owes the user. */
+.limit-breakdown {
+    padding: var(--space-md) var(--space-lg) 0;
+    margin-top: var(--space-md);
+    border-top: 1px solid var(--border-color);
+}
+
+.limit-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: 0.4rem 0;
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+}
+
+.limit-row[hidden] {
+    display: none;
+}
+
+.limit-row .limit-row-value {
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+/* The employer row subtracts, so it reads in the secondary accent to
+   separate it from the additive rows above it. */
+.limit-row.subtract .limit-row-value {
+    color: var(--accent-secondary);
+}
+
+/* The bottom line: what you can actually elect. Weighted heavier than the
+   rows feeding into it. */
+.limit-row.total {
+    margin-top: 0.25rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid var(--border-color);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.limit-row.total .limit-row-value {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+/* Year headings above each limits table need to breathe — without this the
+   heading sits nearly flush against the table it labels. */
+#limits-tables-body h3 {
+    margin-bottom: var(--space-md);
+}
+
+#limits-tables-body .table-scroll + h3 {
+    margin-top: var(--space-xl);
+}
+
+/* ============================================
+   Per-paycheck stats
+   ============================================
+   Three cards once an employer contributes — your share, theirs, and the full
+   limit — so the first two visibly add up to the third. Without an employer
+   contribution the extra cards say nothing the headline doesn't, so the row
+   collapses to a single full-width figure. */
+.paycheck-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.paycheck-stats.single-stat {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.paycheck-stats.single-stat .stat-card.total-only {
+    display: none;
+}
+
+/* Three columns of currency get tight before the 560px breakpoint, so the
+   type steps down earlier here than the shared .stat-value rule does. */
+@media (max-width: 720px) {
+    .paycheck-stats:not(.single-stat) .stat-card {
+        padding: var(--space-md) 0.75rem;
+    }
+
+    .paycheck-stats:not(.single-stat) .stat-title {
+        font-size: 0.625rem;
+        letter-spacing: 0.02em;
+    }
+
+    .paycheck-stats:not(.single-stat) .stat-value {
+        font-size: clamp(0.9375rem, 3.4vw, 1.125rem);
+    }
+}
+
+/* Once three columns would squeeze the figures too far, drop to a 2-up grid:
+   your share and the employer's sit side by side — they're the pair worth
+   comparing — and the full limit spans the row beneath as their sum.
+
+   Driven by container width rather than a viewport breakpoint, because this
+   row sits in a column whose width depends on the two-column calculator
+   layout, not on the screen. The query container is a dedicated wrapper: an
+   element can't query its own width, and putting containment on .calc-results
+   would break the sticky positioning it relies on. Where container queries
+   aren't supported the 3-up grid above still applies, which stays legible. */
+.paycheck-stats-wrap {
+    container-type: inline-size;
+    container-name: paychecks;
+}
+
+@container paychecks (max-width: 380px) {
+    .paycheck-stats:not(.single-stat) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* The last card is the total, so it spans both columns. */
+    .paycheck-stats:not(.single-stat) .stat-card:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+.paycheck-note[hidden] {
+    display: none;
+}
+
+.paycheck-note {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+}
+
