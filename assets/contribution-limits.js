@@ -28,6 +28,7 @@
        in the law is the same one-line edit.
        ------------------------------------------------------------ */
     var YEARS = [
+        { year: 2027, individualLimit: 4500, familyLimit: 9000, catchUpAmount: 1000, published: '2026-05-29' },
         { year: 2026, individualLimit: 4400, familyLimit: 8750, catchUpAmount: 1000, published: '2025-05-01' },
         { year: 2025, individualLimit: 4300, familyLimit: 8550, catchUpAmount: 1000, published: '2024-05-09' }
     ];
@@ -35,7 +36,14 @@
     /* Age-based catch-up eligibility, the same across every year above. */
     var CATCH_UP_AGE = 55;
 
-    var DEFAULT_YEAR = YEARS[0].year;
+    /* Defaults to the newest published year. The IRS releases each year's
+       figures the previous May, and search interest shifts to the new year
+       well before it starts — open enrollment runs in the autumn, which is
+       when people are actually choosing a payroll election. Earlier years stay
+       one pick away in the menu. */
+    var DEFAULT_YEAR = YEARS.reduce(function (best, entry) {
+        return entry.year > best ? entry.year : best;
+    }, YEARS[0].year);
 
     function limitsFor(year) {
         for (var i = 0; i < YEARS.length; i++) {
@@ -173,22 +181,41 @@
         return periodsFor(this.state.frequency);
     };
 
+    /* Per-paycheck figures are floored to the cent rather than rounded.
+
+       These get typed into a benefits portal and multiplied back out by
+       payroll, so a half-cent rounded up is a real overcontribution: $4,500
+       over 26 paychecks is $173.0769, and electing the rounded $173.08 puts
+       $4,500.08 into the account — an excess contribution subject to the 6%
+       excise tax. Flooring leaves at most a few cents on the table instead,
+       which is the side of the line to be on.
+
+       Math.floor after scaling by 100 can trip on binary representation
+       (a true $173.08 stored as 173.07999... would floor to $173.07), so the
+       value is nudged by a rounding epsilon first. */
+    function floorCents(value) {
+        return Math.floor(value * 100 + 1e-6) / 100;
+    }
+
     /* The full limit spread across the year, ignoring who funds it. Shown
        alongside the employee share so the split is visible. */
     Model.prototype.totalPerPaycheck = function () {
-        return this.totalLimit() / this.periods();
+        return floorCents(this.totalLimit() / this.periods());
     };
 
     Model.prototype.yourPerPaycheck = function () {
-        return this.yourRoom() / this.periods();
+        return floorCents(this.yourRoom() / this.periods());
     };
 
-    /* The employer's share spread across the same schedule. Shown beside the
-       other two so the pair visibly adds up to the full limit — employer
+    /* The employer's share spread across the same schedule. Employer
        contributions rarely arrive per paycheck (a lump sum at the start of the
-       plan year is common), so this is the average, not a deposit schedule. */
+       plan year is common), so this is an average, not a deposit schedule.
+
+       Taken as the remainder rather than floored independently: it's the one
+       figure of the three nobody types into a form, so it absorbs the rounding
+       and the three cards still visibly add up. */
     Model.prototype.employerPerPaycheck = function () {
-        return this.employerContribution() / this.periods();
+        return this.totalPerPaycheck() - this.yourPerPaycheck();
     };
 
     /* True once the employer alone has consumed the entire limit. */
