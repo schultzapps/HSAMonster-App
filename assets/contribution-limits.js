@@ -14,54 +14,17 @@
 (function () {
     'use strict';
 
-    /* ------------------------------------------------------------
-       Limits by tax year.
+    /* The limits table, the catch-up age and the pay schedules all live in
+       hsa-limits.js so this tool and the growth calculator can't drift apart.
+       Adding a tax year there adds it to the menu, the copy and the reference
+       tables below. */
+    var LIMITS = window.HSALimits;
 
-       The IRS publishes the following year's figures around May, so
-       adding a year here is the entire change: the year menu, the
-       page copy and the reference table all read from this table.
-       Newest first — the first entry becomes the default.
-
-       The catch-up amount is set by statute at $1,000 and is not
-       inflation-indexed, so unlike the limits it doesn't move year
-       to year. It's stored per-year anyway so that a future change
-       in the law is the same one-line edit.
-       ------------------------------------------------------------ */
-    var YEARS = [
-        { year: 2027, individualLimit: 4500, familyLimit: 9000, catchUpAmount: 1000, published: '2026-05-29' },
-        { year: 2026, individualLimit: 4400, familyLimit: 8750, catchUpAmount: 1000, published: '2025-05-01' },
-        { year: 2025, individualLimit: 4300, familyLimit: 8550, catchUpAmount: 1000, published: '2024-05-09' }
-    ];
-
-    /* Age-based catch-up eligibility, the same across every year above. */
-    var CATCH_UP_AGE = 55;
-
-    /* Defaults to the newest published year. The IRS releases each year's
-       figures the previous May, and search interest shifts to the new year
-       well before it starts — open enrollment runs in the autumn, which is
-       when people are actually choosing a payroll election. Earlier years stay
-       one pick away in the menu. */
-    var DEFAULT_YEAR = YEARS.reduce(function (best, entry) {
-        return entry.year > best ? entry.year : best;
-    }, YEARS[0].year);
-
-    function limitsFor(year) {
-        for (var i = 0; i < YEARS.length; i++) {
-            if (YEARS[i].year === year) return YEARS[i];
-        }
-        return YEARS[0];
-    }
-
-    /* Pay schedules, with the number of paychecks each produces in a year.
-       Semi-monthly (24) and biweekly (26) are distinct on purpose — they're
-       widely confused, and the two-paycheck difference is exactly the kind of
-       thing that leaves someone short of the max in December. */
-    var FREQUENCIES = [
-        { id: 'weekly', label: 'Weekly', periods: 52 },
-        { id: 'biweekly', label: 'Every 2 weeks', periods: 26 },
-        { id: 'semimonthly', label: 'Twice a month', periods: 24 },
-        { id: 'monthly', label: 'Monthly', periods: 12 }
-    ];
+    var YEARS = LIMITS.years;
+    var CATCH_UP_AGE = LIMITS.catchUpAge;
+    var DEFAULT_YEAR = LIMITS.defaultYear;
+    var FREQUENCIES = LIMITS.frequencies;
+    var limitsFor = LIMITS.limitsFor;
 
     /* Guard against an entry large enough to break the layout. Employer
        contributions above the limit are meaningful (they zero out your room),
@@ -130,12 +93,7 @@
         }
     }
 
-    function periodsFor(id) {
-        for (var i = 0; i < FREQUENCIES.length; i++) {
-            if (FREQUENCIES[i].id === id) return FREQUENCIES[i].periods;
-        }
-        return 26;
-    }
+    var periodsFor = LIMITS.periodsFor;
 
     /* ------------------------------------------------------------
        Model
@@ -293,7 +251,7 @@
 
         // Likewise for a stored year that's since dropped off the table, so an
         // old visit can't pin the page to limits that are no longer listed.
-        if (!YEARS.some(function (y) { return y.year === state.year; })) {
+        if (!LIMITS.hasYear(state.year)) {
             state.year = DEFAULTS.year;
         }
 
@@ -437,7 +395,7 @@
             var html = '';
             // Oldest first, so the sections read upward in the same order as
             // the year menu.
-            YEARS.slice().sort(function (a, b) { return a.year - b.year; }).forEach(function (limits) {
+            LIMITS.ascending().forEach(function (limits) {
                 var rows = [
                     { id: 'individual', label: 'Self-only', base: limits.individualLimit },
                     { id: 'family', label: 'Family', base: limits.familyLimit }
@@ -491,7 +449,7 @@
            Listed oldest first so the years read upward in the menu, while
            YEARS itself stays newest-first for the default and the tables. */
         var yearSelect = $('tax-year');
-        YEARS.slice().sort(function (a, b) { return a.year - b.year; }).forEach(function (entry) {
+        LIMITS.ascending().forEach(function (entry) {
             var opt = document.createElement('option');
             opt.value = entry.year;
             opt.textContent = String(entry.year);

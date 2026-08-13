@@ -316,9 +316,14 @@
 .field-label {
     font-size: 0.9375rem;
     color: var(--text-secondary);
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-sm);
+}
+
+/* Spacing before the trailing badge. Deliberately a margin here rather than a
+   gap on .field-label: making the label a flex container turns every child into
+   a flex item, so a [data-config] span inline in the label text ("I'm 55 or
+   older") picks up the gap on both sides and reads as broken spacing. */
+.field-label .max-badge {
+    margin-left: var(--space-sm);
 }
 
 .field-value {
@@ -335,8 +340,10 @@
     line-height: 1.5;
 }
 
-/* "2026 Max" badge beside the contribution label */
+/* "2027 Max" badge beside the contribution label */
 .max-badge {
+    display: inline-block;
+    vertical-align: middle;
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--accent-primary);

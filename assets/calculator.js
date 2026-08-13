@@ -14,18 +14,19 @@
     'use strict';
 
     /* ------------------------------------------------------------
-       Config — mirrors HSACalculatorConfig.default (2026 values).
-       In the app these come from Remote Config so IRS limit changes
-       ship without a release; on the web they're updated here.
+       Config — mirrors HSACalculatorConfig.default. In the app these
+       come from Remote Config so IRS limit changes ship without a
+       release; on the web the tax rates live here and the annual
+       limits come from hsa-limits.js, shared with the contribution
+       limits tool so the two pages can never quote different figures.
        ------------------------------------------------------------ */
     var CONFIG = {
-        year: 2026,
-        individualLimit: 4400,
-        familyLimit: 8750,
         federalBrackets: [10, 12, 22, 24, 32, 35, 37],
         ficaRate: 7.65,
         maxStateTaxRate: 13
     };
+
+    var LIMITS = window.HSALimits;
 
     /* Annual drag applied to the taxable comparison's gains, modeling tax owed
        on dividends/realized gains that the HSA avoids entirely. ~10% reflects a
@@ -40,7 +41,9 @@
        web there's nothing to read, so the deferred amount starts at a round
        figure that makes the chart meaningful on first paint. */
     var DEFAULTS = {
+        taxYear: LIMITS.defaultYear,
         coverage: 'family',
+        catchUp: false,
         startingBalance: 0,
         annualContribution: null, // null => track the annual max
         federalBracket: 24,
@@ -109,8 +112,25 @@
         this.state = state;
     }
 
+    /* The published limits for the selected tax year. */
+    Model.prototype.limits = function () {
+        return LIMITS.limitsFor(this.state.taxYear);
+    };
+
+    /* The statutory limit before any catch-up. */
+    Model.prototype.baseLimit = function () {
+        var limits = this.limits();
+        return this.state.coverage === 'family' ? limits.familyLimit : limits.individualLimit;
+    };
+
+    Model.prototype.catchUp = function () {
+        return this.state.catchUp ? this.limits().catchUpAmount : 0;
+    };
+
+    /* The ceiling for the contribution slider: the year's limit for this
+       coverage, plus the age 55+ catch-up when it applies. */
     Model.prototype.maxContribution = function () {
-        return this.state.coverage === 'family' ? CONFIG.familyLimit : CONFIG.individualLimit;
+        return this.baseLimit() + this.catchUp();
     };
 
     /* The contribution actually used: tracks the annual max until the user
@@ -423,7 +443,9 @@
 
         /* --- State, seeded from storage --- */
         var state = {
+            taxYear: readStore('taxYear', DEFAULTS.taxYear),
             coverage: readStore('coverage', DEFAULTS.coverage),
+            catchUp: readStore('catchUp', DEFAULTS.catchUp),
             startingBalance: readStore('startingBalance', DEFAULTS.startingBalance),
             annualContribution: readStore('annualContribution', DEFAULTS.annualContribution),
             federalBracket: readStore('federalBracket', DEFAULTS.federalBracket),
@@ -434,6 +456,13 @@
             includeFICA: readStore('includeFICA', DEFAULTS.includeFICA),
             reimbursableAmount: readStore('reimbursableAmount', DEFAULTS.reimbursableAmount)
         };
+
+        // A stored year that's since dropped off the limits table falls back to
+        // the newest one, so an old visit can't pin the slider to limits that
+        // are no longer published.
+        if (!LIMITS.hasYear(state.taxYear)) {
+            state.taxYear = DEFAULTS.taxYear;
+        }
 
         // A stored federal bracket that's no longer offered snaps to the nearest
         // option, and the state rate is clamped to the configured maximum.
@@ -620,25 +649,59 @@
                 paintContribution();
             });
 
+            /* Anything that moves the ceiling — tax year, coverage, the catch-up
+               toggle — runs through here. A user tracking the max follows it,
+               and a chosen figure above the new cap drops to it rather than
+               leaving the slider pinned past its own maximum. */
+            function applyNewMax(key, value) {
+                state[key] = value;
+                writeStore(key, value);
+                var max = model.maxContribution();
+                if (state.annualContribution !== null && state.annualContribution > max) {
+                    state.annualContribution = max;
+                    writeStore('annualContribution', max);
+                }
+                paintContribution();
+                renderConfigCopy();
+                render();
+            }
+
+            /* --- Tax year menu, built from the shared limits table ---
+               Listed oldest first so the years read upward, matching the
+               contribution limits tool. */
+            var yearSelect = $('tax-year');
+            if (yearSelect) {
+                LIMITS.ascending().forEach(function (entry) {
+                    var opt = document.createElement('option');
+                    opt.value = entry.year;
+                    opt.textContent = String(entry.year);
+                    yearSelect.appendChild(opt);
+                });
+                yearSelect.value = state.taxYear;
+                yearSelect.addEventListener('change', function () {
+                    applyNewMax('taxYear', parseInt(yearSelect.value, 10));
+                });
+            }
+
             Array.prototype.forEach.call(coverageButtons, function (btn) {
                 btn.addEventListener('click', function () {
                     var coverage = btn.getAttribute('data-coverage');
                     Array.prototype.forEach.call(coverageButtons, function (b) {
                         b.setAttribute('aria-pressed', String(b === btn));
                     });
-                    state.coverage = coverage;
-                    writeStore('coverage', coverage);
-                    // Re-fit the contribution to the new limit: a user tracking
-                    // the max follows it, and anything above the new cap drops.
-                    var max = model.maxContribution();
-                    if (state.annualContribution !== null && state.annualContribution > max) {
-                        update('annualContribution', max);
-                    }
-                    paintContribution();
-                    render();
+                    applyNewMax('coverage', coverage);
                 });
                 btn.setAttribute('aria-pressed', String(btn.getAttribute('data-coverage') === state.coverage));
             });
+
+            /* --- Age 55+ catch-up toggle --- */
+            var catchUpToggle = $('catchup');
+            if (catchUpToggle) {
+                catchUpToggle.checked = state.catchUp;
+                catchUpToggle.addEventListener('change', function () {
+                    applyNewMax('catchUp', catchUpToggle.checked);
+                });
+            }
 
             paintContribution();
 
@@ -683,13 +746,30 @@
             bindCurrency('reimbursable', 'reimbursableAmount');
         }
 
-        /* Config-driven copy (limits, tax year) rendered into the page text. */
-        Array.prototype.forEach.call(document.querySelectorAll('[data-config]'), function (el) {
-            var key = el.getAttribute('data-config');
-            if (key === 'year') el.textContent = String(CONFIG.year);
-            else if (key === 'individualLimit') el.textContent = money(CONFIG.individualLimit);
-            else if (key === 'familyLimit') el.textContent = money(CONFIG.familyLimit);
-        });
+        /* Config-driven copy, so the year and the limits quoted throughout the
+           page follow the year menu rather than being pinned to whatever was
+           hardcoded in the markup. Same contract as the contribution limits
+           tool, so a [data-config] span means the same thing on either page. */
+        function renderConfigCopy() {
+            var limits = model.limits();
+            var values = {
+                year: String(limits.year),
+                individualLimit: money(limits.individualLimit),
+                familyLimit: money(limits.familyLimit),
+                catchUpAmount: money(limits.catchUpAmount),
+                individualCatchUp: money(limits.individualLimit + limits.catchUpAmount),
+                familyCatchUp: money(limits.familyLimit + limits.catchUpAmount),
+                catchUpAge: String(LIMITS.catchUpAge),
+                nextYear: String(limits.year + 1)
+            };
+            Array.prototype.forEach.call(document.querySelectorAll('[data-config]'), function (el) {
+                var key = el.getAttribute('data-config');
+                if (Object.prototype.hasOwnProperty.call(values, key)) {
+                    el.textContent = values[key];
+                }
+            });
+        }
+        renderConfigCopy();
 
         /* ------------------------------------------------------------
            Scrubbing — drag (or hover) the chart to read any year.
