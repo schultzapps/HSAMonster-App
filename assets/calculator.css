@@ -16,9 +16,12 @@
     padding-bottom: var(--space-2xl);
 }
 
+/* Matches .container and .nav-container in styles.css. The navbar is the
+   fixed reference on every page, so a wider content column here reads as
+   an overhang against the bar directly above it. */
 .tool-container {
     width: 100%;
-    max-width: 1160px;
+    max-width: 1080px;
     margin: 0 auto;
     padding: 0 var(--space-lg);
 }
