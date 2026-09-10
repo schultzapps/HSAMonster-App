@@ -690,15 +690,15 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 /* The bezel is a transparent-cutout PNG of a real iPhone laid over the
    screenshot, so every phone on the page shares one set of proportions.
-   The frame art is 496x1012, with an orange rail, then a ~10px black
-   bezel, then the screen cutout at x 27-466 / y 26-984. .phone-screen is
-   inset slightly LESS than the cutout so the screenshot tucks ~4px under
+   The frame art is 822x1681, with the screen cutout at x 44-777 /
+   y 43-1637 (5.35% in on each side, 2.56% top and bottom). .phone-screen
+   is inset slightly LESS than the cutout so the screenshot tucks under
    the black band, thinning the visible bezel. Don't reduce these further:
-   past x 17 / y 15 the screenshot would cover the orange rail. */
+   past ~3% the screenshot would spill over the outer rail. */
 .phone-frame {
     position: relative;
     width: 274px;
-    aspect-ratio: 496 / 1012;
+    aspect-ratio: 822 / 1681;
     filter: drop-shadow(0 0 60px var(--accent-glow));
     transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
     transition: transform var(--transition-slow);
@@ -1064,7 +1064,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
        together rather than overflowing and being forced to stack. */
     position: relative;
     width: min(200px, 25vw);
-    aspect-ratio: 496 / 1012;
+    aspect-ratio: 822 / 1681;
     transition: all var(--transition-slow);
     transform: rotateY(15deg) scale(0.9);
     /* drop-shadow rather than box-shadow: the phone's real silhouette is
