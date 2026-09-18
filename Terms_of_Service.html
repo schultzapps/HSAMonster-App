@@ -121,7 +121,7 @@
 <body>
     <h1>Terms of Service - HSA Monster</h1>
     
-    <p class="effective-date">Effective Date: January 15, 2026</p>
+    <p class="effective-date">Effective Date: September 17, 2026</p>
 
     <h2>1. Acceptance of Terms</h2>
     <div class="section-content">
@@ -154,7 +154,7 @@
                 <li><strong>iCloud Sync (Optional):</strong> If you enable iCloud sync, your HSA transaction data and receipt attachments are also stored in your personal iCloud account using Apple's CloudKit. This enables seamless syncing across your devices and secure family sharing (when enabled). You can disable iCloud sync at any time, and your data will remain only on your device.</li>
                 <li><strong>Receipt Attachments:</strong> Receipt images and PDFs you capture or upload are stored as part of your Core Data database, either locally on your device or in CloudKit (if iCloud sync is enabled). Receipts are securely attached to their associated transactions and sync across your devices when iCloud is enabled.</li>
                 <li><strong>Photos and Documents:</strong> Any receipts you capture with the camera or import from your photo library or files are accessed through Apple's standard APIs and stored in your Core Data database. We never have access to your photos, documents, or receipts.</li>
-                <li><strong>On-Device AI Processing:</strong> If you use the receipt scanning feature, text recognition and data extraction are performed entirely on your device using Apple's Vision and Natural Language frameworks (or Apple Foundation Models on supported devices). No receipt data is sent to our servers or any third-party AI service.</li>
+                <li><strong>AI Processing:</strong> If you use the receipt scanning feature, text recognition and data extraction are performed on your device by default, using Apple's Vision and Natural Language frameworks (or Apple Foundation Models on supported devices). If you choose to enable Private Cloud Compute in Settings &gt; Document Scanning, the receipt being scanned is sent to Apple's Private Cloud Compute service for processing and the result is returned to your device. No receipt data is sent to our servers or any third-party AI service under any setting.</li>
                 <li><strong>iCloud Terms:</strong> Your use of iCloud storage is subject to Apple's iCloud Terms and Conditions.</li>
             </ul>
         </div>
@@ -242,12 +242,13 @@
 
         <h3>7.3 AI Receipt Extraction</h3>
         <div class="subsection">
-            <p>The App includes an on-device AI feature that attempts to extract transaction details from receipts. You acknowledge that:</p>
+            <p>The App includes an AI feature that attempts to extract transaction details from receipts, running on your device by default or through Apple's Private Cloud Compute if you enable that option. You acknowledge that:</p>
             <ul>
                 <li>AI extraction is provided as a convenience and may not always be accurate</li>
                 <li>You are responsible for reviewing and verifying all AI-extracted data before saving</li>
                 <li>We are not liable for any errors in AI-extracted information</li>
-                <li>All AI processing occurs on your device; no receipt data is transmitted to our servers</li>
+                <li>AI processing occurs on your device by default; if you enable Private Cloud Compute, the receipt being scanned is processed by Apple's Private Cloud Compute service, which Apple states does not store your data or make it accessible to Apple</li>
+                <li>No receipt data is transmitted to our servers under any setting</li>
             </ul>
         </div>
     </div>

@@ -90,7 +90,7 @@
 </head>
 <body>
     <h1>HSA Monster Privacy Policy</h1>
-    <p class="last-updated">Last updated: January 15, 2026</p>
+    <p class="last-updated">Last updated: September 18, 2026</p>
     
     <p>This Privacy Policy describes how HSA Monster ("we," "us," or "our") handles information when you use our mobile application (the "App"). We are committed to protecting your privacy and being transparent about our data practices.</p>
     
@@ -98,7 +98,7 @@
     
     <h2>1. Information We Collect</h2>
     
-    <p>HSA Monster is designed with privacy in mind. We collect minimal information, and your personal HSA data and receipts never leave your device or Apple's secure ecosystem.</p>
+    <p>HSA Monster is designed with privacy in mind. We collect minimal information, and your personal HSA data and receipts never leave Apple's secure ecosystem. Receipt scanning runs on your device by default; if you choose to turn on Private Cloud Compute, receipts are processed by Apple's Private Cloud Compute service, which does not store or share your data. We never receive your receipts either way.</p>
     
     <h3>1.1 Information You Store Locally</h3>
     
@@ -121,9 +121,10 @@
     <p>When you use the receipt scanning feature:</p>
     
     <ul>
-        <li>Receipt images are processed entirely on your device using Apple's Vision Framework and Natural Language Framework (or Apple Foundation Models on supported devices)</li>
-        <li>Text recognition (OCR) and data extraction happen locally on your device</li>
-        <li>No receipt images or extracted data are transmitted to our servers or any third-party AI service</li>
+        <li>By default, receipt images are processed entirely on your device using Apple's Vision Framework and Natural Language Framework (or Apple Foundation Models on supported devices)</li>
+        <li>With on-device processing, text recognition (OCR) and data extraction happen locally and no receipt data leaves your device</li>
+        <li><strong>Private Cloud Compute (optional):</strong> If you select Private Cloud Compute in Settings &gt; Document Scanning, the receipt you are scanning is sent to Apple's Private Cloud Compute service so a larger AI model can read it. This setting is off unless you turn it on. Apple states that data sent to Private Cloud Compute is not stored, is not accessible to Apple, and is used only to return your result. See <a href="https://security.apple.com/documentation/private-cloud-compute/">Apple's Private Cloud Compute documentation</a>.</li>
+        <li>No receipt images or extracted data are ever transmitted to our servers or to any third-party AI service. We have no access to your receipts under any setting.</li>
         <li>Receipt attachments are stored in Core Data, either locally on your device or synced via CloudKit (if iCloud sync is enabled)</li>
         <li>Receipts remain private to you and are only accessible through the App or CloudKit family sharing (if you enable it)</li>
     </ul>
@@ -137,7 +138,7 @@
         <li>App usage patterns (which features are used, how often)</li>
         <li>Anonymous subscription status and purchase history</li>
         <li>Receipt capture method used (camera, photo library, files, etc.)</li>
-        <li>AI extraction success/failure rates (without receipt content)</li>
+        <li>AI extraction success/failure rates and which processing method was used (on-device or Private Cloud Compute), without any receipt content</li>
         <li>Crash reports and error logs</li>
         <li>General usage statistics</li>
     </ul>
@@ -190,6 +191,7 @@
         <li><strong>Vision Framework & Natural Language Framework:</strong> Used for on-device text recognition and data extraction from receipts. All processing happens on your device; no data is transmitted to Apple's servers or our servers.</li>
         
         <li><strong>Apple Foundation Models (iOS 18.1+):</strong> On supported devices with Apple Intelligence enabled, the App may use Apple's on-device Foundation Models for improved receipt data extraction. All processing is done locally on your device; no receipt data is sent to Apple's servers.</li>
+        <li><strong>Private Cloud Compute (optional, iOS 27+):</strong> If you turn this option on in Settings &gt; Document Scanning, the receipt being scanned is sent to Apple's Private Cloud Compute service, where a larger Apple Intelligence model reads it and returns the result to your device. Apple states that data sent to Private Cloud Compute is not stored, is not accessible to Apple, and is used only to fulfill your request. This option is off by default and is the only circumstance in which receipt data leaves your device for processing. It is governed by Apple's privacy policy.</li>
         
         <li><strong>VisionKit:</strong> Used for document scanning with automatic edge detection and perspective correction. Scanning happens entirely on your device.</li>
     </ul>
@@ -241,7 +243,8 @@
         <li>If you use iCloud sync, all HSA transaction data and receipt attachments are stored in CloudKit with Apple's industry-standard encryption</li>
         <li>If you disable iCloud sync, your data is stored only on your device with iOS security protections</li>
         <li>All data is protected by your iCloud account security (password, two-factor authentication) and/or your device passcode</li>
-        <li>All receipt processing (OCR and AI extraction) happens on your device; no receipt data is transmitted to our servers</li>
+        <li>Receipt processing (OCR and AI extraction) happens on your device by default. If you turn on Private Cloud Compute, receipts are processed by Apple's Private Cloud Compute service under Apple's encryption and privacy protections</li>
+        <li>No receipt data is transmitted to our servers under any setting</li>
         <li>We never transmit your personal data to our servers</li>
     </ul>
     
@@ -327,7 +330,7 @@
     <ul>
         <li>All your data stays on your device and in your private iCloud account</li>
         <li>We never have access to your health expense information</li>
-        <li>Receipt processing happens entirely on your device</li>
+        <li>Receipt processing happens on your device by default, or through Apple's Private Cloud Compute if you choose to enable it</li>
         <li>You control who has access to your data through CloudKit sharing</li>
     </ul>
     
@@ -340,7 +343,7 @@
     </div>
     
     <div class="summary-box">
-        <p><strong>Summary:</strong> HSA Monster is designed with your privacy as a top priority. Your HSA transaction data and receipt attachments stay exclusively on your device and, if you choose, in your private iCloud account via CloudKit. Receipt scanning and AI extraction happen entirely on your device. We only collect anonymous analytics to improve the app. We never see, store, or share your personal HSA information or receipts.</p>
+        <p><strong>Summary:</strong> HSA Monster is designed with your privacy as a top priority. Your HSA transaction data and receipt attachments stay exclusively on your device and, if you choose, in your private iCloud account via CloudKit. Receipt scanning and AI extraction happen on your device by default, with optional Private Cloud Compute if you turn it on. We only collect anonymous analytics to improve the app. We never see, store, or share your personal HSA information or receipts.</p>
     </div>
     <script>
         // Email obfuscation
