@@ -744,8 +744,8 @@
         // Email obfuscation (Contact Us in footer)
         document.getElementById('contact-link').addEventListener('click', function(e) {
             e.preventDefault();
-            const user = 'schultzapps';
-            const domain = 'gmail.com';
+            const user = 'support';
+            const domain = 'hsamonster.com';
             const subject = 'HSA Monster Feedback';
             window.location.href = 'mail' + 'to:' + user + '@' + domain + '?subject=' + encodeURIComponent(subject);
         });
@@ -775,7 +775,7 @@
                     throw new Error('Submission failed');
                 }
             } catch (err) {
-                alert('Something went wrong sending your inquiry. Please email schultzapps@gmail.com directly and we\'ll get right back to you.');
+                alert('Something went wrong sending your inquiry. Please email support@hsamonster.com directly and we\'ll get right back to you.');
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalLabel;
             }
