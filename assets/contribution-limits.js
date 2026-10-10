@@ -1,5 +1,5 @@
 /* ============================================================
-   HSA Monster — 2026 contribution limit calculator
+   HSA Monster — HSA contribution limit calculator
    ------------------------------------------------------------
    A different shape from the growth/defer calculators: there's no
    projection and no chart, just the IRS limit for your situation
@@ -393,9 +393,9 @@
             if (!host) return;
 
             var html = '';
-            // Oldest first, so the sections read upward in the same order as
-            // the year menu.
-            LIMITS.ascending().forEach(function (limits) {
+            // Newest first, so the year people are searching for leads the
+            // section and the older years follow as reference.
+            LIMITS.ascending().reverse().forEach(function (limits) {
                 var rows = [
                     { id: 'individual', label: 'Self-only', base: limits.individualLimit },
                     { id: 'family', label: 'Family', base: limits.familyLimit }
@@ -447,7 +447,7 @@
 
         /* --- Tax year menu, built from the limits table ---
            Listed oldest first so the years read upward in the menu, while
-           YEARS itself stays newest-first for the default and the tables. */
+           YEARS itself stays newest-first for the default. */
         var yearSelect = $('tax-year');
         LIMITS.ascending().forEach(function (entry) {
             var opt = document.createElement('option');
