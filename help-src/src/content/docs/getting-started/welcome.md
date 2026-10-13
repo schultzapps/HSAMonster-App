@@ -16,10 +16,6 @@ See [How reimbursing later works](/help/reimbursements/reimburse-later/) for mor
 
 ## Setting up
 
-The first time you open HSA Monster, a short tour explains the strategy and the main features. Tap **Why HSA?** anytime during it for videos and articles on getting the most from an HSA.
-
-Tap **Add Your First Expense** at the end to start. Then:
-
 1. [Add an expense](/help/expenses/adding-an-expense/), ideally by scanning a receipt.
 2. [Add your HSA account](/help/accounts/adding-an-account/) to track its balance and contributions (optional).
 3. [Add family members](/help/family/family-members/) to note who each expense was for.
