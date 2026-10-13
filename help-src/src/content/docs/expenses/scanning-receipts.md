@@ -48,4 +48,4 @@ To replace a receipt, edit the expense, tap the trash button on the receipt, the
 
 ## Where receipts are stored
 
-Receipts are saved inside HSA Monster and synced with your private iCloud, so they're on every device without filling up iCloud Drive. To get copies, [export a receipts ZIP](/help/data/reports-and-export/).
+Receipts are saved inside HSA Monster and synced with your private iCloud, so they're backed up and available on every device. To get copies, [export a receipts ZIP](/help/data/reports-and-export/). Every receipt is given a clean filename with date, provider, and amount, making them easier than ever to retain.
