@@ -59,14 +59,12 @@ const imageSrc = imageFile && `${import.meta.env.BASE_URL.replace(/\/$/, '')}/ca
 		box-shadow: 0 8px 22px rgba(88, 86, 214, 0.12);
 		transform: translateY(-2px);
 	}
-	/* Illustrations sit straight on the card. Multiply blending drops their
-	   white or off-white background into the card's white. */
+	/* Illustrations (transparent PNGs) sit straight on the card. */
 	.hm-topic-image {
 		width: 7.5rem;
 		height: 7.5rem;
 		margin-bottom: 0.75rem;
 		object-fit: contain;
-		mix-blend-mode: multiply;
 	}
 	.hm-topic-icon {
 		display: grid;
