@@ -13,7 +13,6 @@
 	/* Secondary brand teal, used for tips. */
 	--hm-teal: #1f8f84;
 	--hm-teal-low: #e0f6f3;
-	--hm-gradient: linear-gradient(135deg, #5856d6 0%, #56cec0 50%, #56a2ce 100%);
 
 	--sl-color-white: #0a0a12;
 	--sl-color-gray-1: #1f1f33;
@@ -312,18 +311,9 @@ mobile-starlight-toc summary .toggle {
 }
 .hero h1 {
 	font-size: clamp(2.25rem, calc(1rem + 4vw), 3.25rem);
-	font-weight: 700;
-	letter-spacing: -0.03em;
-	background: var(--hm-gradient);
-	-webkit-background-clip: text;
-	background-clip: text;
-	color: transparent;
-}
-
-/* Help home: soft brand glow behind the hero, like the main site. */
-[data-has-hero] .main-frame {
-	background: radial-gradient(ellipse 60rem 22rem at 50% 0%, rgba(88, 86, 214, 0.08), transparent 70%),
-		radial-gradient(ellipse 40rem 18rem at 85% 5%, rgba(86, 206, 192, 0.1), transparent 70%);
+	font-weight: 800;
+	letter-spacing: -0.035em;
+	color: var(--sl-color-white);
 }
 .hero .tagline {
 	font-size: var(--sl-text-lg);
