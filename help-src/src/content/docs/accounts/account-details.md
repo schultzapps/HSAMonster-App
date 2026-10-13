@@ -6,7 +6,7 @@ sidebar:
 ---
 Tap an account on **Summary** or in **Settings → HSA Accounts**. On iPad and Mac, accounts are also in the sidebar.
 
-## What's there
+## Overview
 
 - **Balance chart** and **YTD Contributions** and **YTD Withdrawals** for just this account
 - **Activity:** its transactions in the selected date range

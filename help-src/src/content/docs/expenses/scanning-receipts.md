@@ -22,7 +22,7 @@ Receipts can be PDF, JPEG, PNG, HEIC, GIF, or WebP, up to 5 MB. Photos are compr
 
 With Apple Intelligence, a banner at the top of the form shows **High**, **Medium**, or **Low confidence** and a short note on what to double-check.
 
-**Medium** often means the receipt mixes HSA-eligible and other items, like a pharmacy receipt with snacks on it. Make sure the amount only covers the eligible items.
+**Medium** often means the receipt mixes HSA-eligible and other items, like a pharmacy receipt that includes non-medical items. Make sure the amount only covers the eligible items.
 
 ## Choosing how receipts are read
 

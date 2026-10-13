@@ -10,9 +10,9 @@ There's no deadline to pay yourself back for an eligible expense, as long as it 
 
 1. Pay medical bills out of pocket.
 2. Leave the money in their HSA, invested, to grow for years or decades.
-3. Reimburse themselves later, tax-free, whenever they need the cash.
+3. Reimburse themselves later, tax-free, whenever they need the funds.
 
-The catch is keeping proof of every expense for years. That's what HSA Monster is for.
+This requires keeping records of every expense for years. HSA Monster keeps those records organized and ready.
 
 ## Your Reimbursable total
 

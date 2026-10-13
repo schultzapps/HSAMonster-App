@@ -24,9 +24,9 @@ See [How reimbursing later works](/help/reimbursements/reimburse-later/) for mor
 
 Everything is saved in your private iCloud account, not on our servers. There's no sign-up, and it syncs to every iPhone, iPad, and Mac signed in to the same iCloud account.
 
-Receipts are read on your device by default. See [Privacy & receipt scanning](/help/data/privacy/).
+Receipts are read on your device by default. See [Privacy & your data](/help/data/privacy/).
 
-## New device or reinstalling?
+## New device or reinstall
 
 On the first welcome screen, tap **Returning User**. HSA Monster waits for your data to arrive from iCloud, then shows **iCloud Data Found**. Tap **Open HSA Monster**. Everything can take a few minutes to finish syncing.
 

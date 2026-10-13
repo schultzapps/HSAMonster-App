@@ -37,7 +37,7 @@ To bring HSA Monster in line with your provider:
 
 Reconcile only after you've logged all contributions and withdrawals up to that date. Otherwise the reconcile adjustment absorbs them, and they'll be counted twice once you add them.
 
-Reconciling monthly or quarterly, when your statement arrives, is plenty.
+Reconciling monthly or quarterly, when your statement arrives, is usually enough.
 
 ## Seeing your growth
 

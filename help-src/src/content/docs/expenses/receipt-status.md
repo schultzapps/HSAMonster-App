@@ -10,9 +10,9 @@ Every expense has a receipt status. The **Expenses** tab badge counts the ones s
 | --- | --- |
 | **Attached** | The receipt is saved in HSA Monster. |
 | **Missing** | You still need to add it. New expenses start here until you attach one. |
-| **Not Required** | No receipt needed for this one. |
+| **Not Required** | No receipt is needed. |
 | **Stored Elsewhere** | You keep it somewhere else, like your HSA provider's site. |
-| **Lost** | It's gone for good. |
+| **Lost** | The receipt can't be recovered. |
 
 ## Setting a status
 

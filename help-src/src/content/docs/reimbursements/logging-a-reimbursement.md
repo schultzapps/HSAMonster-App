@@ -17,7 +17,7 @@ The amount and a comment describing the expense are filled in for you.
 
 ## Logging any reimbursement
 
-Reimburse yourself for several expenses at once, or any amount you like:
+To reimburse several expenses at once, or any amount:
 
 - Press and hold an account on **Summary** and tap **Add Reimbursement**.
 - On an account's page, tap **+ → Add Reimbursement**.

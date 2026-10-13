@@ -23,11 +23,11 @@ Go to **Settings → iCloud Sync**:
 
 Your purchase is restored automatically with the same Apple Account.
 
-## Something's missing?
+## If data is missing
 
 1. Check **Settings → iCloud Sync**. **Not signed in** or **No network** tells you what to fix.
 2. In the iPhone **Settings** app, tap your name, then **iCloud**, and make sure iCloud is on for **HSA Monster**.
-3. Give it a few minutes, especially with lots of receipts. Keep the app open on Wi-Fi.
-4. Sharing a household? Try **Settings → Household Sharing → ••• → Resync with Household**.
+3. Allow a few minutes, especially with many receipts. Keep the app open on Wi-Fi.
+4. If you share a household, tap **Settings → Household Sharing → ••• → Resync with Household**.
 
 If you still need help, tap **Settings → Contact Us → Report a Problem**.

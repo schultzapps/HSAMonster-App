@@ -20,7 +20,7 @@ Tap **Template** for a sample file. Columns can be in any order:
 | Column | Notes |
 | --- | --- |
 | **Date** | Required. Like 2026-03-15 or 03/15/2026. |
-| **Amount** | Required. Dollar signs are fine. |
+| **Amount** | Required. Dollar signs are allowed. |
 | **Provider** | Also read from Payee or Merchant. |
 | **Description** | Also read from Memo. |
 | **Account** | Must match an HSA account's name or number. |

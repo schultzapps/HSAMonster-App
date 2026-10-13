@@ -48,7 +48,7 @@ Scanning with the camera isn't available on Mac. Use **Attach File** instead.
 
 To track only out-of-pocket expenses, turn on **Settings → Simple Mode**. It hides HSA account balances, contributions, and activity, and the Summary chart shows only your **Reimbursable** total.
 
-## Make it yours
+## Appearance
 
 In **Settings**:
 

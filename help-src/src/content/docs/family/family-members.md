@@ -14,7 +14,7 @@ Your HSA can pay for your spouse's and dependents' medical expenses too. Add fam
 
 You can also tap **Add** next to **Patient** while adding an expense.
 
-## Using them
+## Using family members
 
 - Pick a **Patient** on each expense.
 - When a scanned receipt includes a patient name that matches a family member, they're selected for you.
@@ -23,4 +23,4 @@ You can also tap **Add** next to **Patient** while adding an expense.
 
 ## Deleting a family member
 
-Tap them, then **Edit → Delete Family Member**. Their expenses are kept, just without a patient.
+Tap the family member, then **Edit → Delete Family Member**. Their expenses are kept, with no patient assigned.

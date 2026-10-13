@@ -25,7 +25,7 @@ sidebar:
 | **Patient** | The [family member](/help/family/family-members/) it was for. |
 | **Comment** | Any notes. |
 
-## Out of Pocket or paid from HSA?
+## Out of Pocket vs. paid from HSA
 
 This choice decides where the expense counts:
 
@@ -34,7 +34,7 @@ This choice decides where the expense counts:
 
 ## Providers
 
-Tap **Provider** to pick one you've used before or type a new name and tap **Create**. Reusing the same name keeps search, reports, and receipt file names tidy.
+Tap **Provider** to pick one you've used before or type a new name and tap **Create**. Reusing the same name keeps search, reports, and receipt file names consistent.
 
 To merge providers that were typed differently, select their expenses and use **Combine Provider**. See [Search & batch edit](/help/expenses/search-and-batch-edit/).
 

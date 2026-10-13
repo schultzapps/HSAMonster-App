@@ -19,11 +19,11 @@ Adding your HSA account is optional. If you only want to track expenses and rece
 
 New accounts start at $0. Set yours one of two ways:
 
-- **Reconcile** to enter today's balance from your statement. Quickest.
+- **Reconcile** to enter today's balance from your statement. This is the quickest option.
 - **Add Contribution** for past deposits, to build a full history.
 
 See [Contributions & balances](/help/accounts/contributions-and-balances/).
 
-## More than one HSA?
+## Multiple HSA accounts
 
-Add each one, like an old employer's HSA and a new one. Summary combines them into your total **HSA Balance**, and each has its own page.
+Add each one separately, such as an HSA from a previous employer and your current one. Summary combines them into your total **HSA Balance**, and each has its own page.

@@ -13,7 +13,7 @@ Swipe left on it and tap **Delete**, or edit it and tap **Delete Transaction**. 
 1. Go to **Settings → Trash**.
 2. Swipe right on a transaction and tap **Restore**.
 
-Items stay in the Trash for 30 days, then they're removed for good.
+Items stay in the Trash for 30 days, then they're permanently deleted.
 
 ## Deleting permanently
 
