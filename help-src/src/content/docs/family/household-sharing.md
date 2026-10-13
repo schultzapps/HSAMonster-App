@@ -37,6 +37,16 @@ In **Settings → Household Sharing**:
 - **Owner:** **••• → Remove Household**. Your partner loses access, and you keep all your data.
 - **Partner:** **••• → Leave Household**. You lose access to the household's data.
 
-:::note
-A new receipt may take a moment to appear on your partner's device while it uploads.
-:::
+## FAQ
+
+### Does my partner need their own subscription?
+
+No, not with the **Yearly** plan. It's shared through Apple Family Sharing, so your partner gets it too:
+
+1. Make sure you're both in the same Apple Family. On iPhone, open the **Settings** app, tap your name, then **Family**.
+2. On the subscriber's iPhone, open the **Settings** app, tap your name, then **Subscriptions → HSA Monster**, and make sure **Share With Family** is on.
+3. On your partner's device, open HSA Monster and tap **Settings → Restore Access**, or **Restore** on the upgrade screen.
+
+### Why doesn't a new receipt show up on my partner's device yet?
+
+Receipts can take a moment to appear while they upload. If something still seems missing, tap **••• → Resync with Household**.
