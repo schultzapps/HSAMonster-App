@@ -16,9 +16,11 @@ See [How reimbursing later works](/help/reimbursements/reimburse-later/) for mor
 
 ## Setting up
 
-1. [Add an expense](/help/expenses/adding-an-expense/), ideally by scanning a receipt.
-2. [Add your HSA account](/help/accounts/adding-an-account/) to track its balance and contributions (optional).
-3. [Add family members](/help/family/family-members/) to note who each expense was for.
+1. If you share expenses with a spouse or partner, have them install HSA Monster on their iPhone, iPad, or Mac.
+2. [Create your household](/help/family/household-sharing/) so you both see every transaction and receipt.
+3. [Add an expense](/help/expenses/adding-an-expense/), ideally by scanning a receipt.
+4. [Add your HSA account](/help/accounts/adding-an-account/) to track its balance and contributions (optional).
+5. [Add family members](/help/family/family-members/) to note who each expense was for.
 
 ## Your data
 
