@@ -35,6 +35,8 @@ To bring HSA Monster in line with your provider:
    - **Increase By** or **Decrease By:** enter just the change.
 3. Tap **Save**.
 
+Reconcile only after you've logged all contributions and withdrawals up to that date. Otherwise the reconcile adjustment absorbs them, and they'll be counted twice once you add them.
+
 Reconciling monthly or quarterly, when your statement arrives, is plenty.
 
 ## Seeing your growth
