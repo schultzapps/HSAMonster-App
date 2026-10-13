@@ -30,4 +30,4 @@ Your purchase is restored automatically with the same Apple Account.
 3. Give it a few minutes, especially with lots of receipts. Keep the app open on Wi-Fi.
 4. Sharing a household? Try **Settings → Household Sharing → ••• → Resync with Household**.
 
-Still stuck? Tap **Settings → Contact Us → Report a Problem**.
+If you still need help, tap **Settings → Contact Us → Report a Problem**.

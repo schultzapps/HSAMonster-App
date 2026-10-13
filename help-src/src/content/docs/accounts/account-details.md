@@ -24,7 +24,7 @@ Tap **Edit** to change the institution, name, or account number.
 
 ## Archiving an account
 
-Moved your HSA to a new provider? Archive the old account to keep its history without cluttering Summary.
+If you move your HSA to a new provider, archive the old account. Its history is kept, and it no longer appears on Summary.
 
 1. Bring the balance to $0, for example by reconciling to $0 after the transfer.
 2. Tap **Edit → Archive Account**.

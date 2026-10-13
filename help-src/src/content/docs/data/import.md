@@ -4,7 +4,7 @@ description: Bring in expenses and contributions from a spreadsheet or your HSA 
 sidebar:
   order: 3
 ---
-Moving from a spreadsheet or another app? Import your history instead of typing it in.
+If you've tracked expenses in a spreadsheet or another app, you can import that history instead of entering it by hand.
 
 ## Importing a file
 

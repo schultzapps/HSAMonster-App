@@ -6,7 +6,7 @@ sidebar:
 ---
 ## From another app
 
-Got a receipt in Mail, Messages, Safari, or a patient portal app?
+If you have a receipt in another app, like Mail, Messages, Safari, or your patient portal, you can add it directly:
 
 1. Tap **Share** on the image or PDF.
 2. Tap **Add to HSA Monster** in the list of actions, or the **HSA Monster** icon.
