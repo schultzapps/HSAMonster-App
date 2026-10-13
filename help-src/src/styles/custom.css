@@ -3,7 +3,9 @@
 
 :root,
 :root[data-theme='light'] {
-	--sl-font: 'Outfit';
+	--sl-font: 'Public Sans';
+	/* Headings, site title, and home cards. */
+	--hm-font-heading: 'Onest', 'Public Sans', -apple-system, sans-serif;
 	color-scheme: light;
 
 	--sl-color-accent-low: #e7e7fb;
@@ -26,9 +28,16 @@
 }
 
 .site-title {
+	font-family: var(--hm-font-heading);
 	font-size: 1.25rem;
-	font-weight: 700;
-	letter-spacing: -0.01em;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+}
+
+/* Headings: Onest semibold, tight spacing. */
+:is(h1, h2, h3, h4, h5, h6) {
+	font-family: var(--hm-font-heading);
+	font-weight: 600;
 }
 
 .site-title img {
@@ -125,7 +134,8 @@ h1#_top {
 	letter-spacing: -0.02em;
 }
 .sl-markdown-content :is(h2, h3, h4) {
-	letter-spacing: -0.01em;
+	font-weight: 600;
+	letter-spacing: -0.02em;
 }
 .sl-markdown-content :not(h1, h2, h3, h4, h5, h6) + :is(h2, h3, h4) {
 	margin-top: 2.25rem;
@@ -311,8 +321,8 @@ mobile-starlight-toc summary .toggle {
 }
 .hero h1 {
 	font-size: clamp(2.25rem, calc(1rem + 4vw), 3.25rem);
-	font-weight: 800;
-	letter-spacing: -0.035em;
+	font-weight: 600;
+	letter-spacing: -0.02em;
 	color: var(--sl-color-white);
 }
 .hero .tagline {
