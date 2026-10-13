@@ -4,7 +4,7 @@ description: Track HSA expenses together with your spouse or partner.
 sidebar:
   order: 2
 ---
-Share your HSA Monster data with your spouse or partner using iCloud. You both see every transaction and receipt, and either of you can scan and add expenses.
+Share your HSA Monster data with your spouse or partner using iCloud. You both see every transaction and receipt, and either of you can scan and add expenses. We recommend creating your household as soon as possible after becoming a user, and limiting changes after. Repeatadly leaving and joining households could cause syncing problems. If you need to revise your sharing settings, export a copy of your transactions and receipts first.
 
 ## Sharing with your partner
 
@@ -49,4 +49,4 @@ No, not with the **Yearly** plan. It's shared through Apple Family Sharing, so y
 
 ### Why doesn't a new receipt show up on my partner's device yet?
 
-Receipts can take a moment to appear while they upload. If something still seems missing, tap **••• → Resync with Household**.
+On a normal internet connection, receipts should duplicate to another device within a few seconds. Sometimes iCloud takes a bit longer, so be patient while your data is uploaded and synced.
