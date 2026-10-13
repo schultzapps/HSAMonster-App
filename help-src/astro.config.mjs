@@ -7,6 +7,10 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	site: 'https://hsamonster.com',
 	base: '/help',
+	// Keeps links to removed articles working.
+	redirects: {
+		'/reimbursements/calculator/': '/help/reimbursements/reimburse-later/',
+	},
 	integrations: [
 		starlight({
 			title: 'HSA Monster Help',

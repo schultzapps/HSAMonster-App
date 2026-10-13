@@ -19,7 +19,7 @@ On iOS 18, Search is the magnifying glass at the top of **Expenses**.
 - **iPhone:** tap the **gear** at the top right of **Summary**.
 - **iPad and Mac:** tap **Settings** in the sidebar. The sidebar also lists each HSA account with its balance.
 
-Settings is where you manage **HSA Accounts**, **Family Members**, the **Calculator**, **Reports & Export**, **Import Data**, and the **Trash**.
+Settings is where you manage **HSA Accounts**, **Family Members**, **Reports & Export**, **Import Data**, and the **Trash**.
 
 ## Adding things quickly
 

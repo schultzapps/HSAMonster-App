@@ -28,10 +28,6 @@ Reimbursements come out of the total, not out of specific expenses, so you never
 
 If the IRS asks, you'll need a receipt for every expense you reimburse. Attach them as you go, and turn on **Settings → Exclude Missing Receipts** so your total only counts expenses you can back up.
 
-## See what waiting is worth
-
-The **Defer** mode of the [HSA calculator](/help/reimbursements/calculator/) shows how much your Reimbursable total could grow if you leave it invested.
-
 :::note
 HSA Monster is a record-keeping tool, not tax advice. Check IRS Publication 969 or a tax professional for your situation.
 :::
