@@ -38,7 +38,7 @@ Options your device can't use are dimmed with the reason, like **Turn on Apple I
 
 ## Adding a receipt later
 
-Expenses without a receipt show **Missing**. To add one, swipe right on the expense and tap **Add Receipt**, or edit it and tap **Add** next to **Document**.
+Expenses without a receipt show **Missing**. To add one, swipe right on the expense and tap **Add Receipt**, or edit it and tap **Missing** next to **Document**.
 
 ## Viewing a receipt
 
