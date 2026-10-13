@@ -48,4 +48,10 @@
     <lastmod>2026-05-01</lastmod>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://hsamonster.com/help/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://hsamonster.com/sitemap.xml
+Sitemap: https://hsamonster.com/help/sitemap-index.xml
