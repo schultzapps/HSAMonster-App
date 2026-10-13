@@ -3,6 +3,7 @@
 // description. Drop an image named after the topic into public/cards/
 // (e.g. public/cards/expenses.png) and it replaces the icon placeholder.
 import fs from 'node:fs';
+import path from 'node:path';
 import { Icon } from '@astrojs/starlight/components';
 
 interface Props {
@@ -19,7 +20,7 @@ const { title, description, href, topic, icon } = Astro.props;
 
 const imageFile = ['png', 'webp', 'jpg', 'svg']
 	.map((ext) => `${topic}.${ext}`)
-	.find((file) => fs.existsSync(new URL(`../../public/cards/${file}`, import.meta.url)));
+	.find((file) => fs.existsSync(path.join(process.cwd(), 'public', 'cards', file)));
 const imageSrc = imageFile && `${import.meta.env.BASE_URL.replace(/\/$/, '')}/cards/${imageFile}`;
 ---
 
@@ -58,11 +59,14 @@ const imageSrc = imageFile && `${import.meta.env.BASE_URL.replace(/\/$/, '')}/ca
 		box-shadow: 0 8px 22px rgba(88, 86, 214, 0.12);
 		transform: translateY(-2px);
 	}
+	/* Illustrations sit straight on the card. Multiply blending drops their
+	   white or off-white background into the card's white. */
 	.hm-topic-image {
-		width: 7rem;
-		height: 7rem;
-		margin-bottom: 0.625rem;
+		width: 7.5rem;
+		height: 7.5rem;
+		margin-bottom: 0.75rem;
 		object-fit: contain;
+		mix-blend-mode: multiply;
 	}
 	.hm-topic-icon {
 		display: grid;
