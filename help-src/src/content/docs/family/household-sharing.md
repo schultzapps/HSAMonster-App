@@ -6,7 +6,7 @@ sidebar:
 ---
 Share your HSA Monster data with your spouse or partner using iCloud. You both see every transaction and receipt, and either of you can scan and add expenses. We recommend creating your household as soon as possible.
 
-:::caution Repeatedly leaving and joining households could cause syncing problems. If you need to revise your sharing settings, export a copy of your transactions and receipts first so that you have a backup of your data.:::
+:::caution Repeatedly leaving and joining households could cause syncing problems. If you need to revise your sharing settings, export a copy of your transactions and receipts first so that you have a backup of your data. :::
 
 ## Sharing with your partner
 
