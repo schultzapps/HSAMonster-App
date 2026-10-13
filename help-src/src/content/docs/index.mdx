@@ -1,0 +1,25 @@
+---
+title: How can we help?
+description: Guides and answers for HSA Monster, the HSA receipt and reimbursement tracker.
+template: splash
+pagefind: false
+hero:
+  tagline: Guides for HSA Monster on iPhone, iPad, and Mac.
+---
+
+import TopicCard from '../../components/TopicCard.astro';
+import ContactLink from '../../components/ContactLink.astro';
+import HomeSearch from '../../components/HomeSearch.astro';
+
+<HomeSearch />
+
+<div class="hm-topic-grid">
+	<TopicCard title="Getting Started" description="Setup, finding your way, and the Summary screen." href="/help/getting-started/welcome/" topic="getting-started" icon="rocket" />
+	<TopicCard title="Expenses & Receipts" description="Adding expenses, scanning receipts, and staying organized." href="/help/expenses/adding-an-expense/" topic="expenses" icon="document" />
+	<TopicCard title="Reimbursements" description="Reimbursing yourself now or decades from now." href="/help/reimbursements/reimburse-later/" topic="reimbursements" icon="approve-check-circle" />
+	<TopicCard title="HSA Accounts" description="Accounts, contributions, and keeping balances current." href="/help/accounts/adding-an-account/" topic="accounts" icon="analytics" />
+	<TopicCard title="Family & Sharing" description="Family members and sharing a household with your partner." href="/help/family/family-members/" topic="family" icon="heart" />
+	<TopicCard title="Sync, Export & Privacy" description="iCloud sync, reports, import, and your data." href="/help/data/icloud-sync/" topic="data" icon="padlock" />
+</div>
+
+<p class="hm-help-footer">Can’t find what you’re looking for? <ContactLink label="Contact us" /></p>

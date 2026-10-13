@@ -1,0 +1,60 @@
+# Builds the help center (help-src/) and publishes it at /help/ alongside the
+# hand-written pages at the repo root, which are copied as-is (tracked files only).
+# Requires Settings → Pages → Build and deployment → Source: "GitHub Actions".
+name: Deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: help-src/package-lock.json
+
+      - name: Build help center
+        working-directory: help-src
+        run: |
+          npm ci
+          npm run build
+
+      - name: Assemble site
+        run: |
+          mkdir _site
+          git ls-files -z \
+            | grep -zv -e '^help-src/' -e '^\.github/' -e '^\.gitignore$' -e '^_config\.yml$' \
+            | xargs -0 cp --parents -t _site
+          cp -R help-src/dist _site/help
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

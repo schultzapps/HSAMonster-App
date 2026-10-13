@@ -1,0 +1,46 @@
+---
+// Replaces Starlight's social icons with links back to the main site.
+---
+
+<a class="site-link" href="https://hsamonster.com/">hsamonster.com</a>
+<a
+	class="download"
+	href="https://apps.apple.com/app/id6757624949?pt=127982700&ct=hsam_help_nav&mt=8"
+	data-download-location="hsam_help_nav">Download</a
+>
+
+<script is:inline>
+	document.addEventListener('click', function (e) {
+		var link = e.target.closest('a[href*="apps.apple.com/app/id6757624949"]');
+		if (!link || typeof gtag !== 'function') return;
+		gtag('event', 'download_app_click', {
+			button_location: link.getAttribute('data-download-location') || 'unknown',
+			destination: 'appstore',
+			app: 'hsamonster',
+		});
+	});
+</script>
+
+<style>
+	a {
+		font-size: var(--sl-text-sm);
+		font-weight: 500;
+		text-decoration: none;
+		white-space: nowrap;
+	}
+	.site-link {
+		color: var(--sl-color-gray-2);
+	}
+	.site-link:hover {
+		color: var(--sl-color-white);
+	}
+	.download {
+		color: #fff;
+		background: var(--hm-gradient);
+		padding: 0.35rem 0.9rem;
+		border-radius: 999px;
+	}
+	.download:hover {
+		filter: brightness(1.1);
+	}
+</style>

@@ -1,0 +1,51 @@
+---
+// Large search box for the help home page. Opens Starlight's search dialog,
+// which stays in the header markup (hidden on this page).
+import { Icon } from '@astrojs/starlight/components';
+---
+
+<button type="button" class="hm-home-search" aria-label="Search help articles">
+	<Icon name="magnifier" size="1.25rem" />
+	<span>Search help articles</span>
+</button>
+
+<script>
+	const button = document.querySelector<HTMLButtonElement>('.hm-home-search');
+	button?.addEventListener('click', (event) => {
+		// Starlight closes the dialog on any click outside it; keep this one from reaching window.
+		event.stopPropagation();
+		document.querySelector<HTMLButtonElement>('header button[data-open-modal]')?.click();
+	});
+</script>
+
+<style>
+	.hm-home-search {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		width: 100%;
+		max-width: 36rem;
+		height: 3.25rem;
+		margin: 0 0 2.5rem;
+		padding: 0 1.25rem;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 999px;
+		background-color: var(--sl-color-gray-7);
+		color: var(--sl-color-gray-3);
+		font: inherit;
+		font-size: var(--sl-text-base);
+		cursor: text;
+		transition: border-color 0.15s, background-color 0.15s, box-shadow 0.15s;
+	}
+	.hm-home-search:hover,
+	.hm-home-search:focus-visible {
+		border-color: var(--sl-color-accent);
+		background-color: var(--sl-color-black);
+		box-shadow: 0 0 0 3px var(--sl-color-accent-low);
+		outline: none;
+	}
+	.hm-home-search svg {
+		color: var(--sl-color-accent);
+		flex-shrink: 0;
+	}
+</style>

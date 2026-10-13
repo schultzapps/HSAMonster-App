@@ -1,0 +1,405 @@
+/* HSA Monster brand colors for Starlight, matching the main site's light
+   theme (indigo #5856D6 with teal #56CEC0). The help center is light-only. */
+
+:root,
+:root[data-theme='light'] {
+	--sl-font: 'Outfit';
+	color-scheme: light;
+
+	--sl-color-accent-low: #e7e7fb;
+	--sl-color-accent: #5856d6;
+	--sl-color-accent-high: #3b39a6;
+
+	/* Secondary brand teal, used for count badges and tips. */
+	--hm-teal: #1f8f84;
+	--hm-teal-low: #e0f6f3;
+	--hm-badge: var(--hm-teal);
+	--hm-gradient: linear-gradient(135deg, #5856d6 0%, #56cec0 50%, #56a2ce 100%);
+
+	--sl-color-white: #0a0a12;
+	--sl-color-gray-1: #1f1f33;
+	--sl-color-gray-2: #3d3d5c;
+	--sl-color-gray-3: #5c5c7a;
+	--sl-color-gray-4: #8e8ea8;
+	--sl-color-gray-5: #d3d9e2;
+	--sl-color-gray-6: #eff6fe;
+	--sl-color-gray-7: #f6f9fd;
+	--sl-color-black: #ffffff;
+}
+
+.site-title {
+	font-size: 1.25rem;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+}
+
+.site-title img {
+	border-radius: 22%;
+}
+
+/* UI labels written as **Bold** read as tappable controls. */
+.sl-markdown-content strong {
+	color: var(--sl-color-white);
+	font-weight: 600;
+}
+
+/* Tips use the brand teal; notes use the brand indigo. */
+.starlight-aside--tip {
+	--sl-color-asides-text-accent: #17675f;
+	--sl-color-asides-border: var(--hm-teal);
+	background-color: var(--hm-teal-low);
+}
+.starlight-aside--note {
+	--sl-color-asides-text-accent: var(--sl-color-accent-high);
+	--sl-color-asides-border: var(--sl-color-accent);
+	background-color: var(--sl-color-accent-low);
+}
+
+/* "Can't find what you're looking for?" line under the home page cards. */
+.hm-help-footer {
+	margin-top: 3rem;
+	text-align: center;
+	color: var(--sl-color-gray-2);
+}
+
+/* No theme picker, so drop the divider Starlight draws before it. */
+.social-icons::after {
+	display: none;
+}
+
+/* Compact Previous / Next links at the bottom of each page. */
+.pagination-links {
+	grid-template-columns: 1fr 1fr;
+	gap: 0.75rem;
+}
+.pagination-links [rel='next'] {
+	grid-column: 2;
+}
+.pagination-links a {
+	gap: 0.5rem;
+	padding: 0.625rem 0.875rem;
+	border-radius: 0.75rem;
+	box-shadow: none;
+	font-size: var(--sl-text-xs);
+	line-height: 1.4;
+	color: var(--sl-color-gray-3);
+	transition: border-color 0.15s, background-color 0.15s;
+}
+.pagination-links a:hover {
+	border-color: var(--sl-color-accent);
+	background-color: var(--sl-color-gray-7);
+}
+.pagination-links .link-title {
+	font-size: var(--sl-text-base);
+	font-weight: 600;
+}
+.pagination-links svg {
+	width: 1rem;
+	height: 1rem;
+	color: var(--sl-color-accent);
+}
+
+/* Article typography: smaller headings and tighter, even spacing so pages
+   read as compact as the Previous / Next links. */
+:root {
+	--sl-text-h1: 1.875rem;
+	--sl-text-h2: 1.3rem;
+	--sl-text-h3: 1.1rem;
+	--sl-text-h4: 1rem;
+	--sl-line-height: 1.65;
+}
+@media (min-width: 50em) {
+	:root {
+		--sl-text-h1: 2.25rem;
+		--sl-text-h2: 1.5rem;
+		--sl-text-h3: 1.2rem;
+		--sl-text-h4: 1.05rem;
+	}
+}
+
+@media (min-width: 50em) {
+	.site-title {
+		font-size: 1.5rem;
+	}
+}
+
+h1#_top {
+	letter-spacing: -0.02em;
+}
+.sl-markdown-content :is(h2, h3, h4) {
+	letter-spacing: -0.01em;
+}
+.sl-markdown-content :not(h1, h2, h3, h4, h5, h6) + :is(h2, h3, h4) {
+	margin-top: 2.25rem;
+}
+.sl-markdown-content :is(h2, h3, h4) + * {
+	margin-top: 0.5rem;
+}
+.sl-markdown-content li + li {
+	margin-top: 0.375rem;
+}
+.sl-markdown-content :is(ul, ol) {
+	padding-inline-start: 1.25rem;
+}
+.sl-markdown-content li > :is(ul, ol) {
+	margin-top: 0.375rem;
+}
+.sl-markdown-content a {
+	text-underline-offset: 0.2em;
+}
+
+/* Tables as a light bordered card. */
+.sl-markdown-content table {
+	width: max-content;
+	max-width: 100%;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 0.75rem;
+	font-size: var(--sl-text-sm);
+	line-height: 1.5;
+}
+.sl-markdown-content :is(th, td),
+.sl-markdown-content :is(th:first-child, td:first-child),
+.sl-markdown-content :is(th:last-child, td:last-child) {
+	padding: 0.5rem 0.875rem;
+}
+.sl-markdown-content th {
+	background-color: var(--sl-color-gray-7);
+	color: var(--sl-color-gray-3);
+	font-size: var(--sl-text-xs);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+.sl-markdown-content tr:last-child td {
+	border-bottom: none;
+}
+
+/* Rounder asides to match the cards. */
+.starlight-aside {
+	border-radius: 0.75rem;
+	padding: 0.75rem 1rem;
+}
+
+/* Home page cards match the flat Previous / Next style. */
+.sl-link-card {
+	border-radius: 0.75rem;
+	box-shadow: none;
+	padding: 0.875rem 1rem;
+	transition: border-color 0.15s, background-color 0.15s;
+}
+.sl-link-card:hover {
+	border-color: var(--sl-color-accent);
+	background-color: var(--sl-color-gray-7);
+}
+.sl-link-card:hover svg {
+	color: var(--sl-color-accent);
+}
+
+/* ---------- Site chrome: header, search, sidebar, table of contents ---------- */
+
+:root {
+	--sl-color-bg-nav: #ffffff;
+	--sl-color-bg-sidebar: #ffffff;
+	--sl-color-hairline-shade: var(--sl-color-gray-5);
+}
+
+/* Search: soft pill. */
+button[data-open-modal] {
+	border-radius: 999px;
+}
+@media (min-width: 50rem) {
+	button[data-open-modal] {
+		border-color: var(--sl-color-gray-5);
+		background-color: var(--sl-color-gray-7);
+		padding-inline: 0.875rem 0.375rem;
+		height: 2.25rem;
+	}
+	button[data-open-modal]:hover {
+		border-color: var(--sl-color-accent);
+		background-color: var(--sl-color-black);
+		color: var(--sl-color-gray-2);
+	}
+	button[data-open-modal] > kbd {
+		display: none;
+	}
+}
+dialog[aria-label] {
+	border-radius: 1rem;
+}
+
+/* Sidebar: small uppercase group labels, quiet links, soft active pill. */
+.sidebar-content .large {
+	font-size: var(--sl-text-xs);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--sl-color-gray-3);
+}
+.sidebar-content summary .caret {
+	width: 0.875rem;
+	height: 0.875rem;
+	color: var(--sl-color-gray-4);
+}
+.sidebar-content .top-level > li + li {
+	margin-top: 1rem;
+}
+.sidebar-content ul ul {
+	margin-top: 0.25rem;
+}
+.sidebar-content ul ul li {
+	margin-inline-start: 0;
+	border-inline-start: none;
+	padding-inline-start: 0;
+}
+.sidebar-content a {
+	border-radius: 0.5rem;
+	padding: 0.375rem 0.625rem;
+	font-size: var(--sl-text-sm);
+	color: var(--sl-color-gray-2);
+	transition: background-color 0.15s, color 0.15s;
+}
+.sidebar-content a:hover,
+.sidebar-content a:focus {
+	color: var(--sl-color-white);
+	background-color: var(--sl-color-gray-7);
+}
+.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current='page']:hover,
+.sidebar-content a[aria-current='page']:focus {
+	color: var(--sl-color-accent);
+	background-color: var(--sl-color-accent-low);
+	font-weight: 600;
+}
+
+/* "On this page": small label, indigo bar on the current section. */
+#starlight__on-this-page {
+	font-size: var(--sl-text-xs);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--sl-color-gray-3);
+	margin-bottom: 0.5rem;
+}
+.right-sidebar-panel nav a {
+	border-radius: 0;
+	border-inline-start: 2px solid var(--sl-color-gray-5);
+	padding-block: 0.3rem;
+	font-size: var(--sl-text-xs);
+	color: var(--sl-color-gray-3);
+	text-decoration: none;
+}
+.right-sidebar-panel nav a:hover {
+	color: var(--sl-color-white);
+}
+.right-sidebar-panel nav a[aria-current='true'] {
+	border-inline-start-color: var(--sl-color-accent);
+	color: var(--sl-color-accent);
+	font-weight: 600;
+}
+
+/* Mobile "On this page" bar. */
+mobile-starlight-toc summary .toggle {
+	border-radius: 999px;
+}
+
+/* Home page hero: less empty space, tighter title. */
+.hero {
+	padding-block: 2.5rem 0.5rem;
+}
+@media (min-width: 50rem) {
+	.hero {
+		padding-block: 4rem 1.5rem;
+	}
+}
+.hero h1 {
+	font-size: clamp(2.25rem, calc(1rem + 4vw), 3.25rem);
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	background: var(--hm-gradient);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+/* Help home: soft brand glow behind the hero, like the main site. */
+[data-has-hero] .main-frame {
+	background: radial-gradient(ellipse 60rem 22rem at 50% 0%, rgba(88, 86, 214, 0.08), transparent 70%),
+		radial-gradient(ellipse 40rem 18rem at 85% 5%, rgba(86, 206, 192, 0.1), transparent 70%);
+}
+.hero .tagline {
+	font-size: var(--sl-text-lg);
+	color: var(--sl-color-gray-3);
+}
+
+/* Search popup: white panel, pill input, rounded results. */
+site-search dialog {
+	border-radius: 1rem;
+	background-color: var(--sl-color-black);
+}
+#starlight__search {
+	--sl-search-corners: 0.75rem;
+}
+#starlight__search .pagefind-ui__search-input {
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 999px;
+	background-color: var(--sl-color-gray-7);
+}
+#starlight__search .pagefind-ui__search-input:focus {
+	border-color: var(--sl-color-accent);
+	outline: none;
+	background-color: var(--sl-color-black);
+	box-shadow: 0 0 0 3px var(--sl-color-accent-low);
+}
+#starlight__search .pagefind-ui__result {
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: 0.75rem;
+	overflow: hidden;
+}
+
+/* Search popup only as tall as its content (Starlight reserves 15rem). */
+@media (min-width: 50rem) {
+	site-search dialog {
+		min-height: 0;
+	}
+}
+
+
+/* Starlight's footer keeps an empty "last updated" row with a 3rem margin.
+   Drop it so Previous / Next sit closer to the article. */
+footer .meta:empty {
+	display: none;
+}
+.sl-container > footer {
+	margin-top: 2.5rem;
+}
+
+/* Help home: search lives in the page content, not the header. */
+[data-has-hero] header button[data-open-modal] {
+	display: none;
+}
+
+/* Phones: search drops down from the top and grows with results instead of
+   filling the whole screen with an empty panel. */
+@media (max-width: 49.99rem) {
+	site-search dialog {
+		height: max-content;
+		max-height: 100%;
+		border-radius: 0 0 1rem 1rem;
+		border-top: none;
+	}
+}
+
+/* Help home: three-column grid of topic cards. */
+.hm-topic-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+	gap: 1rem;
+}
+@media (min-width: 50rem) {
+	.hm-topic-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+.sl-markdown-content .hm-topic-grid > * {
+	margin-top: 0;
+}
