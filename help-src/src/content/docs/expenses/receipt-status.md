@@ -29,6 +29,6 @@ The IRS can ask for proof of any reimbursement. Turn on **Settings → Exclude M
 
 ## Weekly reminders
 
-Turn on **Settings → Reminders** for a nudge on Thursday evenings at 6 PM whenever any expense is still **Missing**. No missing receipts, no reminder.
+Turn on **Settings → Reminders** for a weekly nudge to add attachments to recent transactions without one.
 
 The first time, iOS asks to allow notifications. If you declined before, the switch opens the iOS settings so you can allow them.
