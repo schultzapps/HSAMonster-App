@@ -22,7 +22,11 @@ This requires keeping records of every expense for years. HSA Monster keeps thos
 
 Expenses you paid directly from your HSA don't count, since your HSA already covered them.
 
+## First In, First Out
+
 Reimbursements come out of the total, not out of specific expenses, so you never have to match them up. Reports apply them to your oldest expenses first.
+
+For example, if you log 10 expenses for $100 each, HSA Monster will display a reimbursable balance of $1,000. Should you reimburse yourself $250, HSA Monster will show the first two expenses and half of the third as reimbursed when you create a **Reimbursement Report**. Your summary will show $750 remaining in your reimbursable balance.
 
 ## Keep your receipts
 
