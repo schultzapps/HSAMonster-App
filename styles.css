@@ -47,6 +47,7 @@
     --bg-tertiary: #1A1A28;
     --bg-card: #1A1A28;
     --bg-card-hover: #242436;
+    --bg-nav-hover: #242436;
 
     --text-primary: #F0F0F8;
     --text-secondary: #A8A8C0;
@@ -77,6 +78,8 @@
     --bg-tertiary: #FBF5FD;
     --bg-card: #FFFFFF;
     --bg-card-hover: #F5F0F8;
+    /* Neutral gray, so nav hovers don't pick up the pink of --bg-card-hover. */
+    --bg-nav-hover: rgba(10, 10, 18, 0.06);
 
     --text-primary: #0A0A12;
     --text-secondary: #3D3D5C;
@@ -369,7 +372,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         inset: -0.5rem -0.7rem;
         z-index: -1;
         border-radius: var(--radius-md);
-        background: var(--bg-card-hover);
+        background: var(--bg-nav-hover);
         opacity: 0;
         transform: scale(0.9);
         transition: opacity var(--transition-fast),
@@ -472,7 +475,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .nav-dropdown-menu a:hover {
-    background: var(--bg-card-hover);
+    background: var(--bg-nav-hover);
     color: var(--accent-primary);
 }
 
