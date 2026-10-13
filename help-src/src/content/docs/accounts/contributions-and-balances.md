@@ -23,7 +23,11 @@ Log each paycheck deposit, or one total per month or year. Contributions add up 
 
 ## Reconciling your balance
 
-Investments go up and down, and HSAs pay interest and charge fees. Reconcile now and then to bring HSA Monster in line with your provider:
+HSA Monster builds your balance from what you log. It doesn't connect to your HSA provider, so anything else that changes your balance needs a reconcile to catch up.
+
+That matters most if your HSA is invested. Market gains and losses, dividends, interest, and fees all change your balance without a transaction you'd log. Reconciling also records your investment growth, so it shows up on your [chart](#seeing-your-growth).
+
+To bring HSA Monster in line with your provider:
 
 1. Press and hold the account and tap **Reconcile**.
 2. Choose how to enter it:

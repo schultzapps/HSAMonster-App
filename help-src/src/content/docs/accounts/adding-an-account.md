@@ -24,14 +24,6 @@ New accounts start at $0. Set yours one of two ways:
 
 See [Contributions & balances](/help/accounts/contributions-and-balances/).
 
-## Why reconcile?
-
-HSA Monster builds your balance from what you log: contributions in, reimbursements and HSA-paid expenses out. It doesn't connect to your HSA provider, so anything else that changes your balance needs a reconcile to catch up.
-
-That matters most if your HSA is invested. Market gains and losses, dividends, interest, and fees all change your balance without a transaction you'd log. Reconciling now and then, like when your monthly or quarterly statement arrives, keeps your **HSA Balance** accurate.
-
-It also shows your growth. On **Summary**, the space between your balance and the dotted line of what you've put in is your investment return, which only shows up once you reconcile.
-
 ## More than one HSA?
 
 Add each one, like an old employer's HSA and a new one. Summary combines them into your total **HSA Balance**, and each has its own page.
