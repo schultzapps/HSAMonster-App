@@ -10,10 +10,9 @@
 	--sl-color-accent: #5856d6;
 	--sl-color-accent-high: #3b39a6;
 
-	/* Secondary brand teal, used for count badges and tips. */
+	/* Secondary brand teal, used for tips. */
 	--hm-teal: #1f8f84;
 	--hm-teal-low: #e0f6f3;
-	--hm-badge: var(--hm-teal);
 	--hm-gradient: linear-gradient(135deg, #5856d6 0%, #56cec0 50%, #56a2ce 100%);
 
 	--sl-color-white: #0a0a12;
