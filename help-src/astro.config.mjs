@@ -13,7 +13,7 @@ export default defineConfig({
 	},
 	integrations: [
 		starlight({
-			title: 'HSA Monster Help Center',
+			title: 'HSA Monster',
 			description: 'Guides and answers for HSA Monster, the HSA receipt and reimbursement tracker.',
 			logo: { src: './src/assets/appicon.png', alt: 'HSA Monster' },
 			favicon: '/favicon.png',
