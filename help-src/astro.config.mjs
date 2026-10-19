@@ -20,6 +20,7 @@ export default defineConfig({
 			customCss: ['./src/styles/custom.css'],
 			markdown: { headingLinks: false },
 			components: {
+				Header: './src/components/Header.astro',
 				SocialIcons: './src/components/SocialIcons.astro',
 				MobileMenuFooter: './src/components/MobileMenuFooter.astro',
 				ThemeProvider: './src/components/ThemeProvider.astro',
