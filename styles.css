@@ -1767,12 +1767,16 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         overflow-y: auto;
     }
 
-    /* Short viewports (phones in landscape): the 11rem reserve leaves room for
-       only a few links, so the last ones (Help Center) sit out of sight below
-       the drawer's fold. Reserve less and tighten the rows so all links fit. */
+    /* Short viewports (phones in landscape): a single column of five links is
+       taller than the drawer can be, so the last one (Help Center) hides below
+       the fold with nothing hinting that the drawer scrolls. Lay the links out
+       in two columns instead so every one is visible without scrolling. */
     @media (max-height: 30rem) {
         .nav-links {
-            gap: var(--space-sm);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-sm) var(--space-lg);
+            align-items: start;
         }
 
         .nav-links.active {
