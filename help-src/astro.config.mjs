@@ -21,6 +21,7 @@ export default defineConfig({
 			markdown: { headingLinks: false },
 			components: {
 				SocialIcons: './src/components/SocialIcons.astro',
+				MobileMenuFooter: './src/components/MobileMenuFooter.astro',
 				ThemeProvider: './src/components/ThemeProvider.astro',
 				ThemeSelect: './src/components/ThemeSelect.astro',
 			},

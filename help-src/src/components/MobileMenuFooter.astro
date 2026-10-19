@@ -1,0 +1,39 @@
+---
+// Starlight hides the header's SocialIcons on phones, so surface the links
+// back to the main site at the bottom of the mobile menu instead.
+---
+
+<div class="mobile-links">
+	<a class="site-link" href="https://hsamonster.com/">← Back to hsamonster.com</a>
+	<a
+		class="download"
+		href="https://apps.apple.com/app/id6757624949?pt=127982700&ct=hsam_help_mobile_menu&mt=8"
+		data-download-location="hsam_help_mobile_menu">Download</a
+	>
+</div>
+
+<style>
+	.mobile-links {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		border-top: 1px solid var(--sl-color-gray-6);
+		padding-top: 1rem;
+	}
+	a {
+		font-size: var(--sl-text-sm);
+		font-weight: 500;
+		text-decoration: none;
+	}
+	.site-link {
+		color: var(--sl-color-gray-2);
+	}
+	.download {
+		color: #fff;
+		background: var(--sl-color-accent);
+		padding: 0.35rem 0.9rem;
+		border-radius: 999px;
+	}
+</style>
