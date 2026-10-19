@@ -1,0 +1,48 @@
+---
+// Logo + "HSA Monster" lead back to the main site; "Help" is the help center
+// home. Replaces Starlight's single title link so this works on phones too.
+import logo from '../assets/appicon.png';
+---
+
+<div class="site-title sl-flex">
+	<a class="brand sl-flex" href="https://hsamonster.com/">
+		<img src={logo.src} width={logo.width} height={logo.height} alt="" />
+		<span translate="no">HSA Monster</span>
+	</a>
+	<span class="divider" aria-hidden="true">|</span>
+	<a class="help" href="/help/">Help</a>
+</div>
+
+<style>
+	@layer starlight.core {
+		.site-title {
+			align-items: center;
+			gap: 0.5rem;
+			white-space: nowrap;
+			min-width: 0;
+		}
+		a {
+			color: var(--sl-color-text-accent);
+			text-decoration: none;
+		}
+		.brand {
+			align-items: center;
+			gap: var(--sl-nav-gap);
+		}
+		img {
+			height: calc(var(--sl-nav-height) - 2 * var(--sl-nav-pad-y));
+			width: auto;
+			border-radius: 22%;
+		}
+		.divider {
+			color: var(--sl-color-gray-5);
+			font-weight: 400;
+		}
+		.help {
+			color: var(--sl-color-gray-2);
+		}
+		.help:hover {
+			color: var(--sl-color-white);
+		}
+	}
+</style>
