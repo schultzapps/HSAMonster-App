@@ -910,9 +910,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .step-card {
     text-align: center;
-    transition: all var(--transition-slow) ease-out;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
 }
 
 /* The three steps are read in order, so they arrive in order. */
