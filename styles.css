@@ -1264,40 +1264,65 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     background: var(--bg-secondary);
 }
 
-.faq-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-xl);
+.faq-list {
+    max-width: 780px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border-color-strong);
 }
 
 .faq-item {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-xl);
-    padding: var(--space-lg);
-    transition: all var(--transition-base);
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.faq-item.animate-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.faq-item:hover {
-    border-color: var(--accent-primary);
+    border-bottom: 1px solid var(--border-color-strong);
 }
 
 .faq-question {
-    font-size: 1.125rem;
-    margin-bottom: var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    list-style: none;
+    transition: color var(--transition-base);
+}
+
+.faq-question::-webkit-details-marker {
+    display: none;
+}
+
+.faq-question::after {
+    content: "+";
+    flex-shrink: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--text-muted);
+    transition: color var(--transition-base);
+}
+
+.faq-question:hover,
+.faq-item[open] .faq-question {
+    color: var(--accent-primary);
+}
+
+.faq-item[open] .faq-question::after {
+    content: "\2212";
+    color: var(--accent-primary);
+}
+
+.faq-question:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-md);
 }
 
 .faq-answer {
     color: var(--text-secondary);
     font-size: 0.9375rem;
     line-height: 1.7;
+    padding-bottom: var(--space-md);
 }
 
 /* ============================================
@@ -1676,9 +1701,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         padding-bottom: var(--space-lg);
     }
 
-    .faq-grid {
-        grid-template-columns: 1fr;
-    }
 
     .footer-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
