@@ -21,6 +21,8 @@ For a single year, the PDF summary shows your starting balance, new expenses, re
 
 Next to **Receipts**, tap **ZIP** for every receipt in the period, organized into year and month folders. File names start with the date, provider, and amount.
 
+When an expense has more than one document, they're kept together under the expense's date, so an EOB that arrived months later sits beside its receipt. If two expenses would get the same name, like twin visits on the same day, the second is numbered, like `(2)`. Expenses in the Trash are left out.
+
 ## All transactions
 
 Under **All Transactions**, choose a **Date Range** and tap **CSV** next to **Export Data**. It includes every expense, contribution, reimbursement, and reconciliation, and opens in Numbers, Excel, or Google Sheets.

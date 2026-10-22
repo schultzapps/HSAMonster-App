@@ -6,7 +6,7 @@ sidebar:
 ---
 ## Deleting a transaction
 
-Swipe left on it and tap **Delete**, or edit it and tap **Delete Transaction**. It moves to the Trash, along with its receipt.
+Swipe left on it and tap **Delete**, or edit it and tap **Delete Transaction**. It moves to the Trash, along with its receipt and any other documents.
 
 ## Restoring from the Trash
 

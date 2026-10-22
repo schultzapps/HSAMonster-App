@@ -39,4 +39,4 @@ Imported expenses are marked **Out of Pocket** with a receipt status of **Missin
 
 ## Adding a single receipt file
 
-To turn one PDF or image into an expense, use **+ → Attach File** or the [share sheet](/help/expenses/shortcuts/) instead.
+To turn one PDF or image into an expense, use <span class="help-icon help-icon--plus" role="img" aria-label="Add"></span> → **Attach File** or the [share sheet](/help/expenses/shortcuts/) instead.

@@ -6,7 +6,7 @@ sidebar:
 ---
 ## Adding an expense
 
-1. Tap **+** on **Summary** or **Expenses** (Mac: **⇧ ⌘ N**).
+1. Tap <span class="help-icon help-icon--plus" role="img" aria-label="Add"></span> on **Summary** or **Expenses** (Mac: **⇧ ⌘ N**).
 2. Choose how to start:
    - **Scan Document**, **Attach Photo**, or **Attach File** reads the receipt and fills in the details for you. See [Scanning receipts](/help/expenses/scanning-receipts/).
    - **Create Manual Expense** starts with a blank form.
@@ -16,7 +16,7 @@ sidebar:
 
 | Field | What to enter |
 | --- | --- |
-| **Document** | The receipt. Tap **Add** to scan or attach one, or use **•••** to mark it **Not Required**, **Stored Elsewhere**, or **Lost**. |
+| **Document** | The receipt. Tap **Add** to scan or attach one, or use <span class="help-icon help-icon--dots-circle" role="img" aria-label="More"></span> to mark it **Not Required**, **Stored Elsewhere**, or **Lost**. You can attach more than one, like an EOB. See [Adding more than one document](/help/expenses/multiple-documents/). |
 | **Date** | When you paid. Can't be in the future. |
 | **Amount** | Type the digits; the decimal fills in automatically. |
 | **Payment** | **Out of Pocket** if you paid with your own money, or the HSA account you paid from. |
@@ -40,4 +40,4 @@ To merge providers that were typed differently, select their expenses and use **
 
 ## Editing an expense
 
-Tap an expense to see its details, then tap **Edit**. Changing the date, provider, or amount also renames the receipt file to match.
+Tap an expense to see its details, then tap **Edit**. Changing the date, provider, or amount also renames the expense's documents to match.

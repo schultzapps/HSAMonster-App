@@ -20,7 +20,7 @@ The amount and a comment describing the expense are filled in for you.
 To reimburse several expenses at once, or any amount:
 
 - Press and hold an account on **Summary** and tap **Add Reimbursement**.
-- On an account's page, tap **+ → Add Reimbursement**.
+- On an account's page, tap <span class="help-icon help-icon--plus" role="img" aria-label="Add"></span> → **Add Reimbursement**.
 - Say "Log a reimbursement in HSA Monster," or use the **Reimburse Myself** control in Control Center.
 
 ## How it's counted

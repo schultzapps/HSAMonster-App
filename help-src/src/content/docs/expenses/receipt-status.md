@@ -8,7 +8,7 @@ Every expense has a receipt status. The **Expenses** tab badge counts the ones s
 
 | Status | Meaning |
 | --- | --- |
-| **Attached** | The receipt is saved in HSA Monster. |
+| **Attached** | The receipt is saved in HSA Monster. Any extra documents, like an EOB, are attached to the same expense. |
 | **Missing** | You still need to add it. New expenses start here until you attach one. |
 | **Not Required** | No receipt is needed. |
 | **Stored Elsewhere** | You keep it somewhere else, like your HSA provider's site. |
@@ -16,7 +16,7 @@ Every expense has a receipt status. The **Expenses** tab badge counts the ones s
 
 ## Setting a status
 
-- **One expense:** edit it, tap **•••** next to **Document**, and pick a status.
+- **One expense:** edit it, tap <span class="help-icon help-icon--dots-circle" role="img" aria-label="More"></span> next to **Document**, and pick a status.
 - **Several at once:** select them and use **Receipt Status**. See [Search & batch edit](/help/expenses/search-and-batch-edit/).
 
 ## Finding expenses without receipts

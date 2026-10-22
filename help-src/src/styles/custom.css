@@ -402,3 +402,29 @@ footer .meta:empty {
 .sl-markdown-content .hm-topic-grid > * {
 	margin-top: 0;
 }
+
+/* The app's own symbols, drawn inline in articles, tinted like the toolbar
+   buttons they stand for. Use <span class="help-icon help-icon--plus"
+   role="img" aria-label="Add"></span>. Each shape is the SVG from the app's
+   asset catalog (Assets.xcassets/IconPack), used as a mask so it takes the
+   accent color. */
+.help-icon {
+	display: inline-block;
+	width: 1.25em;
+	height: 1.25em;
+	vertical-align: -0.28em;
+	background-color: var(--sl-color-accent);
+	-webkit-mask: var(--help-icon) center / contain no-repeat;
+	mask: var(--help-icon) center / contain no-repeat;
+}
+/* solar-copy-add */
+.help-icon--add-document { --help-icon: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke-width=%221.5%22%3E%3Cpath%20d=%22M6%2011C6%208.17157%206%206.75736%206.87868%205.87868C7.75736%205%209.17157%205%2012%205H15C17.8284%205%2019.2426%205%2020.1213%205.87868C21%206.75736%2021%208.17157%2021%2011V16C21%2018.8284%2021%2020.2426%2020.1213%2021.1213C19.2426%2022%2017.8284%2022%2015%2022H12C9.17157%2022%207.75736%2022%206.87868%2021.1213C6%2020.2426%206%2018.8284%206%2016V11Z%22%20stroke=%22currentColor%22%20stroke-linecap=%22round%22/%3E%3Cpath%20d=%22M6%2019C4.34315%2019%203%2017.6569%203%2016V10C3%206.22876%203%204.34315%204.17157%203.17157C5.34315%202%207.22876%202%2011%202H15C16.6569%202%2018%203.34315%2018%205%22%20stroke=%22currentColor%22%20stroke-linecap=%22round%22/%3E%3Cpath%20d=%22M16.75%2013.5H13.5M13.5%2013.5L10.25%2013.5M13.5%2013.5L13.5%2010.25M13.5%2013.5L13.5%2016.75%22%20stroke=%22currentColor%22%20stroke-linecap=%22round%22/%3E%3C/svg%3E"); }
+/* Solar "add" (Linear), from solar-icons.dev. A plain plus: the app's add
+   button is just a plus, and iOS draws the round container around it. */
+.help-icon--plus { --help-icon: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%3E%3Cpath%20d=%22M4%2012L20%2012%22%20stroke=%22currentColor%22%20stroke-width=%221.5%22%20stroke-linecap=%22round%22/%3E%3Cpath%20d=%22M12.0204%204L12.0205%2020.0003%22%20stroke=%22currentColor%22%20stroke-width=%221.5%22%20stroke-linecap=%22round%22/%3E%3C/svg%3E"); }
+/* solar-ellipsis */
+.help-icon--ellipsis { --help-icon: url("data:image/svg+xml,%3Csvg%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Ccircle%20cx=%225%22%20cy=%2212%22%20r=%222%22%20stroke=%22currentColor%22%20stroke-width=%221.5%22/%3E%3Ccircle%20cx=%2212%22%20cy=%2212%22%20r=%222%22%20stroke=%22currentColor%22%20stroke-width=%221.5%22/%3E%3Ccircle%20cx=%2219%22%20cy=%2212%22%20r=%222%22%20stroke=%22currentColor%22%20stroke-width=%221.5%22/%3E%3C/svg%3E"); }
+/* solar-menu-dots-circle */
+.help-icon--dots-circle { --help-icon: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke-width=%221.5%22%3E%3Cpath%20d=%22M8%2012H8.00901M12.0045%2012H12.0135M15.991%2012H16%22%20stroke=%22currentColor%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%3Ccircle%20cx=%2212%22%20cy=%2212%22%20r=%2210%22%20stroke=%22currentColor%22/%3E%3C/svg%3E"); }
+/* solar-menu-dots-bold */
+.help-icon--dots-bold { --help-icon: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke-width=%221.5%22%3E%3Cpath%20d=%22M7%2012C7%2013.1046%206.10457%2014%205%2014C3.89543%2014%203%2013.1046%203%2012C3%2010.8954%203.89543%2010%205%2010C6.10457%2010%207%2010.8954%207%2012Z%22%20fill=%22currentColor%22/%3E%3Cpath%20d=%22M14%2012C14%2013.1046%2013.1046%2014%2012%2014C10.8954%2014%2010%2013.1046%2010%2012C10%2010.8954%2010.8954%2010%2012%2010C13.1046%2010%2014%2010.8954%2014%2012Z%22%20fill=%22currentColor%22/%3E%3Cpath%20d=%22M21%2012C21%2013.1046%2020.1046%2014%2019%2014C17.8954%2014%2017%2013.1046%2017%2012C17%2010.8954%2017.8954%2010%2019%2010C20.1046%2010%2021%2010.8954%2021%2012Z%22%20fill=%22currentColor%22/%3E%3C/svg%3E"); }

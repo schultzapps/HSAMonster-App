@@ -34,12 +34,12 @@ In **Settings → Household Sharing**:
 - **Edit** renames the household (owner only).
 - **Manage** adds or removes people (owner only).
 - **View Members** shows who's in it.
-- **••• → Resync with Household** fetches the latest if something's missing.
+- <span class="help-icon help-icon--ellipsis" role="img" aria-label="More"></span> → **Resync with Household** fetches the latest if something's missing.
 
 ## Stopping sharing
 
-- **Owner:** **••• → Remove Household**. Your partner loses access, and you keep all your data.
-- **Partner:** **••• → Leave Household**. You lose access to the household's data.
+- **Owner:** <span class="help-icon help-icon--ellipsis" role="img" aria-label="More"></span> → **Remove Household**. Your partner loses access, and you keep all your data.
+- **Partner:** <span class="help-icon help-icon--ellipsis" role="img" aria-label="More"></span> → **Leave Household**. You lose access to the household's data.
 
 ## FAQ
 

@@ -23,7 +23,7 @@ Settings is where you manage **HSA Accounts**, **Family Members**, **Reports & E
 
 ## Adding things quickly
 
-Tap **+** on **Summary** or **Expenses**:
+Tap <span class="help-icon help-icon--plus" role="img" aria-label="Add"></span> on **Summary** or **Expenses**:
 
 - **Scan Document**
 - **Attach Photo**

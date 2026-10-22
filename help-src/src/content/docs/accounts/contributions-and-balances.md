@@ -15,7 +15,7 @@ An account's balance is built from its transactions:
 
 ## Adding a contribution
 
-1. Press and hold the account on **Summary**, or open it and tap **+**.
+1. Press and hold the account on **Summary**, or open it and tap <span class="help-icon help-icon--plus" role="img" aria-label="Add"></span>.
 2. Tap **Add Contribution**.
 3. Enter the amount and date, then tap **Save**.
 

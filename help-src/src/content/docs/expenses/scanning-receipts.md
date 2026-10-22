@@ -6,7 +6,7 @@ sidebar:
 ---
 ## Adding a receipt
 
-Tap **+** on **Summary** or **Expenses** and choose:
+Tap <span class="help-icon help-icon--plus" role="img" aria-label="Add"></span> on **Summary** or **Expenses** and choose:
 
 | Option | Best for |
 | --- | --- |
@@ -42,10 +42,14 @@ Expenses without a receipt show **Missing**. To add one, swipe right on the expe
 
 ## Viewing a receipt
 
-Tap the receipt thumbnail on an expense. Pinch or double-tap to zoom, and tap **Share** to send or save it.
+Tap the receipt thumbnail on an expense. Pinch or double-tap to zoom, and tap **Share** to send or save it. When an expense has more than one document, the viewer steps through them all.
 
-To replace a receipt, edit the expense, tap the trash button on the receipt, then add the new one.
+To replace a receipt, edit the expense, use the menu on the receipt and choose **Remove Receipt**, then add the new one.
+
+## More than one document
+
+An EOB or a statement that arrives later can go on the same expense as the receipt. See [Adding more than one document](/help/expenses/multiple-documents/).
 
 ## Where receipts are stored
 
-Receipts are saved inside HSA Monster and synced with your private iCloud, so they're backed up and available on every device. To get copies, [export a receipts ZIP](/help/data/reports-and-export/). Every receipt is given a clean filename with date, provider, and amount, making them easier than ever to retain.
+Receipts are saved inside HSA Monster and synced with your private iCloud, so they're backed up and available on every device. To get copies, [export a receipts ZIP](/help/data/reports-and-export/). Every receipt is given a clean filename with date, provider, and amount, making them easier than ever to retain. An expense with several documents shares one name, numbered in the order you attached them.
