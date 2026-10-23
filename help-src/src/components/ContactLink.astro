@@ -1,5 +1,6 @@
 ---
-// Same obfuscated support address as the main site's "Contact Us" link.
+// The support address, obfuscated like the main site's "Contact Us" link. The
+// app's Help Center recognizes support@ and shows its own Contact Us choices.
 const { label = 'Email support' } = Astro.props;
 ---
 
@@ -10,7 +11,7 @@ const { label = 'Email support' } = Astro.props;
 		link.addEventListener('click', function (e) {
 			e.preventDefault();
 			window.location.href =
-				'mail' + 'to:' + 'hello' + '@' + 'hsamonster.com' + '?subject=' + encodeURIComponent('HSA Monster Help');
+				'mail' + 'to:' + 'support' + '@' + 'hsamonster.com' + '?subject=' + encodeURIComponent('HSA Monster Help');
 		});
 	});
 </script>
