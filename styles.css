@@ -553,13 +553,13 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .hero {
     position: relative;
-    min-height: 100vh;
     display: flex;
-    align-items: center;
+    /* Content sits on the bottom edge (no bottom padding) so the phone can
+       run past it and be clipped by the trust band below. */
+    align-items: flex-end;
     /* Extra top padding so the headline breathes below the fixed navbar
-       rather than sitting right under it; the bottom is tighter so the
-       trust band reads as attached to the hero. */
-    padding: calc(var(--space-4xl) + var(--space-xl)) 0 var(--space-3xl);
+       rather than sitting right under it. */
+    padding: 8.5rem 0 0;
     overflow: hidden;
 }
 
@@ -602,24 +602,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-xs) var(--space-md);
-    background: var(--bg-card);
-    border: 1px solid var(--border-color-strong);
-    border-radius: var(--radius-full);
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-lg);
-}
-
-.badge-icon {
-    font-size: 1rem;
 }
 
 .hero-title {
@@ -673,6 +655,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .hero-mockup {
     position: relative;
+    align-self: end;
+    /* Pushed past the hero's bottom edge, which clips it under the trust band */
+    margin-bottom: -80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -697,15 +682,29 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    past ~3% the screenshot would spill over the outer rail. */
 .phone-frame {
     position: relative;
-    width: 274px;
+    width: 304px;
     aspect-ratio: 822 / 1681;
     filter: drop-shadow(0 0 60px var(--accent-glow));
-    transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
-    transition: transform var(--transition-slow);
+    transform: perspective(1000px) rotateY(-9deg) rotateX(9deg);
 }
 
-.phone-frame:hover {
-    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+/* The tilt eases out to flat as the page scrolls, instead of on hover (which
+   touch devices never fire). Browsers without scroll-driven animations, and
+   visitors who prefer reduced motion, keep the static tilt above. */
+@supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .phone-frame {
+            animation: phoneFlatten linear both;
+            animation-timeline: scroll(root block);
+            animation-range: 0px 200px;
+            will-change: transform;
+        }
+    }
+}
+
+@keyframes phoneFlatten {
+    from { transform: perspective(1000px) rotateY(-9deg) rotateX(9deg); }
+    to { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
 }
 
 .phone-bezel {
@@ -803,20 +802,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     margin: 0 auto var(--space-2xl);
 }
 
-.section-label {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent-primary);
-    background: rgba(94, 92, 230, 0.1);
-    padding: var(--space-xs) var(--space-md);
-    border-radius: var(--radius-full);
-    margin-bottom: var(--space-md);
-}
-
 .section-title {
     margin-bottom: var(--space-md);
 }
@@ -830,7 +815,9 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    Features Section
    ============================================ */
 .features-section {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-2xl) 0;
+    /* Tinted so it alternates with the untinted screenshots section below it. */
+    background: var(--bg-secondary);
 }
 
 .features-grid {
@@ -848,7 +835,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-xl);
-    padding: var(--space-lg);
+    padding: 1.25rem var(--space-lg);
     transition: all var(--transition-base);
     opacity: 0;
     transform: translateY(20px);
@@ -898,7 +885,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    How It Works Section
    ============================================ */
 .how-it-works-section {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-2xl) 0;
     background: var(--bg-secondary);
 }
 
@@ -986,7 +973,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     min-width: 200px;
     max-width: 300px;
     text-align: center;
-    padding: var(--space-xl);
+    padding: var(--space-lg) var(--space-xl);
     background: var(--bg-card);
     border-radius: var(--radius-xl);
     border: 1px solid var(--border-color);
@@ -1045,63 +1032,60 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    .how-it-works-section directly below is the tinted band, so tinting
    this one too would merge the two into a single slab. */
 .family-section {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-2xl) 0;
 }
 
 .screenshots-gallery {
+    /* A static, flat trio: the centre phone is larger and sits in front, and
+       the two side phones are a step smaller and tuck behind it. Widths are
+       fluid (vw-capped) so all three scale down together on narrow screens;
+       the overlap is a fixed fraction of the side width so it scales too. */
+    --side-w: min(200px, 25vw);
+    --center-w: min(236px, 29.5vw);
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Gap shrinks with the viewport so it doesn't eat the width the three
-       phones need to stay side by side on narrow screens. */
-    gap: min(var(--space-xl), 4vw);
-    perspective: 1000px;
 }
 
 .screenshot-item {
     flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.screenshot-item:first-child {
+    margin-right: calc(var(--side-w) * -0.22);
+}
+
+.screenshot-item:last-child {
+    margin-left: calc(var(--side-w) * -0.22);
 }
 
 .screenshot-frame {
     /* Sized by the bezel art's aspect ratio so the frame never stretches;
-       the .phone-bezel/.phone-screen pair inside does the framing.
-       Width is fluid below roughly 800px so all three phones scale down
-       together rather than overflowing and being forced to stack. */
+       the .phone-bezel/.phone-screen pair inside does the framing. */
     position: relative;
-    width: min(200px, 25vw);
+    width: var(--side-w);
     aspect-ratio: 822 / 1681;
-    transition: all var(--transition-slow);
-    transform: rotateY(15deg) scale(0.9);
     /* drop-shadow rather than box-shadow: the phone's real silhouette is
        the PNG's alpha, not the element's rectangle. */
     filter: drop-shadow(var(--shadow-md));
 }
 
-.screenshot-item:last-child .screenshot-frame {
-    transform: rotateY(-15deg) scale(0.9);
+.screenshot-item.featured {
+    z-index: 2;
 }
 
 .screenshot-item.featured .screenshot-frame {
-    /* 30vw keeps the centre phone at the same 240:200 ratio to its
-       neighbours as the row scales down. */
-    width: min(240px, 30vw);
-    transform: rotateY(0deg) scale(1);
+    width: var(--center-w);
     filter: drop-shadow(var(--shadow-lg)) drop-shadow(0 0 12px var(--accent-glow));
-}
-
-.screenshot-item:first-child .screenshot-frame:hover {
-    transform: rotateY(0deg) scale(1.02) !important;
-}
-
-.screenshot-item:last-child .screenshot-frame:hover {
-    transform: rotateY(0deg) scale(1.02) !important;
 }
 
 /* ============================================
    Pricing Section
    ============================================ */
 .pricing-section {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-2xl) 0;
 }
 
 .pricing-grid {
@@ -1116,7 +1100,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-xl);
-    padding: var(--space-xl);
+    padding: var(--space-lg) var(--space-xl);
     text-align: center;
     transition: all var(--transition-base);
     opacity: 0;
@@ -1234,6 +1218,16 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     width: 100%;
 }
 
+/* Pinned to the bottom of each card so the three buttons line up even though
+   the feature lists differ in length. */
+.pricing-card .pricing-cta {
+    margin-top: auto;
+}
+
+.pricing-features {
+    margin-bottom: var(--space-lg);
+}
+
 /* Sits under the pricing grid, replacing the note that used to run in the
    section header above the cards. */
 .pricing-note {
@@ -1260,7 +1254,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    FAQ Section
    ============================================ */
 .faq-section {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-2xl) 0;
     background: var(--bg-secondary);
 }
 
@@ -1329,7 +1323,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    CTA Section
    ============================================ */
 .cta-section {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-2xl) 0;
 }
 
 .cta-box {
@@ -1636,11 +1630,15 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 @media (max-width: 860px) {
+    .hero {
+        padding-top: 7rem;
+    }
+
     .hero-container {
         /* minmax(0, 1fr) so wide children can't blow the column out past the viewport */
         grid-template-columns: minmax(0, 1fr);
         text-align: center;
-        gap: var(--space-3xl);
+        gap: 2em;
     }
 
     /* Headline + download CTA must stay above the phone mockup so the
@@ -1651,6 +1649,12 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
     .hero-mockup {
         order: 1;
+        margin-bottom: -70px;
+    }
+
+    /* Stacked, the phone starts lower, so the flattening gets a longer run */
+    .phone-frame {
+        animation-range: 0px 300px;
     }
 
     /* Stacked there is room for the whole headline on one line, so drop the
@@ -1935,7 +1939,13 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     }
 
     .pricing-card {
-        padding: var(--space-xl);
+        padding: var(--space-lg) var(--space-xl);
+    }
+
+    /* The blank row only exists to match card heights side by side; stacked it
+       just leaves an empty gap under the last feature. */
+    .pricing-features li.blank-row {
+        display: none;
     }
 
     /* Stacked, the featured card has no neighbours to stand out from, so the
@@ -1956,18 +1966,20 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 /* Below this the three scaled phones get too small to read, so they stack and
-   return to full size. The tilt is dropped since it only reads as skew when
-   the phones are above one another rather than in a row. */
+   return to full size, without the overlap. */
 @media (max-width: 440px) {
     .screenshots-gallery {
         flex-direction: column;
     }
 
+    .screenshot-item:first-child,
+    .screenshot-item:last-child {
+        margin: 0;
+    }
+
     .screenshot-frame,
-    .screenshot-item.featured .screenshot-frame,
-    .screenshot-item:last-child .screenshot-frame {
+    .screenshot-item.featured .screenshot-frame {
         width: 200px;
-        transform: none;
     }
 }
 
