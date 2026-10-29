@@ -451,3 +451,11 @@ footer .meta:empty {
 .help-icon--dots-circle { --help-icon: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke-width=%221.5%22%3E%3Cpath%20d=%22M8%2012H8.00901M12.0045%2012H12.0135M15.991%2012H16%22%20stroke=%22currentColor%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%3Ccircle%20cx=%2212%22%20cy=%2212%22%20r=%2210%22%20stroke=%22currentColor%22/%3E%3C/svg%3E"); }
 /* solar-menu-dots-bold */
 .help-icon--dots-bold { --help-icon: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20stroke-width=%221.5%22%3E%3Cpath%20d=%22M7%2012C7%2013.1046%206.10457%2014%205%2014C3.89543%2014%203%2013.1046%203%2012C3%2010.8954%203.89543%2010%205%2010C6.10457%2010%207%2010.8954%207%2012Z%22%20fill=%22currentColor%22/%3E%3Cpath%20d=%22M14%2012C14%2013.1046%2013.1046%2014%2012%2014C10.8954%2014%2010%2013.1046%2010%2012C10%2010.8954%2010.8954%2010%2012%2010C13.1046%2010%2014%2010.8954%2014%2012Z%22%20fill=%22currentColor%22/%3E%3Cpath%20d=%22M21%2012C21%2013.1046%2020.1046%2014%2019%2014C17.8954%2014%2017%2013.1046%2017%2012C17%2010.8954%2017.8954%2010%2019%2010C20.1046%2010%2021%2010.8954%2021%2012Z%22%20fill=%22currentColor%22/%3E%3C/svg%3E"); }
+
+/* Phones: nothing should drag the page sideways. iOS Safari lets the page
+   wiggle if anything pokes past the screen edge, so clip both html and body
+   (clip, unlike hidden, doesn't make them scroll boxes). */
+html,
+body {
+	overflow-x: clip;
+}
