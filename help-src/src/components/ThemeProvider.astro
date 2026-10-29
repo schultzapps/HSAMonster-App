@@ -1,11 +1,19 @@
 ---
-// The help center is light-only: always use the light theme and ignore
-// the system setting or any theme saved by an earlier visit.
+// No theme picker: always follow the device's light/dark setting, including
+// when it changes while the page is open. Clears any theme saved by an
+// earlier visit so it can't pin the site to one look.
 ---
 
 <script is:inline>
-	document.documentElement.dataset.theme = 'light';
-	try {
-		localStorage.removeItem('starlight-theme');
-	} catch {}
+	(() => {
+		try {
+			localStorage.removeItem('starlight-theme');
+		} catch {}
+		const query = window.matchMedia('(prefers-color-scheme: light)');
+		const apply = () => {
+			document.documentElement.dataset.theme = query.matches ? 'light' : 'dark';
+		};
+		apply();
+		query.addEventListener('change', apply);
+	})();
 </script>
