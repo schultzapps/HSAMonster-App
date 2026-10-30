@@ -35,6 +35,12 @@ Tap either one for a year-by-year **History** with all-time totals.
 
 Your HSA accounts, highest balance first. Tap one to open it, or press and hold for **Add Contribution**, **Add Reimbursement**, and **Reconcile**. **See All** opens **HSA Accounts**.
 
+## Scheduled
+
+Transactions waiting for a future date, soonest first. Tap the header to collapse it. See [Recurring & future transactions](/help/expenses/recurring-transactions/).
+
 ## Recent Activity
 
 Everything from the last 30 days. Tap an expense to see its details, or press and hold for more actions.
+
+When scheduled transactions have been added, a **New Transactions** row at the top shows how many. Tap it to [review them](/help/expenses/recurring-transactions/#reviewing-new-transactions).

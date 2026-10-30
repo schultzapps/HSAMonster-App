@@ -34,7 +34,7 @@ In **Settings → Household Sharing**:
 - **Edit** renames the household (owner only).
 - **Manage** adds or removes people (owner only).
 - **View Members** shows who's in it.
-- <span class="help-icon help-icon--ellipsis" role="img" aria-label="More"></span> → **Resync with Household** fetches the latest if something's missing.
+- <span class="help-icon help-icon--ellipsis" role="img" aria-label="More"></span> → **Resync with Household** adds anything on this device that isn't in the household yet, then tells you what it did: how many records it added, that everything was already there, or how many were saved outside the household and can't be shared.
 
 ## Stopping sharing
 

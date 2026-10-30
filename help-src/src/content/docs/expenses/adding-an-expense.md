@@ -17,7 +17,8 @@ sidebar:
 | Field | What to enter |
 | --- | --- |
 | **Document** | The receipt. Tap **Add** to scan or attach one, or use <span class="help-icon help-icon--dots-circle" role="img" aria-label="More"></span> to mark it **Not Required**, **Stored Elsewhere**, or **Lost**. You can attach more than one, like an EOB. See [Adding more than one document](/help/expenses/multiple-documents/). |
-| **Date** | When you paid. Can't be in the future. |
+| **Date** | When you paid. You can pick a future date and it's added on that day. |
+| **Repeat** | How often it happens, like **Monthly**, for a regular prescription or copay. See [Recurring & future transactions](/help/expenses/recurring-transactions/). |
 | **Amount** | Type the digits; the decimal fills in automatically. |
 | **Payment** | **Out of Pocket** if you paid with your own money, or the HSA account you paid from. |
 | **Provider** | Who you paid, like a doctor's office or pharmacy. Required. |

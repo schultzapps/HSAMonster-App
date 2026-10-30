@@ -15,6 +15,8 @@ Open **Search** and type anything:
 
 Every word must match, so "cvs jane" finds CVS expenses for Jane. Tap a **Suggestion** to search one specific field, like a provider or person.
 
+Press **Return** or **Search** to turn what you typed into a chip, then keep typing to add another. Tap the **Scheduled** suggestion to list only [scheduled transactions](/help/expenses/recurring-transactions/).
+
 ## Sorting and filtering
 
 On **Expenses**, tap the **filter** button:
@@ -26,14 +28,16 @@ Date sorts group expenses by month. Tap **Clear Filters** to reset.
 
 ## Quick actions
 
-- **Swipe right:** **Add Receipt** or **View Receipt**
+- **Swipe right:** **Add Receipt** or **View Receipt**, or **Approve** on a [new transaction](/help/expenses/recurring-transactions/#reviewing-new-transactions)
 - **Swipe left:** **Edit** or **Delete**
 - **Press and hold:** all of the above, plus **Reimburse**. On an expense that already has a receipt, you'll also see **Add Document**, and **View Documents** when it has more than one.
 
 ## Selecting several at once
 
 1. On **Expenses**, or **Search** with results, tap **Select**.
-2. Tap transactions to select them, or **Select All**. The bottom bar shows how many and their total.
+2. Tap transactions to select them, or **Select All**. The bottom bar shows how many and their total. Scheduled transactions can be selected too, for **Combine Provider** and **Delete**.
+
+When everything you've selected is a new transaction waiting for review, **Approve** appears at the top.
 3. Tap <span class="help-icon help-icon--dots-bold" role="img" aria-label="More Actions"></span> and choose an action:
 
 | Action | What it does |

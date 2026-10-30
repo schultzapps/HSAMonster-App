@@ -20,7 +20,7 @@ On an expense that already has a receipt, you can also press and hold it and tap
 
 - **In the form:** the receipt card pages sideways between documents, with dots beneath it when there's more than one. On Mac, use the arrows on either side of the dots.
 - **On the expense:** the first document you attached stays as the header picture and as the thumbnail in lists, so adding an EOB never replaces the receipt. When there's more than one, a paperclip shows how many.
-- **In the viewer:** tap the header, or press and hold the expense and tap **View Documents**. The bottom bar shows where you are, like **2 of 3**, with arrows to step through. Tap **Share** to send the one showing. On Mac, Quick Look steps through all of them.
+- **In the viewer:** tap the header, or press and hold the expense and tap **View Documents**. Swipe to move between them, or use the arrows in the bottom bar, which shows where you are, like **2 of 3**. Swiping is paused while you're zoomed in, so you can move around the page. Tap **Share** to send the one showing. On Mac, Quick Look steps through all of them.
 
 ## Removing a document
 

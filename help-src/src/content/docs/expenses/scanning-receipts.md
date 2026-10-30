@@ -42,7 +42,7 @@ Expenses without a receipt show **Missing**. To add one, swipe right on the expe
 
 ## Viewing a receipt
 
-Tap the receipt thumbnail on an expense. Pinch or double-tap to zoom, and tap **Share** to send or save it. When an expense has more than one document, the viewer steps through them all.
+Tap the receipt thumbnail on an expense. Pinch or double-tap to zoom, and tap **Share** to send or save it. When an expense has more than one document, swipe to move between them.
 
 To replace a receipt, edit the expense, use the menu on the receipt and choose **Remove Receipt**, then add the new one.
 

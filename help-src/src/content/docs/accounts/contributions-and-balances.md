@@ -21,6 +21,10 @@ An account's balance is built from its transactions:
 
 Log each paycheck deposit, or one total per month or year. Contributions add up in **YTD Contributions** on Summary.
 
+:::tip
+If the same amount comes out of every paycheck, set **Repeat** to match your pay schedule, like **Every other week**, and it's added for you. See [Recurring & future transactions](/help/expenses/recurring-transactions/).
+:::
+
 ## Reconciling your balance
 
 HSA Monster builds your balance from what you log. It doesn't connect to your HSA provider, so anything else that changes your balance needs a reconcile to catch up.

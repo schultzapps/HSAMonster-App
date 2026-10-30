@@ -9,6 +9,7 @@ Tap an account on **Summary** or in **Settings → HSA Accounts**. On iPad and M
 ## Overview
 
 - **Balance chart** and **YTD Contributions** and **YTD Withdrawals** for just this account
+- **New Transactions** and **Scheduled:** transactions added from a schedule waiting for review, and ones still to come. See [Recurring & future transactions](/help/expenses/recurring-transactions/).
 - **Activity:** its transactions in the selected date range
 - **+:** **Add Contribution**, **Add Reimbursement**, and **Reconcile**
 

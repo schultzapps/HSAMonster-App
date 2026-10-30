@@ -21,6 +21,9 @@ On iOS 18, Search is the magnifying glass at the top of **Expenses**.
 
 Settings is where you manage **HSA Accounts**, **Family Members**, **Reports & Export**, **Import Data**, and the **Trash**.
 
+- **Help:** the question mark at the top right of Settings opens this help center. On iOS 18 it's labeled **Help**.
+- **What's New:** a summary of important app updates and notes from the developer.
+
 ## Adding things quickly
 
 Tap <span class="help-icon help-icon--plus" role="img" aria-label="Add"></span> on **Summary** or **Expenses**:

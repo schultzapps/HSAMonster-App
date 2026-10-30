@@ -23,6 +23,8 @@ To reimburse several expenses at once, or any amount:
 - On an account's page, tap <span class="help-icon help-icon--plus" role="img" aria-label="Add"></span> → **Add Reimbursement**.
 - Say "Log a reimbursement in HSA Monster," or use the **Reimburse Myself** control in Control Center.
 
+If you pay yourself back on a regular schedule, set **Repeat** on the reimbursement. See [Recurring & future transactions](/help/expenses/recurring-transactions/).
+
 ## How it's counted
 
 A reimbursement lowers both your **Reimbursable** total and that account's **HSA Balance**.

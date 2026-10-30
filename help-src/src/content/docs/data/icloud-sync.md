@@ -11,9 +11,19 @@ HSA Monster saves your expenses, receipts, and accounts in your private iCloud a
 Go to **Settings → iCloud Sync**:
 
 - **Network:** whether you're online
-- **Sync Status:** **Up to date**, **Syncing...**, **No network**, **Not signed in**, or an error
-- **Last Synced:** when it last finished
-- **Records:** how many transactions, receipts, family members, and accounts are on this device
+- **iCloud Account:** whether you're **Signed in**
+- **Status:**
+  - **Synced:** everything has downloaded and uploaded
+  - **Syncing...:** working on it
+  - **Changes waiting to upload:** something you saved here hasn't gone up yet
+  - **Not syncing** or an error, in red: something needs attention
+- **Last Received** and **Last Sent:** when this device last downloaded and uploaded changes
+- **Last Error:** the most recent problem and when it happened, if there's been one
+- **Records:** how many transactions, receipts, family members, accounts, and scheduled transactions are on this device, with the Trash counted separately
+
+If you've joined someone else's household, you'll see **Household** and **Your Data** separately, since each syncs on its own. **Not in Household** counts transactions on this device that were saved outside the household.
+
+To check two devices match, compare their **Records**.
 
 ## Setting up a new device
 
@@ -25,7 +35,7 @@ Your purchase is restored automatically with the same Apple Account.
 
 ## If data is missing
 
-1. Check **Settings → iCloud Sync**. **Not signed in** or **No network** tells you what to fix.
+1. Check **Settings → iCloud Sync**. **Not signed in**, an unavailable **Network**, or a **Last Error** tells you what to fix.
 2. In the iPhone **Settings** app, tap your name, then **iCloud**, and make sure iCloud is on for **HSA Monster**.
 3. Allow a few minutes, especially with many receipts. Keep the app open on Wi-Fi.
 4. If you share a household, tap **Settings → Household Sharing →** <span class="help-icon help-icon--ellipsis" role="img" aria-label="More"></span> **→ Resync with Household**.
