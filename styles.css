@@ -1077,6 +1077,11 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     filter: drop-shadow(var(--shadow-md));
 }
 
+/* Keep "for Families" together: if the title wraps, both words drop down. */
+.family-section .section-title .gradient-text {
+    white-space: nowrap;
+}
+
 .family-section .section-header {
     /* Same gap under the description as between the title and description. */
     margin-bottom: var(--space-md);
