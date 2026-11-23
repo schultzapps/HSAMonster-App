@@ -237,65 +237,96 @@
     </section>
 
     <!-- Features Section -->
+    <!-- On wide screens the phone and all three features sit side by side in a
+         stage that stays pinned while you scroll through .feature-scroll; how
+         far through it you are picks the active feature, which swaps the
+         screenshot and fades the other two (script at the bottom of the page).
+         The heading sits with the tiles in the same column.
+         Below 861px the same tiles are an accordion: tapping one opens it, with
+         its description and a peek of the phone (.feature-step-crop), and
+         closes the others.
+         Each feature's screenshot appears twice (the pinned .feature-shot and
+         the inline one in .feature-step-crop), so change both when swapping one.
+         The sources are 04-sharing, 05-export and 06-dashboard-balance from
+         the app repo's screenshots-output/en-US/iphone-18-pro. -->
     <section id="features" class="features-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Everything You Need to <span class="orange-text">Maximize Your HSA</span></h2>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 22C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 18.7712 2 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M22 15C22 18.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14 2C17.7712 2 19.6569 2 20.8284 3.17157C22 4.34315 22 5.22876 22 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M10 2C6.22876 2 4.34315 2 3.17157 3.17157C2 4.34315 2 5.22876 2 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M2 12H22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <div class="feature-scroll">
+                <div class="feature-stage">
+                <div class="feature-scroll-media" aria-hidden="true">
+                    <div class="screenshot-frame">
+                        <span class="phone-screen">
+                            <img class="feature-shot is-active" data-feature="grow" loading="lazy" decoding="async" src="images/feature-grow.webp" alt="HSA Monster summary with the HSA balance growing over time" />
+                            <img class="feature-shot" data-feature="families" loading="lazy" decoding="async" src="images/feature-families.webp" alt="HSA Monster's Household Sharing screen" />
+                            <img class="feature-shot" data-feature="data" loading="lazy" decoding="async" src="images/feature-data.webp" alt="HSA Monster's Reports and Export screen with CSV, PDF and ZIP options" />
+                        </span>
+                        <img class="phone-bezel" src="images/iphone-frame.png" alt="" aria-hidden="true" />
                     </div>
-                    <h3 class="feature-title">Capture Receipts in Seconds</h3>
-                    <p class="feature-description">
-                        Snap a photo and AI extracts the details instantly so you can store your expense and get on with your life.
-                    </p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 17L9 11L13 15L21 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 7H21V12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 21H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                <div class="feature-copy">
+                    <div class="section-header">
+                        <h2 class="section-title">Everything You Need to <span class="gradient-text">Maximize Your HSA</span></h2>
                     </div>
-                    <h3 class="feature-title">Grow Your Tax-Free Balance</h3>
-                    <p class="feature-description">
-                        Always know exactly how much you can withdraw tax-free. Watch your reimbursable balance grow alongside your investments.
-                    </p>
+                <ol class="feature-steps">
+                    <li class="feature-step is-active" data-feature="grow">
+                        <div class="feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 17L9 11L13 15L21 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 7H21V12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 21H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        </div>
+                        <h3 class="feature-title">Grow Your Tax-Free Balance</h3>
+                        <div class="feature-step-body">
+                            <div class="feature-step-body-inner">
+                                <p class="feature-description">
+                                    Always know exactly how much you can withdraw tax-free. Watch your reimbursable balance grow alongside your investments.
+                                </p>
+                                <div class="feature-step-crop">
+                                    <div class="screenshot-frame feature-step-shot">
+                                    <span class="phone-screen"><img loading="lazy" decoding="async" src="images/feature-grow.webp" alt="HSA Monster summary with the HSA balance growing over time" /></span>
+                                    <img class="phone-bezel" src="images/iphone-frame.png" alt="" aria-hidden="true" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="feature-step" data-feature="families">
+                        <div class="feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M15 9C16.6569 9 18 7.65685 18 6C18 4.34315 16.6569 3 15 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="9" cy="17" rx="7" ry="4" stroke="currentColor" stroke-width="1.5"/><path d="M18 14C19.7542 14.3847 21 15.3589 21 16.5C21 17.5293 19.9863 18.4229 18.5 18.8704" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        </div>
+                        <h3 class="feature-title">Built for Families</h3>
+                        <div class="feature-step-body">
+                            <div class="feature-step-body-inner">
+                                <p class="feature-description">
+                                    Track both spouses' HSA expenses and contributions in one place. Both of you can add receipts, changes sync instantly via iCloud, and nothing slips through the cracks.
+                                </p>
+                                <div class="feature-step-crop">
+                                    <div class="screenshot-frame feature-step-shot">
+                                    <span class="phone-screen"><img loading="lazy" decoding="async" src="images/feature-families.webp" alt="HSA Monster's Household Sharing screen" /></span>
+                                    <img class="phone-bezel" src="images/iphone-frame.png" alt="" aria-hidden="true" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="feature-step" data-feature="data">
+                        <div class="feature-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.3929 4.05365L14.8912 4.61112L14.8912 4.61112L15.3929 4.05365ZM19.3517 7.61654L18.85 8.17402L18.85 8.17402L19.3517 7.61654ZM21.654 10.1541L20.9689 10.4592L20.9689 10.4592L21.654 10.1541ZM3.17157 20.8284L3.7019 20.2981L3.7019 20.2981L3.17157 20.8284ZM20.8284 20.8284L20.2981 20.2981L20.2981 20.2981L20.8284 20.8284ZM14 21.25H10V22.75H14V21.25ZM2.75 14V10H1.25V14H2.75ZM21.25 13.5629V14H22.75V13.5629H21.25ZM14.8912 4.61112L18.85 8.17402L19.8534 7.05907L15.8947 3.49618L14.8912 4.61112ZM22.75 13.5629C22.75 11.8745 22.7651 10.8055 22.3391 9.84897L20.9689 10.4592C21.2349 11.0565 21.25 11.742 21.25 13.5629H22.75ZM18.85 8.17402C20.2034 9.3921 20.7029 9.86199 20.9689 10.4592L22.3391 9.84897C21.9131 8.89241 21.1084 8.18853 19.8534 7.05907L18.85 8.17402ZM10.0298 2.75C11.6116 2.75 12.2085 2.76158 12.7405 2.96573L13.2779 1.5653C12.4261 1.23842 11.498 1.25 10.0298 1.25V2.75ZM15.8947 3.49618C14.8087 2.51878 14.1297 1.89214 13.2779 1.5653L12.7405 2.96573C13.2727 3.16993 13.7215 3.55836 14.8912 4.61112L15.8947 3.49618ZM10 21.25C8.09318 21.25 6.73851 21.2484 5.71085 21.1102C4.70476 20.975 4.12511 20.7213 3.7019 20.2981L2.64124 21.3588C3.38961 22.1071 4.33855 22.4392 5.51098 22.5969C6.66182 22.7516 8.13558 22.75 10 22.75V21.25ZM1.25 14C1.25 15.8644 1.24841 17.3382 1.40313 18.489C1.56076 19.6614 1.89288 20.6104 2.64124 21.3588L3.7019 20.2981C3.27869 19.8749 3.02502 19.2952 2.88976 18.2892C2.75159 17.2615 2.75 15.9068 2.75 14H1.25ZM14 22.75C15.8644 22.75 17.3382 22.7516 18.489 22.5969C19.6614 22.4392 20.6104 22.1071 21.3588 21.3588L20.2981 20.2981C19.8749 20.7213 19.2952 20.975 18.2892 21.1102C17.2615 21.2484 15.9068 21.25 14 21.25V22.75ZM21.25 14C21.25 15.9068 21.2484 17.2615 21.1102 18.2892C20.975 19.2952 20.7213 19.8749 20.2981 20.2981L21.3588 21.3588C22.1071 20.6104 22.4392 19.6614 22.5969 18.489C22.7516 17.3382 22.75 15.8644 22.75 14H21.25ZM2.75 10C2.75 8.09318 2.75159 6.73851 2.88976 5.71085C3.02502 4.70476 3.27869 4.12511 3.7019 3.7019L2.64124 2.64124C1.89288 3.38961 1.56076 4.33855 1.40313 5.51098C1.24841 6.66182 1.25 8.13558 1.25 10H2.75ZM10.0298 1.25C8.15538 1.25 6.67442 1.24842 5.51887 1.40307C4.34232 1.56054 3.39019 1.8923 2.64124 2.64124L3.7019 3.7019C4.12453 3.27928 4.70596 3.02525 5.71785 2.88982C6.75075 2.75158 8.11311 2.75 10.0298 2.75V1.25Z" fill="currentColor"/><path d="M13 2.5V5C13 7.35702 13 8.53553 13.7322 9.26777C14.4645 10 15.643 10 18 10H22" stroke="currentColor" stroke-width="1.5"/><path d="M8.5 18.5L8.5 13.5M8.5 13.5L6.5 15.375M8.5 13.5L10.5 15.375" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <h3 class="feature-title">You Own Your Data</h3>
+                        <div class="feature-step-body">
+                            <div class="feature-step-body-inner">
+                                <p class="feature-description">
+                                    Export everything whenever you want. Your receipts, your data, no lock-in.
+                                </p>
+                                <div class="feature-step-crop">
+                                    <div class="screenshot-frame feature-step-shot">
+                                    <span class="phone-screen"><img loading="lazy" decoding="async" src="images/feature-data.webp" alt="HSA Monster's Reports and Export screen with CSV, PDF and ZIP options" /></span>
+                                    <img class="phone-bezel" src="images/iphone-frame.png" alt="" aria-hidden="true" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="6" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M15 9C16.6569 9 18 7.65685 18 6C18 4.34315 16.6569 3 15 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><ellipse cx="9" cy="17" rx="7" ry="4" stroke="currentColor" stroke-width="1.5"/><path d="M18 14C19.7542 14.3847 21 15.3589 21 16.5C21 17.5293 19.9863 18.4229 18.5 18.8704" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                    </div>
-                    <h3 class="feature-title">Built for Families</h3>
-                    <p class="feature-description">
-                        Track both spouses' HSA expenses and contributions in one place. Both of you can add receipts, changes sync instantly via iCloud, and nothing slips through the cracks.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 12C2 8.22876 2 6.34315 3.17157 5.17157C4.34315 4 6.22876 4 10 4H14C17.7712 4 19.6569 4 20.8284 5.17157C22 6.34315 22 8.22876 22 12V14C22 17.7712 22 19.6569 20.8284 20.8284C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.8284C2 19.6569 2 17.7712 2 14V12Z" stroke="currentColor" stroke-width="1.5"/><path d="M7 4V2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M17 4V2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M2.5 9H21.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M18 17C18 17.5523 17.5523 18 17 18C16.4477 18 16 17.5523 16 17C16 16.4477 16.4477 16 17 16C17.5523 16 18 16.4477 18 17Z" fill="currentColor"/><path d="M18 13C18 13.5523 17.5523 14 17 14C16.4477 14 16 13.5523 16 13C16 12.4477 16.4477 12 17 12C17.5523 12 18 12.4477 18 13Z" fill="currentColor"/><path d="M13 17C13 17.5523 12.5523 18 12 18C11.4477 18 11 17.5523 11 17C11 16.4477 11.4477 16 12 16C12.5523 16 13 16.4477 13 17Z" fill="currentColor"/><path d="M13 13C13 13.5523 12.5523 14 12 14C11.4477 14 11 13.5523 11 13C11 12.4477 11.4477 12 12 12C12.5523 12 13 12.4477 13 13Z" fill="currentColor"/><path d="M8 17C8 17.5523 7.55228 18 7 18C6.44772 18 6 17.5523 6 17C6 16.4477 6.44772 16 7 16C7.55228 16 8 16.4477 8 17Z" fill="currentColor"/><path d="M8 13C8 13.5523 7.55228 14 7 14C6.44772 14 6 13.5523 6 13C6 12.4477 6.44772 12 7 12C7.55228 12 8 12.4477 8 13Z" fill="currentColor"/></svg>
-                    </div>
-                    <h3 class="feature-title">Tax Season in One Tap</h3>
-                    <p class="feature-description">
-                        Export annual statements and receipt archives whenever you need them. Organized, documented, done.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.00879 8C6.04466 5.52043 6.22859 4.11466 7.17167 3.17157C8.34324 2 10.2289 2 14.0001 2C17.7713 2 19.657 2 20.8285 3.17157C22.0001 4.34315 22.0001 6.22876 22.0001 10V14C22.0001 17.7712 22.0001 19.6569 20.8285 20.8284C19.657 22 17.7713 22 14.0001 22H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M2 14.5C2 13.0955 2 12.3933 2.33706 11.8889C2.48298 11.6705 2.67048 11.483 2.88886 11.3371C3.39331 11 4.09554 11 5.5 11C6.90446 11 7.60669 11 8.11114 11.3371C8.32952 11.483 8.51702 11.6705 8.66294 11.8889C9 12.3933 9 13.0955 9 14.5V18.5C9 19.9045 9 20.6067 8.66294 21.1111C8.51702 21.3295 8.32952 21.517 8.11114 21.6629C7.60669 22 6.90446 22 5.5 22C4.09554 22 3.39331 22 2.88886 21.6629C2.67048 21.517 2.48298 21.3295 2.33706 21.1111C2 20.6067 2 19.9045 2 18.5V14.5Z" stroke="currentColor" stroke-width="1.5"/><path d="M17 19H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                    </div>
-                    <h3 class="feature-title">Apple-First Experience</h3>
-                    <p class="feature-description">
-                        Sync and work seamlessly on iPhone, iPad, or Mac. Your data stays in sync across all your Apple devices.
-                    </p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.3929 4.05365L14.8912 4.61112L14.8912 4.61112L15.3929 4.05365ZM19.3517 7.61654L18.85 8.17402L18.85 8.17402L19.3517 7.61654ZM21.654 10.1541L20.9689 10.4592L20.9689 10.4592L21.654 10.1541ZM3.17157 20.8284L3.7019 20.2981L3.7019 20.2981L3.17157 20.8284ZM20.8284 20.8284L20.2981 20.2981L20.2981 20.2981L20.8284 20.8284ZM14 21.25H10V22.75H14V21.25ZM2.75 14V10H1.25V14H2.75ZM21.25 13.5629V14H22.75V13.5629H21.25ZM14.8912 4.61112L18.85 8.17402L19.8534 7.05907L15.8947 3.49618L14.8912 4.61112ZM22.75 13.5629C22.75 11.8745 22.7651 10.8055 22.3391 9.84897L20.9689 10.4592C21.2349 11.0565 21.25 11.742 21.25 13.5629H22.75ZM18.85 8.17402C20.2034 9.3921 20.7029 9.86199 20.9689 10.4592L22.3391 9.84897C21.9131 8.89241 21.1084 8.18853 19.8534 7.05907L18.85 8.17402ZM10.0298 2.75C11.6116 2.75 12.2085 2.76158 12.7405 2.96573L13.2779 1.5653C12.4261 1.23842 11.498 1.25 10.0298 1.25V2.75ZM15.8947 3.49618C14.8087 2.51878 14.1297 1.89214 13.2779 1.5653L12.7405 2.96573C13.2727 3.16993 13.7215 3.55836 14.8912 4.61112L15.8947 3.49618ZM10 21.25C8.09318 21.25 6.73851 21.2484 5.71085 21.1102C4.70476 20.975 4.12511 20.7213 3.7019 20.2981L2.64124 21.3588C3.38961 22.1071 4.33855 22.4392 5.51098 22.5969C6.66182 22.7516 8.13558 22.75 10 22.75V21.25ZM1.25 14C1.25 15.8644 1.24841 17.3382 1.40313 18.489C1.56076 19.6614 1.89288 20.6104 2.64124 21.3588L3.7019 20.2981C3.27869 19.8749 3.02502 19.2952 2.88976 18.2892C2.75159 17.2615 2.75 15.9068 2.75 14H1.25ZM14 22.75C15.8644 22.75 17.3382 22.7516 18.489 22.5969C19.6614 22.4392 20.6104 22.1071 21.3588 21.3588L20.2981 20.2981C19.8749 20.7213 19.2952 20.975 18.2892 21.1102C17.2615 21.2484 15.9068 21.25 14 21.25V22.75ZM21.25 14C21.25 15.9068 21.2484 17.2615 21.1102 18.2892C20.975 19.2952 20.7213 19.8749 20.2981 20.2981L21.3588 21.3588C22.1071 20.6104 22.4392 19.6614 22.5969 18.489C22.7516 17.3382 22.75 15.8644 22.75 14H21.25ZM2.75 10C2.75 8.09318 2.75159 6.73851 2.88976 5.71085C3.02502 4.70476 3.27869 4.12511 3.7019 3.7019L2.64124 2.64124C1.89288 3.38961 1.56076 4.33855 1.40313 5.51098C1.24841 6.66182 1.25 8.13558 1.25 10H2.75ZM10.0298 1.25C8.15538 1.25 6.67442 1.24842 5.51887 1.40307C4.34232 1.56054 3.39019 1.8923 2.64124 2.64124L3.7019 3.7019C4.12453 3.27928 4.70596 3.02525 5.71785 2.88982C6.75075 2.75158 8.11311 2.75 10.0298 2.75V1.25Z" fill="currentColor"/><path d="M13 2.5V5C13 7.35702 13 8.53553 13.7322 9.26777C14.4645 10 15.643 10 18 10H22" stroke="currentColor" stroke-width="1.5"/><path d="M8.5 18.5L8.5 13.5M8.5 13.5L6.5 15.375M8.5 13.5L10.5 15.375" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </div>
-                    <h3 class="feature-title">You Own Your Data</h3>
-                    <p class="feature-description">
-                        Export everything whenever you want. Your receipts, your data, no lock-in.
-                    </p>
                 </div>
             </div>
         </div>
@@ -335,6 +366,23 @@
                         <span class="phone-screen"><img loading="lazy" decoding="async" src="images/screenshot-ai.webp" alt="AI Processing" /></span>
                         <img class="phone-bezel" src="images/iphone-frame.png" alt="" aria-hidden="true" />
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apple Section -->
+    <section class="apple-section">
+        <div class="container">
+            <div class="apple-grid">
+                <div class="section-header apple-copy">
+                    <h2 class="section-title">Apple-First <span class="gradient-text">Experience</span></h2>
+                    <p class="section-description">
+                        Sync and work seamlessly on iPhone, iPad, or Mac. Your data stays in sync across all your Apple devices.
+                    </p>
+                </div>
+                <div class="apple-media">
+                    <img loading="lazy" decoding="async" src="images/screenshot-devices.webp" width="1400" height="753" alt="HSA Monster running on Mac, iPad and iPhone" />
                 </div>
             </div>
         </div>
@@ -568,7 +616,7 @@
     <!-- CTA Section -->
     <section id="download" class="cta-section">
         <div class="container">
-            <div class="cta-box">
+            <div class="cta-content">
                 <h2 class="cta-title">Put an End to Lost Receipts</h2>
                 <p class="cta-description">
                     Start tracking your HSA expenses today. See how much you can withdraw tax-free for retirement.
@@ -577,7 +625,6 @@
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702z"/></svg>
                     Download<span class="btn-label-full">on the App Store</span>
                 </a>
-                <p class="cta-note">Free to try. No account or signup required.</p>
             </div>
         </div>
     </section>
@@ -734,9 +781,113 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card, .step-card, .pricing-card').forEach(el => {
+        document.querySelectorAll('.step-card, .pricing-card').forEach(el => {
             observer.observe(el);
         });
+
+        // Features. Wide screens: the stage stays pinned while you scroll
+        // through the runway, and how far through it you are picks the
+        // feature; clicking a tile moves the scroll position to that feature
+        // (instantly, so nothing visibly scrolls while the stage is pinned).
+        // Narrow screens: the tiles are an accordion, and tapping one opens it.
+        const featureScroll = document.querySelector('.feature-scroll');
+        if (featureScroll) {
+            const featureStage = featureScroll.querySelector('.feature-stage');
+            const featureSteps = [...featureScroll.querySelectorAll('.feature-step')];
+            const featureShots = [...featureScroll.querySelectorAll('.feature-shot')];
+            const wide = window.matchMedia('(min-width: 861px)');
+            let currentFeature = -1;
+
+            // Where the runway's scroll distance starts and how long it is.
+            const featureRunway = () => {
+                const rect = featureScroll.getBoundingClientRect();
+                return {
+                    top: rect.top,
+                    pinnedAt: parseFloat(getComputedStyle(featureStage).top) || 0,
+                    travel: rect.height - featureStage.offsetHeight
+                };
+            };
+
+            const showFeature = index => {
+                if (index === currentFeature) return;
+                currentFeature = index;
+                const stateAttr = wide.matches ? 'aria-pressed' : 'aria-expanded';
+                featureSteps.forEach((el, i) => {
+                    el.classList.toggle('is-active', i === index);
+                    el.setAttribute(stateAttr, i === index);
+                });
+                featureShots.forEach((el, i) => el.classList.toggle('is-active', i === index));
+            };
+
+            const updateFeature = () => {
+                if (!wide.matches) return;
+                const { top, pinnedAt, travel } = featureRunway();
+                const progress = travel > 0
+                    ? Math.min(1, Math.max(0, (pinnedAt - top) / travel))
+                    : 0;
+                const position = progress * featureSteps.length;
+                const index = Math.min(featureSteps.length - 1, Math.floor(position));
+                showFeature(index);
+                // How far through the active feature's share of the runway
+                // you are, for the bar down its tile's edge.
+                const within = Math.min(1, position - index);
+                featureSteps.forEach((el, i) => {
+                    el.style.setProperty('--progress', i === index ? (within * 100).toFixed(1) + '%' : '0%');
+                });
+            };
+
+            const scrollToFeature = index => {
+                const { top, pinnedAt, travel } = featureRunway();
+                // Halfway through the feature's share of the runway, so it
+                // sits well inside this feature rather than on a boundary.
+                const target = window.scrollY + top - pinnedAt + travel * ((index + 0.5) / featureSteps.length);
+                window.scrollTo({ top: target, behavior: 'instant' });
+                updateFeature();
+            };
+
+            const selectFeature = index => {
+                if (wide.matches) {
+                    scrollToFeature(index);
+                    return;
+                }
+                showFeature(index);
+                // Closing the open tile above moves this one up the page, so
+                // once the accordion has settled, bring it back into view.
+                setTimeout(() => featureSteps[index].scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 450);
+            };
+
+            featureSteps.forEach((el, i) => {
+                el.addEventListener('click', () => selectFeature(i));
+                el.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        selectFeature(i);
+                    }
+                });
+                el.setAttribute('role', 'button');
+                el.setAttribute('tabindex', '0');
+            });
+
+            // Re-apply the state for whichever layout is showing.
+            const syncFeatures = () => {
+                const keep = Math.max(0, currentFeature);
+                currentFeature = -1;
+                featureSteps.forEach(el => {
+                    el.removeAttribute('aria-pressed');
+                    el.removeAttribute('aria-expanded');
+                });
+                if (wide.matches) {
+                    updateFeature();
+                } else {
+                    showFeature(keep);
+                }
+            };
+
+            window.addEventListener('scroll', updateFeature, { passive: true });
+            wide.addEventListener('change', syncFeatures);
+            syncFeatures();
+            featureScroll.classList.add('is-ready');
+        }
 
         // Navbar scroll effect lives in assets/site-nav.js, so every page
         // collapses the bar identically.

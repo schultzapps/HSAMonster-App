@@ -56,6 +56,8 @@
     --accent-secondary: #41CEBD;
     --accent-tertiary: #4299CE;
     --accent-glow: rgba(94, 92, 230, 0.3);
+    --accent-tint: rgba(94, 92, 230, 0.16);
+    --accent-tint-soft: rgba(94, 92, 230, 0.07);
 
     --gradient-primary: linear-gradient(135deg, #5E5CE6 0%, #41CEBD 50%, #4299CE 100%);
     --gradient-secondary: linear-gradient(135deg, #41CEBD 0%, #4299CE 100%);
@@ -86,6 +88,8 @@
     --accent-secondary: #56CEC0;
     --accent-tertiary: #56A2CE;
     --accent-glow: rgba(88, 86, 214, 0.2);
+    --accent-tint: rgba(88, 86, 214, 0.1);
+    --accent-tint-soft: rgba(88, 86, 214, 0.05);
 
     --gradient-primary: linear-gradient(135deg, #5856D6 0%, #56CEC0 50%, #56A2CE 100%);
     --gradient-secondary: linear-gradient(135deg, #56CEC0 0%, #56A2CE 100%);
@@ -173,10 +177,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .gradient-text {
     color: var(--accent-primary);
-}
-
-.orange-text {
-    color: #CE5F41;
 }
 
 /* ============================================
@@ -639,8 +639,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 .btn-hero {
-    padding: 0.8125rem 2rem;
-    font-size: 1.125rem;
+    padding: 0.625rem 1.25rem;
+    font-size: 1rem;
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-md), var(--shadow-glow);
     white-space: normal;
@@ -824,65 +824,221 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     background: var(--bg-secondary);
 }
 
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-lg);
+/* One set of tiles at every width. Wide screens: a phone with the three
+   features beside it, pinned while you scroll, the active tile lit and the
+   others faded. Narrow screens: an accordion, where tapping a tile opens it
+   (description plus a peek of the phone) and closes the others. */
+.feature-scroll {
+    --phone-w: min(260px, 70vw);
 }
 
-.feature-card {
+/* The heading sits with the tiles, close above them. */
+.feature-copy .section-header {
+    margin: 0 auto var(--space-lg);
+}
+
+.feature-copy .section-title {
+    margin-bottom: 0;
+}
+
+.feature-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto 1fr;
-    gap: var(--space-sm) var(--space-md);
+    gap: var(--space-sm);
+}
+
+.feature-step {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    column-gap: var(--space-md);
     align-items: start;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    padding: 1.125rem var(--space-lg);
+    /* A lighter version of the active tile's tint. */
+    background: var(--accent-tint-soft);
     border-radius: var(--radius-xl);
-    padding: 1.25rem var(--space-lg);
-    transition: all var(--transition-base);
-    opacity: 0;
-    transform: translateY(20px);
+    cursor: pointer;
+    /* Clear the fixed nav when a tile is scrolled into view. */
+    scroll-margin-top: 5rem;
+    transition: opacity 0.4s ease, background-color 0.4s ease;
 }
 
-.feature-card.animate-in {
-    opacity: 1;
-    transform: translateY(0);
+.feature-step.is-active {
+    background: var(--accent-tint);
 }
 
-.feature-card:hover {
-    background: var(--bg-card-hover);
-    border-color: #CE5F41; /* orange */
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg), 0 0 20px rgba(206, 95, 65, 0.15);
+.feature-step:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
 }
 
+/* A bar down the active tile's left edge, on wide screens only: it fills as
+   you scroll through the tile's share of the runway (--progress is set by the
+   script). Stacked on narrow screens it stays empty, so there's no bar. */
+.feature-step::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: var(--accent-primary);
+}
+
+/* Just the symbol, in the accent purple: no box behind it. */
 .feature-icon {
-    grid-row: 1;
-    grid-column: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: #CE5F41; /* orange */
-    border-radius: var(--radius-lg);
-    color: white;
+    align-self: center;
+    color: var(--accent-primary);
     flex-shrink: 0;
 }
 
 .feature-title {
-    grid-row: 1;
     grid-column: 2;
     align-self: center;
     margin: 0;
+    font-size: 1.25rem;
+}
+
+/* Everything under the title opens and closes together. The 0fr -> 1fr grid
+   row animates the height without knowing it. */
+.feature-step-body {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease;
+}
+
+.feature-step.is-active .feature-step-body {
+    grid-template-rows: 1fr;
+}
+
+.feature-step-body-inner {
+    min-height: 0;
+    overflow: hidden;
 }
 
 .feature-description {
-    grid-row: 2;
-    grid-column: 1 / -1;
+    margin: var(--space-xs) 0 0;
+    /* Lines up under the title, past the symbol. */
+    padding-left: calc(28px + var(--space-md));
     color: var(--text-secondary);
     font-size: 0.9375rem;
+}
+
+/* A peek of the phone: the bottom third of these screens is mostly empty, so
+   it's cut off, with a fade where it ends. */
+.feature-step-crop {
+    height: calc(var(--phone-w) * 1.39);
+    margin-top: var(--space-md);
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent);
+    mask-image: linear-gradient(to bottom, #000 80%, transparent);
+}
+
+.feature-step-shot {
+    margin: 0 auto;
+}
+
+/* The pinned phone is wide-screen only. */
+.feature-scroll-media {
+    display: none;
+}
+
+@media (min-width: 861px) {
+    /* The runway: its height is the scroll distance the pinned stage rides
+       through, and how far through it you are picks the active feature (see
+       the script at the bottom of index.html). */
+    .feature-scroll {
+        /* Sized by height too, so the whole phone always fits the viewport. */
+        --phone-w: min(280px, 36vh);
+        height: 240vh;
+    }
+
+    /* Phone on the left, all three features on the right, pinned below the
+       fixed nav for the length of the runway. */
+    .feature-stage {
+        position: sticky;
+        top: 4rem;
+        height: calc(100vh - 4rem);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        column-gap: var(--space-3xl);
+        align-items: center;
+    }
+
+    /* The phone on the left, heading and tiles on the right (the order they
+       come in the markup). */
+    .feature-scroll-media {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Left-aligned over the tiles, at a size that fits the column. */
+    .feature-copy .section-header {
+        max-width: none;
+        margin: 0 0 var(--space-lg);
+        text-align: left;
+    }
+
+    .feature-copy .section-title {
+        font-size: 2rem;
+    }
+
+    /* The stacked copies of the screenshot, one visible at a time. */
+    .feature-shot {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .feature-shot.is-active {
+        opacity: 1;
+    }
+
+    /* Always open beside the phone: the description sits under the title and
+       there is no inline phone. */
+    .feature-step-body {
+        grid-column: 2;
+        grid-template-rows: 1fr;
+        transition: none;
+    }
+
+    .feature-description {
+        padding-left: 0;
+    }
+
+    .feature-step-crop {
+        display: none;
+    }
+
+    .feature-scroll.is-ready .feature-step.is-active::before {
+        height: var(--progress, 0%);
+    }
+
+    /* Only fade the inactive features once the script is running; without it
+       all three stay fully readable. */
+    .feature-scroll.is-ready .feature-step:not(.is-active) {
+        opacity: 0.45;
+    }
+
+    .feature-scroll.is-ready .feature-step:not(.is-active):hover {
+        opacity: 0.75;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .feature-step,
+    .feature-step-body,
+    .feature-shot {
+        transition: none;
+    }
 }
 
 /* ============================================
@@ -890,7 +1046,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .how-it-works-section {
     padding: var(--space-2xl) 0;
-    background: var(--bg-secondary);
 }
 
 .steps-grid {
@@ -1033,8 +1188,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 /* The screenshots live in the family section: the phones are the proof of
    the "best HSA tracking app for families" claim, so they share its
    heading rather than repeating one of their own. No background here —
-   .how-it-works-section directly below is the tinted band, so tinting
-   this one too would merge the two into a single slab. */
+   .features-section above and .apple-section below are the tinted bands,
+   so this one stays plain between them. */
 .family-section {
     padding: var(--space-2xl) 0;
 }
@@ -1171,10 +1326,67 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 /* ============================================
+   Apple Section
+   ============================================ */
+/* Sits between the untinted family section and the untinted how-it-works
+   section, so it takes the tinted band; the sections after it alternate on
+   from there (see .pricing-section and .cta-section). */
+.apple-section {
+    padding: var(--space-2xl) 0;
+    background: var(--bg-secondary);
+}
+
+.apple-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: center;
+}
+
+.apple-copy {
+    /* Spacing comes from the grid gap. */
+    margin: 0 auto;
+}
+
+.apple-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* A transparent cutout of the devices, so the shadow follows their
+       silhouette (as on the phone mockups) rather than a box. */
+    filter: drop-shadow(var(--shadow-md));
+}
+
+/* Wide screens: devices on the left, text on the right (the family section
+   above is text-left, so the two mirror each other). Below this the section
+   stays a centred single column: text, then devices. */
+@media (min-width: 1025px) {
+    .apple-grid {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        column-gap: var(--space-2xl);
+    }
+
+    .apple-media {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .apple-copy {
+        grid-column: 2;
+        grid-row: 1;
+        text-align: left;
+        max-width: none;
+        margin: 0;
+    }
+}
+
+/* ============================================
    Pricing Section
    ============================================ */
 .pricing-section {
     padding: var(--space-2xl) 0;
+    /* Tinted: the band alternation picks up after the apple section. */
+    background: var(--bg-secondary);
 }
 
 .pricing-grid {
@@ -1344,7 +1556,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .faq-section {
     padding: var(--space-2xl) 0;
-    background: var(--bg-secondary);
 }
 
 .faq-list {
@@ -1413,28 +1624,12 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .cta-section {
     padding: var(--space-2xl) 0;
+    background: var(--bg-secondary);
 }
 
-.cta-box {
-    position: relative;
+/* Just centred text on the band: no card or outline. */
+.cta-content {
     text-align: center;
-    padding: var(--space-3xl);
-    background: var(--bg-card);
-    border-radius: var(--radius-2xl);
-    overflow: hidden;
-}
-
-.cta-box::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: var(--radius-2xl);
-    padding: 2px;
-    background: var(--accent-primary);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
 }
 
 .cta-title {
@@ -1443,19 +1638,11 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 .cta-description {
     color: var(--text-secondary);
-    font-size: 1.125rem;
+    font-size: 1rem;
     margin-bottom: var(--space-xl);
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
-}
-
-/* Reassurance line under the CTA's download button */
-.cta-note {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    margin-top: var(--space-md);
-    margin-bottom: 0;
 }
 
 .appstore-badge {
@@ -1768,10 +1955,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 }
 
 @media (max-width: 1024px) {
-    .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     /* No two-column step layout: three cards would leave the third stranded on
        its own row, so the grid stays 3-wide until it collapses to a stack. The
        tighter gap buys back width for the columns at these sizes. */
@@ -1968,14 +2151,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     }
 }
 
-/* The feature cards hold up fine in two columns well below the 768px stacking
-   point the rest of the page uses, so they get their own narrower breakpoint. */
-@media (max-width: 560px) {
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 @media (max-width: 768px) {
     .steps-grid {
         grid-template-columns: 1fr;
@@ -2010,7 +2185,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         gap: var(--space-xl);
     }
 
-    .cta-box {
+    .cta-content {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -2075,15 +2250,6 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
     .hero-ctas {
         flex-direction: column;
         align-items: center;
-    }
-
-    .hero-ctas .btn {
-        width: 100%;
-    }
-
-    .btn-hero {
-        padding: 1rem 1.25rem;
-        font-size: 1rem;
     }
 
     /* Shorten to just "Download" so the label doesn't wrap in the pill */

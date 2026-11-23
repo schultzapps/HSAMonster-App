@@ -951,7 +951,7 @@
     margin: 0;
 }
 
-/* The page-closing App Store CTA reuses .cta-section / .cta-box from
+/* The page-closing App Store CTA reuses .cta-section / .cta-content from
    /styles.css so it stays identical to the home page's. Nothing tool-specific
    is needed here beyond dropping the shared section's horizontal padding,
    since .tool-container already provides it. */
