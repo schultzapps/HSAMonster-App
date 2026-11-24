@@ -967,7 +967,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
         --phone-w: min(280px, 36vh);
         /* The stage's own height plus the scroll distance it rides through,
            so the section's padding above and below matches its neighbours. */
-        height: calc(var(--phone-w) * 1681 / 822 + 150vh);
+        height: calc(var(--phone-w) * 1681 / 822 + 100vh);
     }
 
     /* Phone on the left, all three features on the right, as tall as its
