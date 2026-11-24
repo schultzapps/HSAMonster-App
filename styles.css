@@ -823,8 +823,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 .features-section {
     padding: var(--section-pad) 0;
-    /* Tinted so it alternates with the untinted screenshots section below it. */
-    background: var(--bg-secondary);
+    /* Untinted: sits between the tinted family and apple sections. */
 }
 
 /* One set of tiles at every width. Wide screens: a phone with the three
@@ -1201,11 +1200,13 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
    ============================================ */
 /* The screenshots live in the family section: the phones are the proof of
    the "best HSA tracking app for families" claim, so they share its
-   heading rather than repeating one of their own. No background here —
-   .features-section above and .apple-section below are the tinted bands,
-   so this one stays plain between them. */
+   heading rather than repeating one of their own. Tinted: it alternates
+   with the plain .features-section below it, then .apple-section is tinted
+   again. */
 .family-section {
     padding: var(--section-pad) 0;
+    /* Tinted so it alternates with the untinted features section below it. */
+    background: var(--bg-secondary);
 }
 
 .screenshots-gallery {
